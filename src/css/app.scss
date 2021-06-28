@@ -1,0 +1,126 @@
+// app global css in SCSS form
+
+// * {
+//   font-family: "AvenirNextCyr";
+// }
+.text-color {
+  color: #222222;
+}
+
+.btn-color {
+  background-color: #efefef;
+}
+
+.border-inset {
+  border: 1px solid $accent;
+}
+
+.gradient-green {
+  background: linear-gradient(188.96deg, #ddece5 30.4%, #aec4ba 80.38%);
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #000;
+}
+h1 {
+}
+
+h2 {
+}
+
+h3 {
+}
+
+h4 {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+h5 {
+}
+/*
+категории
+font-size: 16px;
+line-height: 20px;
+color: #222222;
+Карточка товара
+font-size: 16px;
+line-height: 20px;
+font-size: 20px;
+line-height: 25px;
+font-size: 12px;
+line-height: 15px;
+color: #222222;
+color: #222222;
+font-size: 26px;
+line-height: 32px;
+избранное 
+font-size: 14px;
+line-height: 17px;
+color: #222222;
+акции
+font-weight: 450;
+font-size: 18px;
+line-height: 22px;
+
+
+вход
+font-weight: 600;
+font-size: 30px;
+line-height: 37px;
+
+font-size: 28px;
+line-height: 34px;
+
+профиль
+
+font-weight: 450;
+font-size: 16px;
+line-height: 20px;
+
+font-weight: 600;
+font-size: 20px;
+line-height: 25px;
+
+font-size: 14px;
+line-height: 17px;
+
+font-size: 20px;
+line-height: 25px;
+
+корзина 
+font-weight: 600;
+font-size: 30px;
+line-height: 37px;
+
+font-size: 20px;
+line-height: 25px;
+
+font-weight: 450;
+font-size: 14px;
+line-height: 17px;
+text-align: center;
+
+font-weight: 600;
+font-size: 20px;
+line-height: 25px;
+
+font-size: 16px;
+line-height: 20px;
+
+font-size: 12px;
+line-height: 15px;
+
+#DDECE5
+#F3F3F3 #EFEFEF #ECDDE2 #EF2A62 #CE406A;
+
+#222222
+#00000
+
+#838383;
+ #E0E0E0 #7D7D7D
+ #C4C4C4
+*/
