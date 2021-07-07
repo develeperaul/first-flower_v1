@@ -1,6 +1,8 @@
 
 export default function () {
   return {
-    phone: null
+    id: null,
+    currentUser: null,
+    isLoading: false
   }
 }

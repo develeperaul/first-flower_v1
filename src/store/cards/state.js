@@ -3,6 +3,7 @@
 
 export default function () {
   return {
-    cards: null
+    cards: null,
+    card: null
   }
 }

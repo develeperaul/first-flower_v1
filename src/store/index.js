@@ -11,6 +11,7 @@ import cards from './cards'
 import sales from './sales'
 import basket from './basket'
 import souvenirs from './souvenirs'
+import categories from './categories'
 
 
 export default function () {
@@ -20,7 +21,8 @@ export default function () {
       cards,
       sales,
       basket,
-      souvenirs
+      souvenirs,
+      categories
     },
 
 

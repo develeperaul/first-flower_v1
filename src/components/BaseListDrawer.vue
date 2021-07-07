@@ -1,6 +1,6 @@
 <template>
-  <!-- <div><BaseItemDrawer title="Доставка" text="текст" /></div> -->
-  <div></div>
+  <div><BaseItemDrawer title="Доставка" text="текст" /></div>
+  <!-- <div></div> -->
 </template>
 
 <script>

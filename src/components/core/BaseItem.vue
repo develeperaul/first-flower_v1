@@ -1,7 +1,10 @@
 <template>
   <q-card flat class="tw-border my-card ">
     
-      <img src="../../statics/flower.jpg" />
+      <img 
+        src="../../statics/flower.jpg" 
+        @click="linkCard"
+      />
     <q-btn
       round
       unelevated
@@ -17,21 +20,19 @@
     <q-card-section class="tw-p-3">
       <div class="tw-text-sm">{{ card.title }}</div>
       <div class="tw-font-semibold tw-text-xl tw-flex tw-justify-between tw-items-end">
-        {{ card.price }}
+        <span> 
+          {{ card.price }}
+        </span>
         <q-btn
           @click="addProductToCart"
           outline
           round
           color="accent"
           size="8px"
+          :style="{}"
         >
-        <Icon name="basket" class="tw-w-4 tw-h-3" />
-          <!-- <img
-            class="w-5 object-center basket"
-            src="../../assets/shop.svg"
-            alt=""
-          /> -->
-          <!-- <ShopIcon width="16" height="14" /> -->
+          <Icon name="basket" class="tw-w-4 tw-h-3" />
+          
         </q-btn>
       </div>
     </q-card-section>
@@ -56,6 +57,10 @@ export default {
     addProductToCart() {
       this.$store.dispatch("basket/addProductToCart", this.card);
     },
+    linkCard(){
+      console.log('linkCard', this.card.id)
+      this.$router.push({name:'cardproduct', params: {id: this.card.id}})
+    }
   },
 };
 </script>
@@ -63,6 +68,7 @@ export default {
 .basket {
   display: inline-block;
   position: relative;
+  
   &::after {
     position: absolute;
     content: "";

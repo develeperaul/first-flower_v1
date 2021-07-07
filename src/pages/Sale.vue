@@ -1,17 +1,19 @@
 <template>
-  <q-page padding>
-    <BaseSale :sales="sales" />
+  <q-page class="p-content">
+    <SaleButton :sales="sales" />
+    
   </q-page>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import BaseSale from "components/BaseSale";
+import SaleButton from "components/SaleButton";
 
 export default {
   name: "Sale",
+  
   components: {
-    BaseSale,
+    SaleButton,
   },
   created() {
     this.$store.dispatch("sales/list");

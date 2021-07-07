@@ -1,5 +1,7 @@
 export default function () {
   return {
-    sales: null
+    sales: null,
+    sale: null,
+    isLoading: false
   }
 }

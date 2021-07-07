@@ -11,8 +11,10 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.6.5",
+    "moment": "^2.29.1",
     "quasar": "^1.0.0",
     "tailwindcss": "^2.2.4",
+    "v-mask": "^2.2.4",
     "vee-validate": "^3.4.10",
     "vue-router": "^3.5.2"
   },

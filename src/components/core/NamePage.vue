@@ -6,6 +6,7 @@
         size="10px"
         color="white"
         unelevated
+        @click="getBackPage"
         class="tw-absolute tw-left-0 tw-top-1/2 tw-transform tw--translate-y-1/2 tw-ml-3 "
         >
         <q-icon
@@ -28,6 +29,11 @@ export default {
   },
   data () {
     return {}
+  },
+  methods:{
+    getBackPage(){
+      this.$emit('getBackPage')
+    }
   }
 }
 </script>

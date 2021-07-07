@@ -15,6 +15,10 @@ export function incrementProducts (state, {id}){
 export function decrementProducts (state, {id}){
     const cartItem = state.products.find(item => item.id === id)
     cartItem.count--
+    if(cartItem.count === 0){
+        removeProduct(state, id)
+    }
+    
 }
 
 export function removeProduct(state, id){

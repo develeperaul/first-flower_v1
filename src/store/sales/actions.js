@@ -1,4 +1,4 @@
-import * as salesApi  from '../../boot/helpers/sales'
+import {getAllSale, getSale} from '../../boot/helpers/sales'
 
 /*
 export function someAction (context) {
@@ -6,6 +6,13 @@ export function someAction (context) {
 */
 
 export  async function list({commit}){
-        const sales = salesApi.getAllSale();
+        commit('getSaleStart');
+        const sales = getAllSale();
         commit('setSales', sales)
     }
+
+export async function getSaleCard({commit}, id){
+    commit('getSaleStart');
+    const sale = getSale(id);
+    commit('setSale', sale)
+}

@@ -1,5 +1,5 @@
 <template>
-  <div :class="`tw-border-t`"></div>
+  <div class="tw-border-t tw-border-gray-300" ></div>
 </template>
 
 <script>
@@ -14,3 +14,6 @@ export default {
 
 };
 </script>
+<style scoped>
+  
+</style>

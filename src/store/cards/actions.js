@@ -10,3 +10,13 @@ export  async function list({commit}){
         commit('setCards', cards)
     }
 
+export  async function cardList({commit}, name){
+        const cards = cardsApi.sort(name);
+        commit('setCards', cards)
+    }
+
+
+export  async function getCard({commit}, id){
+        const card = cardsApi.findCard(id);
+        commit('setCard', card)
+    }

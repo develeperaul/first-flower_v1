@@ -1,10 +1,11 @@
 <template>
   <q-btn
     class="py-3"
+    :type="type"
     unelevated
     :rounded="rounded"
     :color="color"
-    :to="{ name: 'favorite' }"
+    :to="to"
     no-caps
     >{{ text }}
   </q-btn>
@@ -12,6 +13,7 @@
 </template>
 
 <script>
+import { required } from 'vee-validate/dist/rules';
 export default {
   props: {
     rounded: {
@@ -28,6 +30,16 @@ export default {
       type: String,
       required: true,
     },
+    to: {
+      type: Object,
+      required: false,
+      default: false
+    }, 
+    type: {
+      type: String,
+      default: 'button',
+      required: false
+    }
   },
   // name: 'ComponentName',
 

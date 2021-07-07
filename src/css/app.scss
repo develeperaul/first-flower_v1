@@ -3,6 +3,100 @@
 // * {
 //   font-family: "AvenirNextCyr";
 // }
+.q-menu {
+  .q-date__calendar-item {
+    font-size: 5.5px;
+  }
+
+  .q-btn {
+    font-size: 5.5px;
+  }
+  .q-date__calendar-item {
+    .q-btn {
+      width: 14px;
+      height: 14px;
+    }
+  }
+  .q-date {
+    width: 170px;
+    min-width: 150px;
+  }
+  .q-date__content {
+    width: 170px;
+  }
+  .q-date__view {
+    min-height: 100px;
+    height: 158px;
+  }
+  .q-date__calendar-days-container {
+    min-height: 100px;
+  }
+
+  // .q-date__calendar-item > div,
+  // .q-date__calendar-item button {
+  //   width: 16px;
+  //   height: 16px;
+  //   transform: translateY(-50%);
+  // }
+  // .q-date__today {
+  //   transform: translateY(-50%);
+  // }
+  // .q-btn__content {
+  //   span {
+  //     position: absolute;
+  //     transform: translateY(50%);
+  //     top: -50%;
+  //   }
+  //   top: 50%;
+  // }
+}
+
+.q-slider {
+  &__track-container {
+    background: black;
+    height: 5px;
+  }
+  &__thumb-container {
+    width: 30px;
+
+    height: 30px;
+    border: 5px solid #ce406a;
+    background-color: #ffffff;
+    border-radius: 50%;
+    top: 50%;
+    transform: translate(0%, -50%);
+    position: absolute;
+    margin: 0 auto;
+    svg {
+      display: none;
+    }
+  }
+  &__pin {
+    background-color: transparent;
+    position: absolute;
+    bottom: 0;
+  }
+  &__pin-text {
+    color: #222222;
+    &-container {
+      font-weight: 500;
+      background-color: transparent;
+      margin-top: 6px;
+    }
+  }
+
+  &__arrow {
+    display: none;
+  }
+}
+.inputStyle {
+  padding: 0;
+  border-radius: 8px;
+  border: 2px solid #1a73e8;
+  outline: 0;
+  width: 100%;
+}
+
 .text-color {
   color: #222222;
 }

@@ -1,6 +1,7 @@
 <template>
   <div >
-    <BaseItem v-for="card in cards" :key="card['id']" :card="card" />
+    
+    <BaseItem  v-for="card in cards" :key="card.id" :card="card" />
   </div>
 </template>
 

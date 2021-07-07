@@ -45,3 +45,14 @@
     font-family: "AvenirNextCyr";
   }
 }
+
+@layer utilities {
+  .p-content {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+  .-m-content {
+    margin-right: -14px;
+    margin-left: -14px;
+  }
+}

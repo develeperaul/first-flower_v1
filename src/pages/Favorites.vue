@@ -1,5 +1,5 @@
 <template>
-  <q-page >
+  <q-page class="p-content">
     <BaseList :cards="cards" class="tw-grid tw-grid-cols-2 tw-gap-4"/>
   </q-page>
 </template>
