@@ -23,7 +23,7 @@ export default {
   data () {
     return {
       innerValue: '',
-      maxlength: 200
+      maxlength: '200'
     }
   },
   watch: {
