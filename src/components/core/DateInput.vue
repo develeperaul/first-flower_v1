@@ -29,14 +29,13 @@ import moment from 'moment'
 
 export default {
   // name: 'ComponentName',
+  props:{
     valuedate: {
       default: '',
       type: String,
     },
-    value: {
-      required: true,
-      type: String,
-    },
+    
+  },
   data () {
     return {
       innerValue: moment().format("DD.MM.YYYY"),
@@ -70,12 +69,7 @@ export default {
         this.$emit('update:valuedate', value);
       }
     },
-    value(newVal) {
-      console.log(newVal)
-      if (newVal !== this.innerValue) {
-        this.innerValue = newVal;
-      }
-    },
+    
   }
 }
 </script>
