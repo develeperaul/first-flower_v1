@@ -20,7 +20,7 @@
         <span v-if="picked === 'pickup'">
           Адрес магазина: Чишмы, ул. Ленина, 31
         </span>
-        <Input v-if="picked === 'delivery'" rules="required" label="Адрес" placeholder="Доставка"/>
+        <Input v-if="picked === 'delivery'" v-model="adress" rules="required" label="Адрес" placeholder="Доставка"/>
       </div>
       
     </div>
@@ -36,9 +36,9 @@
       <span class="tw-text-2xl tw-font-semibold tw-my-3.5">
         Условия самовывоза 
       </span>
-      <DateInput :valuedate.sync="valuedate"/>
+      <DateInput :valuedate.sync="date"/>
+      <TimeInput :valuetime.sync="time"/>
       
-      <Input rules="required" label="Время" placeholder="Павел"/>
       <CommentInput :valuecomment.sync="comment"/>
       
     </div>
@@ -74,11 +74,13 @@ export default {
   // name: 'PageName',
   data(){
     return {
+      adress: '',
       name: '',
       cellphoneMasked: '',
       cellphone: '',
-      valuedate: '',
+      date: '',
       innerValue: '',
+      time: '',
       comment: '',
       money: 'card',
       picked: 'pickup'
