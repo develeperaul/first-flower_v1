@@ -35,6 +35,7 @@ Vue.component('MyComponent', require('src/components/core/MyComponent.vue').defa
   Vue.component('Input', require('src/components/core/Input.vue').default)
   Vue.component('PhoneInput', require('src/components/core/PhoneInput.vue').default)
   Vue.component('DateInput', require('src/components/core/DateInput.vue').default)
+  Vue.component('CommentInput', require('src/components/core/CommentInput.vue').default)
   
   
 

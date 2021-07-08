@@ -1,14 +1,5 @@
 <template>
   <q-page class="p-content">
-    <!-- <q-input
-        filled
-        v-model="ph"
-        label="имя"
-        :borderless="false"
-        
-        placeholder="Placeholder"
-        class="inputStyle" /> -->
-    <!-- <BaseInput rules="required" label="First Name"/> -->
     <ValidationObserver v-slot="{ passes }">
   <form @submit.prevent="passes(onSubmit)"
     class="tw-flex tw-flex-col tw-justify-between"
@@ -29,7 +20,7 @@
         <span v-if="picked === 'pickup'">
           Адрес магазина: Чишмы, ул. Ленина, 31
         </span>
-        <Input v-if="picked === 'delivery'" rules="required" label="Адрес" placeholder="Павел"/>
+        <Input v-if="picked === 'delivery'" rules="required" label="Адрес" placeholder="Доставка"/>
       </div>
       
     </div>
@@ -48,7 +39,8 @@
       <DateInput :valuedate.sync="valuedate"/>
       
       <Input rules="required" label="Время" placeholder="Павел"/>
-      <Input rules="required" label="Комментарий" placeholder="Павел"/>
+      <CommentInput :valuecomment.sync="comment"/>
+      
     </div>
     
       
@@ -87,8 +79,9 @@ export default {
       cellphone: '',
       valuedate: '',
       innerValue: '',
-      money: '',
-      picked: ''
+      comment: '',
+      money: 'card',
+      picked: 'pickup'
     }
   }, 
   methods:{

@@ -11,6 +11,7 @@
       :class="{ 'tw-border-info': !errors[0], 'tw-border-secondary': errors[0], 'has-value': hasValue, 'has-placeholder': hasBlur }"
       :id="name"
       :type="type"
+      :maxlength="maxlength"
       :placeholder="valuePlaceholder"
       ref="input"
       v-model="innerValue"
@@ -86,6 +87,10 @@ export default {
     value: {
       type: null,
       default: ""
+    },
+    maxlength: {
+      type: String,
+      default: ''
     }
   },
   data: () => ({
