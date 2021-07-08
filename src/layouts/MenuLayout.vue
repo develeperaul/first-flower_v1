@@ -1,6 +1,6 @@
 <template>
   <q-layout view="hhh LpR fff" container style="height: 100vh">
-      <q-header reveal class="bg-white">
+      <q-header reveal class="bg-white ">
       <q-toolbar class="tw-relative">
         <q-btn
           color="primary"
@@ -16,11 +16,11 @@
         </div>
         
       </q-toolbar>
-      <BorderLine />
+        <BorderLine />
       </q-header>
 
       <q-footer class="bg-white">
-              <BorderLine/>
+        <BorderLine/>
       <q-toolbar class="flex justify-between tw-pt-2.5">
         <NavLink name="home" />
         <NavLink name="favorite" />
@@ -39,26 +39,29 @@
         behavior="desktop"
         :width="width"
         :mini-width="300"
-        content-class="gradient-green  "
+        content-class="gradient-green tw-pt-6 "
       >
-      
-        <div class="tw-relative p-content tw-text-center" @click="getParent">
+        <div class="tw-text-center tw-mb-3.5" >
+          <span>Категории</span>
+        </div>
+        <!-- <div class="tw-relative p-content tw-text-center" @click="getParent">
           <q-icon
           v-if="titleButton"
             name="arrow_back_ios"
             class="tw-absolute tw-bottom-2/4  tw-transform tw-translate-y-2/4 tw-left-0"
           />  
-          <span class="">{{list.name}}</span>
+          sdasd -->
+          <!-- <span class="">{{list.name}}</span> -->
         </div>
-        <div v-for="(list,index) in getCategories" :key="index" @click="getChildren(list)">
+        <div v-for="(item,index) in list" :key="index" @click="getChildren(item) " >
 
-          <div class="tw-flex tw-justify-between tw-items-center p-content">
-            <span>{{list.name}}</span>
-          <q-icon
-            v-if="listButton"
-            name="arrow_forward_ios"
-            class=""
-          />
+          <div class="tw-flex tw-justify-between tw-items-center p-content tw-py-5">
+            <span class="tw-font-medium" >{{item.name}}</span>
+            <q-icon
+              v-if="listButton"
+              name="arrow_forward_ios"
+              class=""
+            />
           </div>
           <BorderLine/>
         </div>
@@ -129,6 +132,9 @@
   </q-layout> -->
 </template>
 <script>
+
+import { mapGetters } from "vuex";
+
 import NavLink from "components/NavLink";
 import BaseListDrawer from "components/BaseListDrawer";
 import Cards from "components/Cards"
@@ -162,6 +168,8 @@ export default {
   data() {
     return {
       list: null,
+
+
       title: '',
       cards: false,
       leftDrawerOpen: false,
@@ -173,21 +181,32 @@ export default {
     };
   },
     methods: {
+      async getSectionList(){
+        await this.$store.dispatch("categories/getList");
+        this.list = this.sections
+      },
+      
+
+
     updateWidth() {
       this.width = window.innerWidth;
     },
     getChildren(item){
-      if(Object.keys(item.children).length !== 0){
-        this.list = item
-        // console.log('есть')
-        // this.list = item.children
-        // this.cards = false
-      }else{
-        this.$store.dispatch("cards/cardList", item.name)
-        this.$router.push({name: 'cards', params: {categories: item.name}})
-        this.title = item
-        this.cards = true
-      }
+      console.log(item.id)
+      this.$store.dispatch("categories/getSubSectionList", item.id)
+      this.list = this.subSection
+
+      // if(Object.keys(item.children).length !== 0){
+      //   this.list = item
+      //   // console.log('есть')
+      //   // this.list = item.children
+      //   // this.cards = false
+      // }else{
+      //   this.$store.dispatch("cards/cardList", item.name)
+      //   this.$router.push({name: 'cards', params: {categories: item.name}})
+      //   this.title = item
+      //   this.cards = true
+      // }
       
       
       // if(Object.keys(list.children).length === 0){
@@ -220,20 +239,22 @@ export default {
   },
   
   computed: {
+    ...mapGetters("categories", ["sections", "subSection"]),
     getCategories(){
       const categories = []
+
       // if(Object.values(this.list)[0].parent === null){
         // console.log(Object.values(this.list)[0].children.map(item=>item))
-        let value
-        if(Object.values(this.list)[0].parent === null) value = Object.values(this.list)[0].children;
-        else value = this.list.children
+      //   let value
+      //   if(Object.values(this.list)[0].parent === null) value = Object.values(this.list)[0].children;
+      //   else value = this.list.children
         
-        for(let key in value){
+      //   for(let key in value){
           
-          categories.push(value[key])
-        }
+      //     categories.push(value[key])
+      //   }
         
-      return categories
+      // return categories
        
       //  else{
       //   const items = Object.values(this.list).map(item=>{
@@ -249,9 +270,9 @@ export default {
   created() {
     window.addEventListener('resize', this.updateWidth);
     this.updateWidth();
-    this.$store.dispatch("categories/getList")
-    this.list = this.$store.state.categories.categories
-    this.title = Object.values(this.list)[0].name
+    return this.getSectionList()
+    // this.list = this.$store.state.categories.categories
+    // this.title = Object.values(this.list)[0].name
   },
 
 

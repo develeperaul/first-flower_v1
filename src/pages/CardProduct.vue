@@ -65,24 +65,11 @@
       <div class="tw-flex tw-justify-between tw-items-center tw-mb-8">
         <span class="tw-text-xl tw-font-semibold">Количество цветов</span>
         <span class="tw-font-medium count tw-flex tw-justify-center tw-items-center">
-          {{valueSlider}}
+          {{count}}
         </span>
       </div>
-      
-      <q-slider
-      v-model="valueSlider"
-      color="secondary"
-      dense
-      class="circle"
-      :min="15"
-      :max="201"
-      label-always
-    >
-      
-    </q-slider>
-    
-    </div>
-    
+      <Slider :valueSlider.sync="count"/>
+    </div>    
     <BorderLine border="t" class="tw--mx-3 "/>
     <div class="tw-flex tw-justify-between tw-items-center tw-pt-2.5 tw-pb-5">
       <span class="tw-text-2xl tw-font-bold">2790руб</span>
@@ -98,32 +85,21 @@
       </q-btn>
       <!-- <BaseButton text="Купить" class="tw-px-8 tw-py-1"/> -->
     </div>
-
-    
-
-    
   </q-page>
 </template>
 
 <script>
-
+import Slider from 'components/Slider'
 import {mapGetters} from 'vuex'
 
 export default {
-  
+  components:{
+    Slider
+  },
    data () {
     return {
       rangeValue: 0,
-      valueSlider: 15,
-      // controlType: 'flat',
-      // controlTypeOptions: [
-      //   { value: 'regular', label: 'regular' },
-      //   { value: 'unelevated', label: 'unelevated' },
-      //   { value: 'flat', label: 'flat (default)' },
-      //   { value: 'outline', label: 'outline' },
-      //   { value: 'push', label: 'push' }
-      // ],
-
+      count: 15,
       slide: 'style',
       
     }

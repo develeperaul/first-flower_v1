@@ -1,5 +1,6 @@
 export default function () {
   return {
-    categories: null
+    sections: null,
+    subSection: null,
   }
 }

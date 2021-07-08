@@ -180,7 +180,7 @@ export default {
   created() {
     window.addEventListener('resize', this.updateWidth);
     this.updateWidth();
-    this.$store.dispatch("categories/getList")
+    // this.$store.dispatch("categories/getList")
     this.list = this.$store.state.categories.categories
     this.title = Object.values(this.list)[0].name
   },

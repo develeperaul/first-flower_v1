@@ -16,7 +16,7 @@ module.exports = {
                 'info-darken': '#464646',
                 'info-light': '#EF2222'
                 
-                    
+                
             }
         },
         

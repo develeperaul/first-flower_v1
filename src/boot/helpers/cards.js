@@ -1,4 +1,12 @@
+import { apiFlower } from "src/boot/ky";
 
+export function getSectionsList(){
+    return apiFlower('section_list.php').json();
+}
+
+export function getSubSection(id){
+    return apiFlower(`section_list.php?id=${id}`).json()
+}
 
 const cards = [
     {   

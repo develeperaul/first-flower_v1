@@ -3,6 +3,10 @@ export function someMutation (state) {
 }
 */
 
-export function setCategories(state, categories){
-    state.categories = categories
+export function getSectionsSuccess(state, sections){
+    state.sections = sections
+}
+
+export function getSubSectionSuccess(state, subSection){
+    state.subSection = subSection
 }
