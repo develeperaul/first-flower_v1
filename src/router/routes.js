@@ -2,10 +2,11 @@
 const routes = [
   {
     path: '/',
+    // name: 'layout',
     component: () => import('layouts/MenuLayout.vue'),
 
     children: [
-      { path: '/home', name: 'home', component: () => import('src/pages/Home.vue') },
+      { path: '/', name: 'home', component: () => import('src/pages/Home.vue') },
 
       { path: '/sales', name: 'sale', component: () => import('src/pages/Sale.vue') },
       { path: '/sales/:id', name: 'salecard', component: () => import('src/pages/SaleCard.vue') },
@@ -30,7 +31,7 @@ const routes = [
 
 
       
-      { path: '/cards/:categories', name: 'cards', component: () => import('src/pages/Cards.vue'),}
+      { path: '/cards/:id', name: 'cards', component: () => import('src/pages/Cards.vue'), }
     ]
 
   },
@@ -42,17 +43,6 @@ const routes = [
       { path: ':id', name: 'cardproduct', component: () => import('src/pages/CardProduct.vue') },
     ]
   },
-  
-  // {
-  //   path: '',
-  //   component: () => import('layouts/Layout.vue'),
-  //   children: [
-  //     { path: '/home', name: 'home', component: () => import('src/pages/Home.vue') },
-  //   ]
-  // }
-
-  // Always leave this as last one,
-  // but you can also remove it
   {
     path: '*',
     component: () => import('pages/Error404.vue')
