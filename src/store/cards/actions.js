@@ -1,9 +1,14 @@
 import * as cardsApi  from '../../boot/helpers/cards'
-
+import {getElementList}  from '../../boot/helpers/cards'
 /*
 export function someAction (context) {
 }
 */
+
+export async function getList({commit}, id){
+    const cards = await getElementList(id);
+    commit('getListSuccess', cards);
+}
 
 export  async function list({commit}){
         const cards = cardsApi.getAllCards();

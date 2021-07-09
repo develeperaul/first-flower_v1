@@ -5,6 +5,16 @@
         <BaseList :cards="cards" class="tw-grid tw-grid-cols-2 tw-gap-4"/>
   </q-page> -->
   <q-page class="p-content">
+    
+    <div class="tw-text-center tw-mb-7  tw-relative">
+      <q-icon
+            @click="getParent"
+            name="arrow_back_ios"
+            class="tw-absolute tw-left-0 tw-top-1/2 tw-transform tw--translate-y-1/2 "
+      >
+      </q-icon>
+      <span class="tw-font-semibold">{{namePage}}</span>  
+    </div>
     <BaseList :cards="cards" class="tw-grid tw-grid-cols-2 tw-gap-4"/>
   </q-page>
 </template>
@@ -17,33 +27,74 @@ export default {
     components: {
     BaseList
   },
+  
   // name: 'PageName',
   data(){
     return{
-      namePage: Object.values(this.$route.params)[0],
+      namePage: null,
+      
     }
   },
   methods:{
     onChangeBack(){
+      // this.$router.go(-1)
+      this.$router.push({name: 'home', params: {menuOpen: true}})
+      
+    },
+    async getCards(id){
+      await this.$store.dispatch("cards/getList", id)
+    },
+    getParent(){
+      this.$store.commit("categories/clickMenu")
       this.$router.go(-1)
+      
+      
     }
   },
   computed: {
     ...mapGetters("cards", ["cards"]),
+    
 
   },
   created(){
-    this.$store.dispatch("cards/cardList", this.namePage)
-    console.log(this.namePage)
+    // this.$store.dispatch("cards/cardList", this.namePage)
+    console.log(this.valroute)
+    console.log(this.$route.params)
+    if(this.$route.params.item){
+      this.namePage = this.$route.params.item.name
+      return this.getCards(this.$route.params.id)
+    }
+    
+    // await this.$store.dispatch("cards/getList", item.id)
+    
+  },
+  beforeRouteEnter(to, from, next){
+    console.log(to, from)
+    next(vm=>{
+      // vm.$store.dispatch("cards/getList", to.params.id)
+      
+      if(to.params.item){
+        vm.namePage = to.params.item.name  
+      }else{
+        vm.namePage = "не передано"
+      }
+      
+    })
   },
   
-  
   beforeRouteUpdate(to, from, next){
-    
-      this.namePage = Object.values(to.params)[0]
-      // this.$store.dispatch("cards/cardList", this.namePage)
-      console.log(this.namePage)
+      this.namePage = to.params.item.name
+      this.getCards(to.params.item.id)
+      
+      next(()=>{
+        
+        
+      })
+  },
+  beforeRouteLeave(to, from , next){
+      console.log(to, from)
       next()
-  }
+  },
+  
 }
 </script>

@@ -8,7 +8,7 @@
           round
           dense
           icon="menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
+          @click="toggleMenu"
           class="tw-absolute"
         />
         <div class="logo tw-m-auto">
@@ -32,7 +32,7 @@
       </q-footer>
 
       <q-drawer
-        v-model="leftDrawerOpen"
+        v-model="menu"
         :breakpoint="700"
         bordered
         overlay
@@ -41,95 +41,35 @@
         :mini-width="300"
         content-class="gradient-green tw-pt-6 "
       >
-        <div class="tw-text-center tw-mb-3.5" >
+        <div v-if="!title" class="tw-text-center tw-mb-3.5 tw-pl-4" >
           <span>Категории</span>
         </div>
-        <!-- <div class="tw-relative p-content tw-text-center" @click="getParent">
+        <div v-else class="tw-text-center tw-mb-3.5 tw-relative  p-content " >
           <q-icon
-          v-if="titleButton"
+            @click="getParent"
             name="arrow_back_ios"
-            class="tw-absolute tw-bottom-2/4  tw-transform tw-translate-y-2/4 tw-left-0"
-          />  
-          sdasd -->
-          <!-- <span class="">{{list.name}}</span> -->
+            class="tw-absolute tw-left-0 tw-top-1/2 tw-transform tw--translate-y-1/2 tw-pl-7 "
+          ></q-icon>
+          <span>{{title}}</span>
         </div>
         <div v-for="(item,index) in list" :key="index" @click="getChildren(item) " >
-
-          <div class="tw-flex tw-justify-between tw-items-center p-content tw-py-5">
+          <div class="tw-flex tw-justify-between tw-items-center p-content tw-py-5 tw-ml-4">
             <span class="tw-font-medium" >{{item.name}}</span>
             <q-icon
-              v-if="listButton"
+              v-if="!title"
               name="arrow_forward_ios"
               class=""
             />
           </div>
           <BorderLine/>
         </div>
+        
       </q-drawer>
-      <q-page-container>
-        <router-view class="tw-my-2.5"/>
+      <q-page-container >
+        <router-view class="tw-my-2.5" />
       </q-page-container>
     </q-layout>
-  <!-- <q-layout  container style="height:100vh"  view="hhh lpR lff" >
-    <q-header  class="bg-white">
-      <q-toolbar class=" flex justify-between">
-        <q-btn
-          color="primary"
-          flat
-          round
-          dense
-          icon="menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        />
-        <div class="logo">
-          <img src="../assets/logo.svg" alt="" />
-        </div>
-        
-      </q-toolbar>
-      <BorderLine />
-    </q-header>
-      <q-drawer
-        v-model="leftDrawerOpen"
-        :breakpoint="700"
-        bordered
-        behavior="desktop"
-        :width="width"
-        :mini-width="300"
-        content-class="gradient-green"
-      >
-      <q-toolbar class=" px-0 flex justify-between">
-        <q-btn
-          color="primary"
-          flat
-          round
-          dense
-          icon="close"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        />
-        <div class="logo">
-          <img src="../assets/logo.svg" alt="" />
-        </div>
-     
-      </q-toolbar>
-      <BaseListDrawer  />
-    </q-drawer>
-    <q-page-container class="tw-px-3">
-      
-      
-      <router-view class="tw-my-2.5"/>
-    </q-page-container>
-    <q-footer class="bg-white">
-      <BorderLine/>
-      <q-toolbar class="flex justify-between tw-pt-2.5">
-        <NavLink name="home" />
-        <NavLink name="favorite" />
-        <NavLink name="basket" />
-        <NavLink name="sale" />
-        <NavLink name="profile" />
 
-      </q-toolbar>
-    </q-footer>
-  </q-layout> -->
 </template>
 <script>
 
@@ -138,25 +78,6 @@ import { mapGetters } from "vuex";
 import NavLink from "components/NavLink";
 import BaseListDrawer from "components/BaseListDrawer";
 import Cards from "components/Cards"
-
-
-const findCategories = (stateObj, nameObj, cards)=> {
-  const items= {}
-  for(let key in stateObj){
-    const item = stateObj[key]
-    if(!cards){
-      if(item.id === nameObj.parent){
-      items[item.id] = {...item}
-      }
-    }else{
-      console.log(item.parent);
-      if(item.parent === nameObj.parent){
-      items[item.id] = {...item}
-      }
-    } 
-  }
-  return items
-}
 
 export default {
   // name: 'LayoutName',
@@ -168,12 +89,12 @@ export default {
   data() {
     return {
       list: null,
+      title: null,
+      
 
-
-      title: '',
       cards: false,
-      leftDrawerOpen: false,
-      title: {name: "категории"},
+      // leftDrawerOpen: this.menu,
+      
       titleButton: false,
       listButton: true,
       cards: false,
@@ -181,8 +102,13 @@ export default {
     };
   },
     methods: {
+      toggleMenu(){
+        console.log('toogle')
+        this.$store.commit("categories/clickMenu")
+
+      },
       async getSectionList(){
-        await this.$store.dispatch("categories/getList");
+        await this.$store.dispatch("categories/getSections");
         this.list = this.sections
       },
       
@@ -191,88 +117,31 @@ export default {
     updateWidth() {
       this.width = window.innerWidth;
     },
-    getChildren(item){
-      console.log(item.id)
-      this.$store.dispatch("categories/getSubSectionList", item.id)
-      this.list = this.subSection
-
-      // if(Object.keys(item.children).length !== 0){
-      //   this.list = item
-      //   // console.log('есть')
-      //   // this.list = item.children
-      //   // this.cards = false
-      // }else{
-      //   this.$store.dispatch("cards/cardList", item.name)
-      //   this.$router.push({name: 'cards', params: {categories: item.name}})
-      //   this.title = item
-      //   this.cards = true
-      // }
+    async getChildren(item){
+      if(this.title === null){
+        await this.$store.dispatch("categories/getSubSectionList", item.id)
+        this.title = item.name
+        this.list = this.subSection
+      }else{
+        this.$store.commit("categories/clickMenu")
+        this.$router.push({name: 'cards', params:{id: item.id, item: item}})
+      }
       
       
-      // if(Object.keys(list.children).length === 0){
-      //   // this.$store.dispatch("cards/cardList", list.name)
-      //   // this.$router.push({name: 'cards', params: {categories: list.name}})
-      //   this.cards = true
-      //   this.title = list
-        
-      //   // this.categoriesList = this.$store.state.categories.categories
-        
-      // } else {
-      //   this.categoriesList = Object.values(list.children)
-      //   this.title = list
-      //   this.titleButton = true
-      //   this.listButton = false
-      //   this.cards = false
-      // }
     },
     getParent(){
-    //   console.log(this.title)
-    //  this.categoriesList = findCategories(this.$store.state.categories.categories, this.title)
-    //  this.title = {name: 'Категории'}
-    //  this.titleButton = false
-    //     this.listButton = true
-    //     this.cards = false
-    
-    this.list = findCategories(this.$store.state.categories.categories, this.title, this.cards)
-    console.log('back')
+      this.list = this.sections;
+      this.title = null;
     }
   },
   
   computed: {
-    ...mapGetters("categories", ["sections", "subSection"]),
-    getCategories(){
-      const categories = []
-
-      // if(Object.values(this.list)[0].parent === null){
-        // console.log(Object.values(this.list)[0].children.map(item=>item))
-      //   let value
-      //   if(Object.values(this.list)[0].parent === null) value = Object.values(this.list)[0].children;
-      //   else value = this.list.children
-        
-      //   for(let key in value){
-          
-      //     categories.push(value[key])
-      //   }
-        
-      // return categories
-       
-      //  else{
-      //   const items = Object.values(this.list).map(item=>{
-      //   console.log(item)
-      //   return item.children})
-      // // console.log(items)
-      // return items
-      // //  return Object.values(this.categoriesList)
-      // }
-              
-    },
+    ...mapGetters("categories", ["sections", "subSection", "menu"]),
   },
   created() {
     window.addEventListener('resize', this.updateWidth);
     this.updateWidth();
     return this.getSectionList()
-    // this.list = this.$store.state.categories.categories
-    // this.title = Object.values(this.list)[0].name
   },
 
 

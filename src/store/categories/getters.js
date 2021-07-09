@@ -10,3 +10,7 @@ export function sections (state){
 export function subSection (state){
     return state.subSection
 }
+
+export function menu(state){
+    return state.menu
+}
