@@ -8,8 +8,8 @@
     <q-btn
       round
       unelevated
-      color="white"
-      class="tw-absolute tw-top-0  tw-right-0 border-inset tw-m-2.5"
+      
+      class="tw-absolute tw-top-0 tw-bg-white tw-right-0 border-inset tw-m-2.5"
       
       size="8px"
     >
@@ -26,14 +26,16 @@
         <q-btn
           @click="addProductToCart"
           outline
+          flat
           round
-          color="accent"
           size="8px"
-          :style="{}"
+          class=" tw-border tw-border-primary tw-border-solid"
+          :class="[isActive ? active : inactive]"
         >
-          <Icon name="basket" class="tw-w-4 tw-h-3" />
+          <Icon name="basket" :color="isActive ? '#ffffff' : '#838383'" class="tw-w-4 tw-h-3 " />
           
         </q-btn>
+        
       </div>
     </q-card-section>
   </q-card>
@@ -52,10 +54,25 @@ export default {
       reqaured: true,
     },
   },
+  data(){
+    return {
+      isActive: false,
+      active: "tw-bg-secondary",
+      inactive: "tw-bg-white"
+    }
+  },
   methods: {
     // ...mapActions(basket, ["addProductToCart"]),
     addProductToCart() {
-      this.$store.dispatch("basket/addProductToCart", this.card);
+      
+      if(this.isActive){
+        this.$store.commit("basket/remove", this.card)  
+      }else{
+      this.$store.commit("basket/add", this.card)
+      
+      }
+      // this.$store.dispatch("basket/addProductToCart", this.card);
+      this.isActive = !this.isActive
     },
     linkCard(){
       console.log('linkCard', this.card.id)

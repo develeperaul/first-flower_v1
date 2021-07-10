@@ -118,9 +118,13 @@ export default {
     name: { type: String, required: true },
 
     active: { type: Boolean, required: false, default: false },
+    color: { type: String, required: false }
   },
   computed: {
     colorStyle() {
+      if(this.color){
+        return `fill: ${this.color}`;  
+      }
       return `fill: ${this.active ? "#222222" : "#838383"}`;
     },
   },
