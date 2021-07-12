@@ -14,13 +14,13 @@
       ref="carousel"
       class="tw--mx-3 "  
     >
-      <q-carousel-slide name="style" class="tw-p-0 " ref="slide" img-src="../assets/image.png">
+      <q-carousel-slide name="style" class="tw-p-0 " ref="slide" img-src="/image.png">
         
       </q-carousel-slide>
-      <q-carousel-slide name="tv" class="tw-p-0" img-src="../assets/image.png">
+      <q-carousel-slide name="tv" class="tw-p-0" img-src="/image.png">
         
       </q-carousel-slide>
-      <q-carousel-slide name="map" class="tw-p-0" img-src="../assets/flower.jpg">
+      <q-carousel-slide name="map" class="tw-p-0" img-src="/flower.jpg">
        
       </q-carousel-slide>
       <template v-slot:control>
@@ -71,6 +71,37 @@
       <Slider :valueSlider.sync="count"/>
     </div>    
     <BorderLine border="t" class="tw--mx-3 "/>
+    <div class="tw--mr-3.5">
+      <Hooper :settings="hooperSettings">
+    <Slide>
+              <div class="images img1">
+          <h2>Slider 1</h2>
+        </div>
+    </Slide>
+    <Slide>
+              <div class="images img2">
+          <h2>Slider 2</h2>
+        </div>
+    </Slide>
+    <Slide>
+              <div class="images img3">
+          <h2>Slider 3</h2>
+        </div>
+    </Slide>
+    <Slide>
+              <div class="images img4">
+          <h2>Slider 4</h2>
+        </div>
+    </Slide>
+    <Slide>
+              <div class="images img5">
+          <h2>Slider 5</h2>
+        </div>
+    </Slide>
+  </Hooper>
+    </div>
+    
+
     <div class="tw-flex tw-justify-between tw-items-center tw-pt-2.5 tw-pb-5">
       <span class="tw-text-2xl tw-font-bold">2790руб</span>
       <q-btn
@@ -89,19 +120,29 @@
 </template>
 
 <script>
+import { Hooper, Slide } from 'hooper';
+
 import Slider from 'components/Slider'
 import {mapGetters} from 'vuex'
 
 export default {
   components:{
-    Slider
+    Slider,
+    Hooper,
+    Slide
   },
    data () {
     return {
       rangeValue: 0,
       count: 15,
       slide: 'style',
-      
+      hooperSettings: {
+        trimWhiteSpace: true,
+        transition: 700,
+        // autoPlay: true,
+        // playSpeed: 3500,
+        itemsToShow: 4.5
+      }
     }
   },
   methods:{
@@ -125,7 +166,7 @@ export default {
     })
 
   },
-
+  
 
 };
 </script>
@@ -139,5 +180,33 @@ export default {
     
   }
   
+  .images {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+}
+.img1 {
+  background: salmon;
+}
+.img2 {
+  background: lightblue;
+}
+.img3 {
+  background: coral;
+}
+.img4 {
+  background: lightgreen;
+}
+.img5 {
+  background: pink;
+}
+h2 {
+  color: #fff
+}
+.hooper {
+  height: 100vh;
+}
 
 </style>

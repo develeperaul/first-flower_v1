@@ -1,5 +1,5 @@
 import * as cardsApi  from '../../boot/helpers/cards'
-import {getElementList}  from '../../boot/helpers/cards'
+import {getElementList, findCard}  from '../../boot/helpers/cards'
 /*
 export function someAction (context) {
 }
@@ -22,6 +22,7 @@ export  async function cardList({commit}, name){
 
 
 export  async function getCard({commit}, id){
-        const card = cardsApi.findCard(id);
+    console.log('find')
+        const card = await findCard(id);
         commit('setCard', card)
     }

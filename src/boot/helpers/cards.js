@@ -12,9 +12,7 @@ export function getElementList(id){
     return apiFlower(`elements_list.php?id=${id}`).json();
 }
 
-export function getSubSectionItem(id){
-    
-}
+
 
 const cards = [
     {   

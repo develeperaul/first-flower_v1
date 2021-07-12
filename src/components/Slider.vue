@@ -2,7 +2,7 @@
   <div class="tw-relative">
     <input 
       type='range'
-      name='slide'
+      
       
       :value = "value"
       ref="input"

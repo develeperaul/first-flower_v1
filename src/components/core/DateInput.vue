@@ -1,10 +1,6 @@
 <template>
   <Input rules="required"   label="Дата" placeholder="дд.мм.ггг" v-model="innerValue" >
-  
-    <template>
-      <Icon name="calendar" class="cursor-pointer tw-absolute tw-top-1/2 tw-transform tw--translate-y-1/2 tw-right-4" />
-        
-        <q-popup-proxy class="tw-absolute tw-right-4" breakpoint="0" ref="qDateProxy" transition-show="scale" transition-hide="scale">
+    <q-popup-proxy class="tw-absolute tw-right-4" breakpoint="0" ref="qDateProxy" transition-show="scale" transition-hide="scale">
           <div class="styleW">
             <q-date
             v-model="innerValue"
@@ -16,6 +12,10 @@
           </div>
           
         </q-popup-proxy>
+    <template>
+      <Icon name="calendar" class="cursor-pointer tw-absolute tw-top-1/2 tw-transform tw--translate-y-1/2 tw-right-4" />
+        
+        
     </template>
   </Input>
 

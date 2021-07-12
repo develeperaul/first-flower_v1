@@ -56,13 +56,13 @@
               ref="carousel"
               class="tw--mx-3 "  
             >
-              <q-carousel-slide name="style" class="tw-p-0 tw-w-10 " ref="slide" img-src="../assets/image.png">
+              <q-carousel-slide name="style" class="tw-p-0 tw-w-10 " ref="slide" img-src="/image.png">
                 
               </q-carousel-slide>
-              <q-carousel-slide name="tv" class="tw-p-0" img-src="../assets/image.png">
+              <q-carousel-slide name="tv" class="tw-p-0" img-src="/image.png">
                 
               </q-carousel-slide>
-              <q-carousel-slide name="map" class="tw-p-0" img-src="../assets/flower.jpg">
+              <q-carousel-slide name="map" class="tw-p-0" img-src="/flower.jpg">
               
               </q-carousel-slide>
               

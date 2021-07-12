@@ -12,7 +12,7 @@
           class="tw-absolute"
         />
         <div class="logo tw-m-auto">
-          <img src="../assets/logo.svg" alt="" />
+          <img src="/logo.svg" alt="" />
         </div>
         
       </q-toolbar>
