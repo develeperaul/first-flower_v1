@@ -1,41 +1,35 @@
 <template>
   <q-page class="p-content">
     <div>
-      <span class="tw-font-semibold tw-text-xl">Букет недели</span>
-      <div class="tw-grid tw-grid-cols-3">
-          <!-- <div class="tw-bg-center tw-bg-contain tw-bg-no-repeat"
-          style="background-image: url(/flower.jpg); height: 105px; max-width: 105px " 
-          ></div>-->
+      <span class="tw-font-semibold tw-text-xl ">Букет недели</span>
+      <div class="tw-grid tw-grid-cols-3 tw-mt-4                       ">
           <img 
             width="123"
             height="123"
             class="tw-flex-shrink-0"  src="/flower.jpg" alt="" style="border-radius: 5px " > 
           <div class="tw-col-span-2 tw-flex tw-flex-col tw-justify-between tw-ml-4">
             <div class="tw-flex tw-justify-between tw-items-center tw-flex-nowrap">
-              <span class="tw-text-lg tw-font-medium">
+              <span class="tw-text-lg sm:tw-text-base tw-font-medium">
                 Букет из 21 розы по сниженной цене
               </span>
               
             </div> 
-            <div class="tw-flex tw-justify-between tw-items-center tw-flex-nowrap">
-                <span class="tw-text-xl tw-font-semibold">2390 руб.</span>
+            <div class="tw-flex tw-justify-between tw-items-center tw-flex-nowrap ">
+                <span class="tw-text-xl sm:tw-text-base tw-font-semibold">2390 руб.</span>
 
-                <span class="tw-text-xl tw-font-semibold tw-text-info-light">2790 руб.</span>
+                <span class="tw-text-xl sm:tw-text-base tw-font-semibold tw-text-info-light">2790 руб.</span>
             </div> 
           </div>
           
       </div>
     </div>  
-    <div>
+    <div class=" tw-mt-8">
       <span class="tw-font-semibold tw-text-xl ">Акция недели</span>
         <BaseSale v-bind="{ ...sale }" class="tw-mb-5 tw-mt-3">
           <router-link
               :to="{name: 'salecard', params: { id: sale.id, sale }}">
-          <q-btn class="" round color="white" unelevated >
+          <q-btn size="10px" round color="white" unelevated >
             <q-icon color="dark" name="arrow_forward">
-    
-
-          
             </q-icon>
           </q-btn>
           </router-link>
