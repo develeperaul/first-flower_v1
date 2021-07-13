@@ -23,16 +23,17 @@
               <h4 class="tw-text-xs tw-font-medium">{{ product.title }}</h4>
 
               
-                <q-icon @click="removeProduct(product.id)" size="24px" color="info" name="close" />
+                <q-icon @click="removeProduct(product.id)" size="14px" color="info" name="close" />
               
             </div> 
             <div class="tw-flex tw-justify-between tw-items-center tw-flex-nowrap">
               <BaseGroupButton
                   :count="product.count"
                   @incrementCount="incrementCount(product, $event)"
+                  class="tw-mr-2.5"
                 />
 
-                <span class="tw-text-xl tw-font-semibold">{{ product.price }}.</span>
+                <span class="tw-text-xl sm:tw-text-lg tw-font-semibold">{{ product.price }}&nbsp;руб.</span>
             </div> 
           </div>
           
