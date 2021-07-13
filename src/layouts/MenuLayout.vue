@@ -21,8 +21,8 @@
 
       <q-footer class="bg-white">
         <BorderLine/>
-      <q-toolbar class="flex justify-between tw-pt-2.5">
-        <NavLink name="home" />
+      <q-toolbar class="flex justify-between tw-pt-2.5" @click="link">
+        <NavLink name="home"/>
         <NavLink name="favorite" />
         <NavLink name="basket" />
         <NavLink name="sale" />
@@ -42,7 +42,7 @@
         content-class="gradient-green tw-pt-6 "
       >
         <div v-if="!title" class="tw-text-center tw-mb-3.5 tw-pl-4" >
-          <span>Категории</span>
+          <span class="tw-font-semibold">Категории</span>
         </div>
         <div v-else class="tw-text-center tw-mb-3.5 tw-relative  p-content " >
           <q-icon
@@ -50,7 +50,7 @@
             name="arrow_back_ios"
             class="tw-absolute tw-left-0 tw-top-1/2 tw-transform tw--translate-y-1/2 tw-pl-7 "
           ></q-icon>
-          <span>{{title}}</span>
+          <span class="tw-font-semibold">{{title}}</span>
         </div>
         <div v-for="(item,index) in list" :key="index" @click="getChildren(item) " >
           <div class="tw-flex tw-justify-between tw-items-center p-content tw-py-5 tw-ml-4">
@@ -93,6 +93,8 @@ export default {
       
 
       cards: false,
+
+      
       // leftDrawerOpen: this.menu,
       
       titleButton: false,
@@ -103,7 +105,7 @@ export default {
   },
     methods: {
       toggleMenu(){
-        console.log('toogle')
+        
         this.$store.commit("categories/clickMenu")
 
       },
@@ -111,7 +113,12 @@ export default {
         await this.$store.dispatch("categories/getSections");
         this.list = this.sections
       },
-      
+      link(){
+        if(this.menu){
+          this.toggleMenu()
+        }
+        
+      },
 
 
     updateWidth() {

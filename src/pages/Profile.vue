@@ -139,8 +139,6 @@ export default {
     // }
   },
   beforeRouteEnter(to, from, next) {
-        console.log(to)
-    
     next(vm=>{
       const profileUser = vm.$store.state.auth
       if( profileUser.currentUser === null){

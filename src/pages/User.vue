@@ -33,7 +33,7 @@ export default {
       user: 'getUser'
     } ),
     getPhone(){
-      console.log(this.user)
+      
       if(this.user === null){
         return this.user
       } else{

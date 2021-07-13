@@ -1,13 +1,15 @@
 <template>
-<div>
+<div >
   <router-link
     :to="{ name: name }"
+    
     custom
     v-slot="{href, isActive, navigate}"
     active-class="active"
   >
     <a class="tw-flex tw-flex-col tw-items-center " :active="isActive" :href="href" @click="navigate"
       >
+      
       <Icon :name="name" :active="isActive" />
       <span class="tw-text-xs tw-mt-0.5 tw-pb-3.5" :class="[{ active: isActive }, { textColor: !isActive }]">
         {{ itemName }}
@@ -39,7 +41,12 @@ export default {
       type: String,
       required: false,
     },
+    menu: {
+      type: Boolean,
+      required: false
+    }
   },
+  
 
   computed: {
     itemKey() {
