@@ -2,7 +2,7 @@
     <q-page  class="tw-flex tw-flex-col tw-justify-around p-content">
       <div class="tw-flex tw-flex-col tw-items-center">
         <q-img v-if="hasImg" class="tw-w-10 tw-h-10 rounded" src="/basketFlower.svg" />
-        <span class="tw-text-xl tw-font-semibold tw-text-center">{{text}}</span>
+        <span class="tw-text-xl tw-font-semibold tw-text-center tw-mt-6">{{text}}</span>
       </div>
       
       <BaseButton class="tw-text-xl" :text="textBtn" :to="to"/>
