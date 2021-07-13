@@ -12,7 +12,8 @@ module.exports = {
                 'secondary-light': '#FFECF2',
                 accent: '#838383',
                 'accent-light': '#888888',
-                info: '#9A9A9A',
+                info: '#EF2A62',
+                // info: '#9A9A9A',
                 'info-darken': '#464646',
                 'info-light': '#EF2222'
                 

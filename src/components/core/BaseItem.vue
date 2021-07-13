@@ -13,7 +13,7 @@
       
       size="8px"
     >
-      <q-icon name="favorite" color="info" />
+      <q-icon name="favorite" class="tw-text-info" />
     </q-btn>
     
     
