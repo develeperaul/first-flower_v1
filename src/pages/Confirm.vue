@@ -17,7 +17,7 @@
         <span class="tw-text-primary-darken tw-font-medium">
           Отправить код повторно
         </span>
-        <span class="tw-text-primary-darken05 tw-font-medium">42 сек</span>
+        <span class="tw-text-primary-darken05 tw-font-medium">{{currentTime}}&nbsp;сек</span>
       </div>
   </q-page>
 </template>
@@ -27,7 +27,33 @@ import ConfirmInput from 'components/ConfirmInput'
 export default {
   components: {
     ConfirmInput
-  }
+  },
+  data() {
+    return{
+    currentTime: 10,
+    timer: null,
+    }
+  },
+  mounted() {
+    this.startTimer()
+  },
+  methods: {
+    startTimer() {
+      this.timer = setInterval(() => {
+        this.currentTime--
+      }, 1000)
+    },
+    stopTimer() {
+      clearTimeout(this.timer)
+    },
+  },
+  watch: {
+    currentTime(time) {
+      if (time === 0) {
+        this.stopTimer()
+      }
+    }
+  },
   // name: 'PageName',
 }
 </script>
