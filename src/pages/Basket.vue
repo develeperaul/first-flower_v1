@@ -5,7 +5,7 @@
         
   </div>
   <div v-else>
-    <q-page   class="tw-flex tw-flex-col tw-justify-between ">
+    <q-page   class="tw-flex tw-flex-col  ">
     <div class="p-content">
       <q-card
         v-for="product in products"
@@ -20,7 +20,7 @@
           <img class="tw-flex-shrink-0"  src="/flower.jpg" alt="" style="border-radius: 5px " > 
           <div class="tw-col-span-2 tw-flex tw-flex-col tw-justify-between tw-ml-4">
             <div class="tw-flex tw-justify-between tw-items-center tw-flex-nowrap">
-              <h4 class="tw-text-xs tw-font-medium">{{ product.title }}</h4>
+              <h4 class="tw-text-sm tw-font-medium">{{ product.title }}</h4>
 
               
                 <q-icon @click="removeProduct(product.id)" size="14px" color="info" name="close" />
@@ -40,13 +40,16 @@
         </div>
       </q-card>
     </div>
-    <div class="tw-bg-secondary-light  tw-pb-12 tw-pt-5 p-content">
-      <div class="tw-flex tw-justify-between tw-mb-7">
-        <span>Итого</span>
-        <span>{{amountProducts  }} руб.</span>
+    <div class="bg-total tw-flex tw-justify-between  tw-my-12 tw-py-5 p-content">
+      
+        <span class="tw-text-xl">Итого</span>
+        <span class="tw-text-xl tw-font-semibold">{{amountProducts  }} руб.</span>
         
-      </div>
-      <BaseButton class="tw-w-full" text="Оформить заказ" :to="{name: 'delivery'}"/>
+      
+      
+    </div>
+    <div class="p-content">
+    <BaseButton class="tw-w-full"  text="Оформить заказ" :to="{name: 'delivery'}"/>
     </div>
   </q-page>
   </div>
@@ -87,5 +90,7 @@ export default {
 };
 </script>
 <style scoped>
- 
+ .bg-total{
+   background-color: #f3f3f3f3;
+ }
 </style>
