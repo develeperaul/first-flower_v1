@@ -1,5 +1,6 @@
 <template>
   <q-page class="p-content">
+    
     <SaleButton :sales="sales" />
     
   </q-page>
@@ -16,10 +17,14 @@ export default {
     SaleButton,
   },
   created() {
+    
     this.$store.dispatch("sales/list");
   },
   computed: {
     ...mapGetters("sales", ["sales"]),
   },
+  
+  
+  
 };
 </script>

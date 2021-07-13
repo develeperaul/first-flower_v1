@@ -45,9 +45,7 @@ export default {
       isLoading: state => state.sales.isLoading,
       sale: state => state.sales.sale
     }),
-    getSaleCard(){
-
-    }
+    
   },
   created(){
     this.$store.dispatch("sales/getSaleCard", this.$route.params.id);
@@ -56,7 +54,7 @@ export default {
   
 }
 /*
-  при обновлении компонент на видит 
+  при обновлении компонент не видит 
 */
 </script>
 
