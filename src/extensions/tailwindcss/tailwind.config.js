@@ -17,8 +17,16 @@ module.exports = {
                 'info-light': '#EF2222'
                 
                 
+            },
+            width: {
+                '7.5.' : '1.875rem'
             }
+            
         },
+        screens: {
+                'sm': {'min': '300px', 'max': '400px'},
+            }
+        
         
     },
     
