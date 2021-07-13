@@ -12,7 +12,7 @@ export  async function list({commit}){
     }
 
 export async function getSaleCard({commit}, id){
-    commit('getSaleStart');
+    
     const sale = getSale(id);
     commit('setSale', sale)
 }
