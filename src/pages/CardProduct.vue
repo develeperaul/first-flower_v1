@@ -48,7 +48,7 @@
     <BorderLine class="-m-content"/>
   
 
-    <div class="tw-pt-4 tw-pb-9">
+    <div class="tw-pt-4">
       <div class="tw-mb-5 tw-font-semibold tw-text-xl">
         <span class="">Описание</span>
       </div>
@@ -62,44 +62,53 @@
       <BorderLine class="-m-content tw-mt-12 tw-mb-6"/>
 
       </div>
-      <div class="tw-flex tw-justify-between tw-items-center tw-mb-8">
+        <div class="tw-flex tw-justify-between tw-items-center tw-mb-8">
         <span class="tw-text-xl tw-font-semibold">Количество цветов</span>
         <span class="tw-font-medium count tw-flex tw-justify-center tw-items-center">
           {{count}}
         </span>
       </div>
-      <Slider :valueSlider.sync="count"/>
+      <Slider :valueSlider.sync="count" />
+
+      <BorderLine class="-m-content tw-mt-9 tw-mb-6"/>
+      <div class="tw-mb-5 tw-font-semibold tw-text-xl">
+          <span class="">Вид упаковки</span>
+        </div> 
+      <div class="tw--mr-3.5">
+        <Hooper
+          :settings="hooperSettings"
+          style="height: 145px">
+          <Slide
+            
+            v-for="item in 5"
+            :key="item"
+            >
+                <div class="el-slide tw-flex tw-flex-col">
+                  <div
+                    style="
+                      background: url('/mini.png') center no-repeat;
+                      background-size: cover;
+                      width: 100%;
+                      min-height: 76px;
+                    "
+                    class="tw-mb-4"
+                  >
+                     
+                  </div>
+                  <span class="tw-text-xs tw-mb-2.5" >Крафт</span>
+                  <span class="tw-text-xs tw-font-semibold tw-text-secondary">490&nbsp;руб.</span>
+              </div>
+          </Slide>
+          
+        </Hooper>
+      </div>
+      <div class="tw-mt-4">
+        <span class="tw-text-sm">
+          Параметры упаковки (цвет и т.д.) укажите в комментарии к заказу
+        </span>
+      </div>
     </div>    
-    <BorderLine border="t" class="tw--mx-3 "/>
-    <div class="tw--mr-3.5">
-      <Hooper :settings="hooperSettings">
-    <Slide>
-              <div class="images img1">
-          <h2>Slider 1</h2>
-        </div>
-    </Slide>
-    <Slide>
-              <div class="images img2">
-          <h2>Slider 2</h2>
-        </div>
-    </Slide>
-    <Slide>
-              <div class="images img3">
-          <h2>Slider 3</h2>
-        </div>
-    </Slide>
-    <Slide>
-              <div class="images img4">
-          <h2>Slider 4</h2>
-        </div>
-    </Slide>
-    <Slide>
-              <div class="images img5">
-          <h2>Slider 5</h2>
-        </div>
-    </Slide>
-  </Hooper>
-    </div>
+    <BorderLine class="-m-content tw-mt-6"/>
     
 
     <div class="tw-flex tw-justify-between tw-items-center tw-pt-2.5 tw-pb-5">
@@ -141,7 +150,7 @@ export default {
         transition: 700,
         // autoPlay: true,
         // playSpeed: 3500,
-        itemsToShow: 4.5
+        itemsToShow: 4
       }
     }
   },
@@ -179,34 +188,15 @@ export default {
     
     
   }
-  
-  .images {
-  height: 70vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20px;
-}
-.img1 {
-  background: salmon;
-}
-.img2 {
-  background: lightblue;
-}
-.img3 {
-  background: coral;
-}
-.img4 {
-  background: lightgreen;
-}
-.img5 {
-  background: pink;
-}
-h2 {
-  color: #fff
-}
-.hooper {
-  height: 100vh;
-}
 
+
+
+.hooper-slide{
+  width: 99px;
+  height: 145px;
+  border: 1px solid #e0e0e0e0;
+  border-radius: 5px;
+  margin-right: 12px;
+  text-align: center;
+}
 </style>

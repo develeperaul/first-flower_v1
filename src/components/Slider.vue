@@ -31,7 +31,7 @@ export default {
   // name: 'ComponentName',
   props: {
     valueSlider:{
-      type: String,
+      type: Number,
       default: ''
     }
   },
