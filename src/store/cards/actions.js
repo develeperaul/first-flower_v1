@@ -1,14 +1,21 @@
 import * as cardsApi  from '../../boot/helpers/cards'
-import {getElementList, findCard}  from '../../boot/helpers/cards'
+import {getElementList, getElementItem, getHomeList, findCard}  from '../../boot/helpers/cards'
 /*
 export function someAction (context) {
 }
 */
+export async function actionHomeList({commit}){
+    const list = await getHomeList();
+    commit('getHomeListSuccess', list);
+}
+
 
 export async function getList({commit}, id){
     const cards = await getElementList(id);
     commit('getListSuccess', cards);
 }
+
+
 
 export  async function list({commit}){
         const cards = cardsApi.getAllCards();
@@ -22,7 +29,7 @@ export  async function cardList({commit}, name){
 
 
 export  async function getCard({commit}, id){
-    console.log('find')
-        const card = await findCard(id);
-        commit('setCard', card)
+    console.log('getItemSuccess')
+        const card = await getElementItem(id);
+        commit('getItemSuccess', card)
     }
