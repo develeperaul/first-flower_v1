@@ -1,10 +1,18 @@
 <template>
   <q-card flat class="tw-border my-card ">
     
-      <img 
-        src="../../statics/flower.jpg" 
+      <!-- <img 
+        :src="`http://flowers.2apps.ru${card.img}`"
+        
         @click="linkCard"
-      />
+      /> -->
+      <div
+        @click="linkCard"
+        :style="
+          `background-image: url(http://flowers.2apps.ru${card.img});`"
+        class="image-pos"
+      >
+      </div>
     <q-btn
       round
       unelevated
@@ -13,15 +21,16 @@
       
       size="8px"
     >
-      <q-icon name="favorite" class="tw-text-info" />
+      <q-icon name="favorite_border" class="#7D7D7D" />
+      <!-- <q-icon name="favorite" class="tw-text-info" /> -->
     </q-btn>
     
     
     <q-card-section class="tw-p-3">
-      <div class="tw-text-sm">{{ card.title }}</div>
+      <div class="tw-text-sm">{{ card.name }}</div>
       <div class="tw-font-semibold tw-text-xl tw-flex tw-justify-between tw-items-end">
         <span> 
-          {{ card.price }}
+          {{ card.price }}&nbsp;руб.
         </span>
         <q-btn
           @click="addProductToCart"
@@ -82,9 +91,17 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+  .image-pos{
+    background-size: cover;
+    width: 100%;
+    min-height: 140px;
+    background: center no-repeat;
+    background-size: cover;
+  }
 .basket {
   display: inline-block;
   position: relative;
+  
   
   &::after {
     position: absolute;
@@ -99,4 +116,5 @@ export default {
     box-sizing: border-box;
   }
 }
+
 </style>
