@@ -1,18 +1,30 @@
-import {getAllSale, getSale} from '../../boot/helpers/sales'
+import {getSaleList, getSaleItem,  getAllSale, getSale} from '../../boot/helpers/sales'
 
 /*
 export function someAction (context) {
 }
 */
-
-export  async function list({commit}){
+export  async function actionSaleList({commit}){
         
-        const sales = getAllSale();
-        commit('setSales', sales)
+        const list = await getSaleList();
+        commit('setSales', list)
     }
 
-export async function getSaleCard({commit}, id){
+export async function actionSaleItem({commit}, id){
     
-    const sale = getSale(id);
-    commit('setSale', sale)
+    const item = await getSaleItem(id);
+    commit('setSale', item)
 }
+
+
+// export  async function list({commit}){
+        
+//         const sales = getAllSale();
+//         commit('setSales', sales)
+//     }
+
+// export async function getSaleCard({commit}, id){
+    
+//     const sale = getSale(id);
+//     commit('setSale', sale)
+// }
