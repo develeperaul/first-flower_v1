@@ -1,3 +1,13 @@
+import { apiFlower } from "../ky";
+
+ export function getSaleList(){
+     return apiFlower('action_list.php').json();
+ }
+ export function getSaleItem(id){
+     return apiFlower(`action_det.php?id=${id}`).json();
+ }
+ 
+ 
  const sales = {
     1: {
         id:1,
