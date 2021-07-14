@@ -12,6 +12,13 @@ export function getElementList(id){
     return apiFlower(`elements_list.php?id=${id}`).json();
 }
 
+export function getElementItem(id){
+    return apiFlower(`element_det.php?id=${id}`).json();
+}
+
+export function getHomeList(){
+    return apiFlower('main_list.php').json();
+}
 
 
 const cards = [
