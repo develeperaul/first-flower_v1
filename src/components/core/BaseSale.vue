@@ -5,19 +5,24 @@
   >
     <q-card-section class="tw-p-0 tw-my-5 tw-ml-6 tw-flex-grow">
         <div class="tw-mb-3">
-          <span class="text-color tw-text-lg tw-font-medium"> {{ title }}</span>
+          <span class="text-color tw-text-lg tw-font-medium"> {{ text }}</span>
         </div>
         <template>
           <slot></slot>
         </template>
   
     </q-card-section>
-     <q-card-section class="tw-p-0 tw-flex tw-items-end tw-flex-grow-0">
-        <img
+     <!-- <q-card-section class="tw-p-0 tw-flex tw-items-end tw-flex-grow-0"> -->
+    <q-card-section 
+      :style="
+          `background-image: url(http://flowers.2apps.ru${img});`"
+      class="image-pos"
+    >
+        <!-- <img
           class="w-10 tw-h-auto tw-max-w-full "
-          src="/image1.png"
+          :src="`http://flowers.2apps.ru${img}`"
           alt=""
-        />
+        /> -->
         
       </q-card-section>
   </q-card>
@@ -30,18 +35,41 @@ export default {
   // name: 'ComponentName',
   props: {
     color: {
+      default: "#DDECE5",
+      type: String,
+      required: false
+    },
+    text: {
       default: "#fffff",
       type: String,
       required: false
     },
-    title: {
-      default: "#fffff",
+    preview_text: {
+      type: String,
+      required: false,
+      default: 'нет описания'
+    },
+    img: {
       type: String,
       required: false
-    },
+    }
 
   },
   
 };
 </script>
-<style></style>
+<style lang="scss" scoped>
+  .image-pos{
+    
+    min-width: 114px;
+    min-height: 100%;
+    background-repeat:  no-repeat;
+    background-position: right bottom;
+    background-size: contain;
+    margin-left: 7px;
+    margin-right: 7px;
+    margin-top: 28px;
+  }
+</style>>
+
+</style>

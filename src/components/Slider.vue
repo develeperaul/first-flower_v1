@@ -2,8 +2,6 @@
   <div class="tw-relative">
     <input 
       type='range'
-      
-      
       :value = "value"
       ref="input"
       @input="onChange"
@@ -32,20 +30,28 @@ export default {
   props: {
     valueSlider:{
       type: Number,
-      default: ''
+      
+    },
+    min: {
+      type: Number,
+      default: 1,
+      required: true
+    },
+    max: {
+      typ: Number,
+      required: true
     }
   },
   data () {
     return {
-      value: 15,
-      min: 15,
-      max: 201,
+      value: 1,
+      
     }
   },
   methods:{
     onChange(e){
-      this.value = e.target.value
-      this.$refs.count.style.left = `calc(100%/${this.max}*${this.value-this.min})`
+      this.value = +e.target.value
+      // this.$refs.count.style.left = `calc(100%/${this.max}*${this.value-this.min})`
       //при увеличении экрана начиная с 410px смещение влево РЕШИТЬ
     }
   },
@@ -55,9 +61,11 @@ export default {
   watch:{
     value: {
       handler(val){
-        
-        this.$emit('update:valueSlider', val)
+        this.$emit('update:valueSlider', +val)
       }
+    },
+    valueSlider(val){
+      this.value = +val
     }
   }
   

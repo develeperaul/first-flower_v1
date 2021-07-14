@@ -13,12 +13,17 @@ import SaleButton from "components/SaleButton";
 export default {
   name: "Sale",
   
+  methods:{
+    getSaleList(){
+      this.$store.dispatch("sales/actionSaleList");
+    }
+  },
   components: {
     SaleButton,
   },
   created() {
+    return this.getSaleList()
     
-    this.$store.dispatch("sales/list");
   },
   computed: {
     ...mapGetters("sales", ["sales"]),

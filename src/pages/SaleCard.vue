@@ -1,10 +1,10 @@
 <template>
   <q-page padding>
     <!-- content -->
-    <template v-if="isLoading">
+    <!-- <template v-if="isLoading">
       {{isLoading}}
-    </template>
-    <template v-else>
+    </template> -->
+    <template >
     <div class="tw-text-center tw-mb-5">
       <span @click="getSalesPage"
           class="tw-text-xl tw-font-semibold "  
@@ -16,7 +16,7 @@
     <div class="tw-mx-4 tw-mt-7">
       <span
         class="tw-text-lg tw-font-medium ">
-        {{sale.text}}
+        {{sale.preview_text}}
       </span>
     </div>
     </template>
@@ -26,7 +26,8 @@
 </template>
 
 <script>
-import  {mapState} from 'vuex'
+import { getSaleItem } from 'src/boot/helpers/sales'
+import  {mapGetters} from 'vuex'
 export default {
   // name: 'PageName',
   data(){
@@ -34,22 +35,26 @@ export default {
       
     }
   },
+  
+  
   methods:{
     getSalesPage(){
       console.log("getSalesPage")
       this.$router.go(-1)
+    },
+    async getSaleItem(){
+      await this.$store.dispatch("sales/actionSaleItem", this.$route.params.id);
     }
   },
   computed:{
-    ...mapState({
-      isLoading: state => state.sales.isLoading,
-      sale: state => state.sales.sale
-    }),
+    ...mapGetters(
+      "sales", ["sale"],
+    ),
     
   },
   created(){
-    this.$store.dispatch("sales/getSaleCard", this.$route.params.id);
     
+    return this.getSaleItem()
   },
   
 }
