@@ -1,7 +1,8 @@
 <template>
     <q-page  class="tw-flex tw-flex-col tw-justify-around p-content">
       <div class="tw-flex tw-flex-col tw-items-center">
-        <q-img v-if="hasImg" class="tw-w-10 tw-h-10 rounded" src="/basketFlower.svg" />
+        <Icon :name="nameIcon"/>
+        <!-- <q-img v-if="hasImg" class="tw-w-10 tw-h-10 rounded" src="/basketFlower.svg" /> -->
         <span class="tw-text-xl tw-font-semibold tw-text-center tw-mt-6">{{text}}</span>
       </div>
       
@@ -13,6 +14,11 @@
 export default {
   // name: 'ComponentName',
   props: {
+    nameIcon: {
+      default: "flower",
+      required: false,
+      type: String
+    },
     text: {
       required: true,
       type: String
