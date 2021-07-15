@@ -4,11 +4,12 @@ export function someGetter (state) {
 */
 
 export function weekItem(state){
-    return state.homeWeek[0]
+    
+    return state.homeWeek
 }
 
 export function saleItem(state){
-    return state.homeSale[0]
+    return state.homeSale
 }
 
 export function newList(state){

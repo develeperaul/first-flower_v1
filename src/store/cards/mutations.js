@@ -1,8 +1,8 @@
 import state from "../auth/state"
 
 export function getHomeListSuccess(state, list){
-    state.homeWeek = list[0];
-    state.homeSale = list[1];
+    state.homeWeek = list[0][0];
+    state.homeSale = list[1][0];
     state.homeNew = list[2];
 }
 
