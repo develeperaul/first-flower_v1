@@ -2,7 +2,7 @@
 <div >
   <router-link
     :to="{ name: name }"
-    
+    :exact="exact"
     custom
     v-slot="{href, isActive, navigate}"
     active-class="active"
@@ -44,6 +44,11 @@ export default {
     menu: {
       type: Boolean,
       required: false
+    },
+    exact: {
+      type: Boolean,
+      require: false,
+      default: false
     }
   },
   
