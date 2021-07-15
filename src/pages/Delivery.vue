@@ -1,6 +1,10 @@
 <template>
   <q-page class="p-content">
-    <ValidationObserver v-slot="{ passes }">
+    <ValidationObserver 
+    v-slot="{ passes }"
+    
+    >
+
   <form @submit.prevent="passes(onSubmit)"
     class="tw-flex tw-flex-col tw-justify-between"
   >
@@ -62,7 +66,7 @@
     </div>
     <!-- <button class="btn text-brand-gray mt-10">Оформить заказ</button> -->
   
-    <BaseButton type="submit" class="tw-text-xl tw-mb-12 tw-mt-4" text="Оформить заказ" :to="{name: 'confirmdelivery'}"/>
+    <BaseButton type="submit" class="tw-text-xl tw-mb-12 tw-mt-4" text="Оформить заказ"/>
   </form>
   </ValidationObserver>
     
