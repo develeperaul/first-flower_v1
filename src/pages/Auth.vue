@@ -29,7 +29,7 @@
         
       
       
-      <BaseButton v-if="filled" class="tw-w-full" text="Далее" :to="{name: 'confirm'}"/>
+      <BaseButton v-if="filled" class="tw-w-full" text="Далее" :to="{name: 'confirm', params: {phone: this.phone}}"/>
       
       
     </div>

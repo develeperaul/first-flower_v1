@@ -2,14 +2,14 @@
   <q-page  class="p-content">
   
     <div class="tw-flex tw-flex-col tw-items-center tw-mt-12">
-      <span class="tw-text-3xl tw-font-semibold">Код подтверждения</span>
+      <span class="tw-text-3xl tw-text-center tw-font-semibold tw-mb-7">Код подтверждения</span>
       <ConfirmInput 
       class="tw-mb-8"
           :fields="4"
           
           vid="verification_code"/>
       <span class="tw-mb-9 tw-text-accent-light">
-        На номер +7 (999) 999 99 99 отправлен код подтверждения. Введите его в поле выше
+        На номер {{phone}} отправлен код подтверждения. Введите его в поле выше
       </span>
       
     </div>,
@@ -32,6 +32,8 @@ export default {
     return{
     currentTime: 10,
     timer: null,
+
+    phone: ''
     }
   },
   mounted() {
@@ -47,6 +49,9 @@ export default {
       clearTimeout(this.timer)
     },
   },
+  created(){
+    this.phone = this.$route.params.phone
+  },  
   watch: {
     currentTime(time) {
       if (time === 0) {
