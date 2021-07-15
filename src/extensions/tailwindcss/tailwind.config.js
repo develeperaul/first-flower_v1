@@ -15,7 +15,8 @@ module.exports = {
                 info: '#EF2A62',
                 // info: '#9A9A9A',
                 'info-darken': '#464646',
-                'info-light': '#EF2222'
+                'info-light': '#EF2222',
+                'border-icon' : '#7D7D7D'
                 
                 
             },

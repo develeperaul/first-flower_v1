@@ -18,10 +18,13 @@
       unelevated
       
       class="tw-absolute tw-top-0 tw-bg-white tw-right-0 border-inset tw-m-2.5"
-      
+      @click="toggleFavorite"
       size="8px"
     >
-      <q-icon name="favorite_border" class="#7D7D7D" />
+      <q-icon
+        
+        :name="favorite.isActive ? 'favorite' : 'favorite_border'"
+        :class="[favorite.isActive ? 'tw-text-info' : 'tw-text-border-icon']" />
       <!-- <q-icon name="favorite" class="tw-text-info" /> -->
     </q-btn>
     
@@ -67,11 +70,15 @@ export default {
     return {
       isActive: false,
       active: "tw-bg-secondary",
-      inactive: "tw-bg-white"
+      inactive: "tw-bg-white",
+      favorite: {
+        isActive: false,
+        name:"favorite_border",
+        claaName: "tw-text-border-icon"
+      }
     }
   },
   methods: {
-    // ...mapActions(basket, ["addProductToCart"]),
     addProductToCart() {
       
       if(this.isActive){
@@ -86,6 +93,10 @@ export default {
     linkCard(){
       console.log('linkCard', this.card.id)
       this.$router.push({name:'cardproduct', params: {id: this.card.id}})
+    },
+    toggleFavorite(){
+      
+      this.favorite.isActive = !this.favorite.isActive
     }
   },
 };
