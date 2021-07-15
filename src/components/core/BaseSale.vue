@@ -4,6 +4,7 @@
       :style="{ background: color }"
   >
     <q-card-section class="tw-p-0 tw-my-5 tw-ml-6 tw-flex-grow">
+      
         <div class="tw-mb-3">
           <span class="text-color tw-text-lg tw-font-medium"> {{ text }}</span>
         </div>
@@ -68,8 +69,8 @@ export default {
     background-size: contain;
     margin-left: 7px;
     margin-right: 7px;
-    margin-top: 28px;
+    margin-top: 12px;
   }
 </style>>
 
-</style>
+
