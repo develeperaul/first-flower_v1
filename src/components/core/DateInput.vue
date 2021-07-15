@@ -1,5 +1,11 @@
 <template>
-  <Input rules="required"   label="Дата" placeholder="дд.мм.ггг" v-model="innerValue" >
+  <Input
+    rules="required"
+    label="Дата"
+    placeholder="дд.мм.ггг"
+    v-model="innerValue"
+    v-mask="'##.##.20##'"
+    >
     <q-popup-proxy class="tw-absolute tw-right-4" breakpoint="0" ref="qDateProxy" transition-show="scale" transition-hide="scale">
           <div class="styleW">
             <q-date
@@ -38,7 +44,8 @@ export default {
   },
   data () {
     return {
-      innerValue: moment().format("DD.MM.YYYY"),
+      // innerValue: moment().format("DD.MM.YYYY"),
+      innerValue: '',
 
 
       minMonth: moment().format("YYYY/MM"),

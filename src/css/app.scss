@@ -7,31 +7,31 @@
 @import "~hooper/dist/hooper.css";
 .q-menu {
   .q-date__calendar-item {
-    font-size: 5.5px;
+    font-size: 8px;
   }
 
   .q-btn {
-    font-size: 5.5px;
+    font-size: 8px;
   }
   .q-date__calendar-item {
     .q-btn {
-      width: 14px;
-      height: 14px;
+      width: 16px;
+      height: 16px;
     }
   }
   .q-date {
-    width: 170px;
-    min-width: 150px;
+    width: 200px;
+    min-width: 180px;
   }
   .q-date__content {
-    width: 170px;
+    width: 200px;
   }
   .q-date__view {
-    min-height: 100px;
-    height: 158px;
+    min-height: 180px;
+    height: 240px;
   }
   .q-date__calendar-days-container {
-    min-height: 100px;
+    min-height: 150px;
   }
 
   // .q-date__calendar-item > div,
@@ -114,109 +114,3 @@
 .gradient-green {
   background: linear-gradient(188.96deg, #ddece5 30.4%, #aec4ba 80.38%);
 }
-h1,
-h2,
-h3,
-h4,
-h5 {
-  color: #000;
-}
-h1 {
-}
-
-h2 {
-}
-
-h3 {
-}
-
-h4 {
-  font-size: 12px;
-  line-height: 15px;
-}
-
-h5 {
-}
-/*
-категории
-font-size: 16px;
-line-height: 20px;
-color: #222222;
-Карточка товара
-font-size: 16px;
-line-height: 20px;
-font-size: 20px;
-line-height: 25px;
-font-size: 12px;
-line-height: 15px;
-color: #222222;
-color: #222222;
-font-size: 26px;
-line-height: 32px;
-избранное 
-font-size: 14px;
-line-height: 17px;
-color: #222222;
-акции
-font-weight: 450;
-font-size: 18px;
-line-height: 22px;
-
-
-вход
-font-weight: 600;
-font-size: 30px;
-line-height: 37px;
-
-font-size: 28px;
-line-height: 34px;
-
-профиль
-
-font-weight: 450;
-font-size: 16px;
-line-height: 20px;
-
-font-weight: 600;
-font-size: 20px;
-line-height: 25px;
-
-font-size: 14px;
-line-height: 17px;
-
-font-size: 20px;
-line-height: 25px;
-
-корзина 
-font-weight: 600;
-font-size: 30px;
-line-height: 37px;
-
-font-size: 20px;
-line-height: 25px;
-
-font-weight: 450;
-font-size: 14px;
-line-height: 17px;
-text-align: center;
-
-font-weight: 600;
-font-size: 20px;
-line-height: 25px;
-
-font-size: 16px;
-line-height: 20px;
-
-font-size: 12px;
-line-height: 15px;
-
-#DDECE5
-#F3F3F3 #EFEFEF #ECDDE2 #EF2A62 #CE406A;
-
-#222222
-#00000
-
-#838383;
- #E0E0E0 #7D7D7D
- #C4C4C4
-*/
