@@ -4,7 +4,7 @@
       :hasImg="false"
       text="Спасибо! В скором времени наши менеджеры с Вами свяжутся"
       textBtn="Перейти в каталог"
-      :to="{name: 'favorite'}" />
+    />
   </q-page>
 </template>
 

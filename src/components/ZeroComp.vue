@@ -4,9 +4,42 @@
         <Icon :name="nameIcon"/>
         <!-- <q-img v-if="hasImg" class="tw-w-10 tw-h-10 rounded" src="/basketFlower.svg" /> -->
         <span class="tw-text-xl tw-font-semibold tw-text-center tw-mt-6">{{text}}</span>
-      </div>
       
-      <BaseButton class="tw-text-xl" :text="textBtn" :to="to"/>
+      </div>
+      <!-- <BaseButton v-if="to" :text="textBtn" :to="to"/> -->
+      <q-btn
+        v-if="to"
+        :to="to"
+        class="py-3"
+        type="button"
+        unelevated
+        rounded
+        color="info"
+       
+        no-caps
+        >
+          <span class="tw-text-white tw-text-lg ">
+            {{ textBtn }}
+          </span>
+      </q-btn>
+      <q-btn
+        v-else
+        @click="openMenu"
+        class="py-3"
+        type="button"
+        unelevated
+        rounded
+        color="info"
+       
+        no-caps
+        >
+          <span class="tw-text-white tw-text-lg ">
+            {{ textBtn }}
+          </span>
+      </q-btn>
+      
+      
+      
     </q-page>
 </template>
 
@@ -28,7 +61,8 @@ export default {
       type: String
     },
     to:{
-      required: true,
+      
+      required: false,
       type: Object
     },
     hasImg: {
@@ -39,6 +73,12 @@ export default {
   },
   data () {
     return {}
+  },
+  methods:{
+    openMenu(){
+      this.$store.commit("categories/clickMenu")
+    }
   }
+
 }
 </script>

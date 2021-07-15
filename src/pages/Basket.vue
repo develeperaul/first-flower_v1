@@ -1,6 +1,6 @@
 <template>
   <div v-if="!products.length">
-<ZeroComp text="Ваша корзина пуста" textBtn="Перейти в каталог" :to="{name: 'favorite'}"/>
+<ZeroComp text="Ваша корзина пуста" textBtn="Перейти в каталог" />
       
         
   </div>

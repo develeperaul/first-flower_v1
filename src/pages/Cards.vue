@@ -22,8 +22,8 @@
 <script>
 import { mapGetters } from "vuex";
 import BaseList from "components/BaseList.vue";
-import store from 'src/store';
-import { subSection } from 'src/store/categories/getters';
+
+
 
 export default {
 
@@ -34,7 +34,7 @@ export default {
   // name: 'PageName',
   data(){
     return{
-      namePage: null,
+     
       
     }
   },
@@ -49,7 +49,7 @@ export default {
     },
     getParent(){
       this.$store.commit("categories/clickMenu")
-      this.$router.go(-1)
+      // this.$router.go(+1)
       
       
     }

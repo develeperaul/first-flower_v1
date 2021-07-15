@@ -7,13 +7,16 @@
     :color="color"
     :to="to"
     no-caps
-    >{{ text }}
+    >
+      <span class="tw-text-white tw-text-lg ">
+        {{ text }}
+      </span>
   </q-btn>
   
 </template>
 
 <script>
-import { required } from 'vee-validate/dist/rules';
+
 export default {
   props: {
     rounded: {

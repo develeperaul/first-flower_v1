@@ -10,7 +10,7 @@
         выйти
       </span>
     </div>
-    <ZeroComp text="Вы еще ничего не заказывали" textBtn="Перейти в каталог " :to="{name: 'home'}"/>
+    <ZeroComp text="Вы еще ничего не заказывали" textBtn="Перейти в каталог"/>
   </div>
   
 </template>
