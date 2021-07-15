@@ -7,8 +7,9 @@
     v-slot="{ errors, ariaInput, ariaMsg }"
   >
     <input
+      
+      :class="{ 'tw-border-input': !errors[0], 'tw-border-secondary': errors[0], 'has-value': hasValue, 'has-placeholder': hasBlur }"
       class="tw-w-full tw-py-3 tw-px-4 tw-leading-normal tw-bg-transparent tw-border"
-      :class="{ 'tw-border-info': !errors[0], 'tw-border-secondary': errors[0], 'has-value': hasValue, 'has-placeholder': hasBlur }"
       :id="name"
       :type="type"
       :maxlength="maxlength"
@@ -25,7 +26,7 @@
       @click="$refs.input.focus()"
       :for="name"
       ref="label"
-      :class="{ 'tw-text-info ': !errors[0], 'tw-text-secondary': errors[0] }">
+      :class="{ 'tw-text-border-input ': !errors[0], 'tw-text-secondary': errors[0] }">
       <span class="tw-font-medium">{{ label || name }}</span>
       
     </label>
@@ -158,6 +159,7 @@ export default {
     position: relative;
     z-index: 99999;
     border-radius: 3px;
+    transition: border-color .4s ease-in-out;
     z-index: 0;
     &.has-value,
     &:focus {
@@ -178,6 +180,11 @@ export default {
     user-select: none;
     font-size: 1rem;
   }
+
+  input:focus {
+    border-color:#272727;
+
+  }
   input.has-placeholder ~ label,
   input.has-value ~ label,
   input:focus ~ label {
@@ -188,7 +195,7 @@ export default {
     & span { 
       transition: all .6s ease-in-out;
       font-size: 0.625rem;
-      
+      color: #272727;
       background: hsla(100%,100%,100%, 100%);
       z-index: 1;
       // background: red;
