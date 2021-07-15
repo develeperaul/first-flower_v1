@@ -26,10 +26,10 @@
 </template>
 
 <script>
-import { getSaleItem } from 'src/boot/helpers/sales'
+
 import  {mapGetters} from 'vuex'
 export default {
-  // name: 'PageName',
+  name: 'SaleCard',
   data(){
     return {
       

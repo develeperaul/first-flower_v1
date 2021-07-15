@@ -7,6 +7,6 @@ export function setSales(state, sales){
 
 
     export function setSale(state, sale){
-        state.sale = sale
+        state.sale = sale[0]
         state.isLoading = false
     }
