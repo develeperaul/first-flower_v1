@@ -13,7 +13,7 @@
             class="tw-absolute tw-left-0 tw-top-1/2 tw-transform tw--translate-y-1/2 "
       >
       </q-icon>
-      <span class="tw-font-semibold">{{namePage}}</span>  
+      <span class="tw-font-semibold">{{name}}</span>  
     </div>
     <BaseList :cards="cards" class="tw-grid tw-grid-cols-2 tw-gap-4"/>
   </q-page>
@@ -22,6 +22,9 @@
 <script>
 import { mapGetters } from "vuex";
 import BaseList from "components/BaseList.vue";
+import store from 'src/store';
+import { subSection } from 'src/store/categories/getters';
+
 export default {
 
     components: {
@@ -52,49 +55,73 @@ export default {
     }
   },
   computed: {
-    ...mapGetters("cards", ["cards"]),
+    ...mapGetters(
+      
+      "cards", ["cards"], 
+      
+    ),
+    name(){
+
+      const subSection = this.$store.state.categories.subSection
+      // this.$store.getters.categories.subSection
+      if(subSection){
+        for(let key in subSection){
+          if(subSection[key].id == this.$route.params.id){
+            console.log(true)
+            return subSection[key].name
+          }
+        }
+      }else{
+        console.error("ПРОГУЗИТЕ ПОДСЕЦИИ ДЛЯ ПОЛУЧЕНИЯ ИМЕНИ СТРАНИЦЫ");
+      }
+      
+      
+      
+    }
     
 
   },
+  
   created(){
     // this.$store.dispatch("cards/cardList", this.namePage)
-    console.log(this.valroute)
-    console.log(this.$route.params)
-    if(this.$route.params.item){
-      this.namePage = this.$route.params.item.name
+    
+    
+    
+    
       return this.getCards(this.$route.params.id)
-    }
+    
     
     // await this.$store.dispatch("cards/getList", item.id)
     
   },
-  beforeRouteEnter(to, from, next){
-    console.log(to, from)
-    next(vm=>{
-      // vm.$store.dispatch("cards/getList", to.params.id)
-      
-      if(to.params.item){
-        vm.namePage = to.params.item.name  
-      }else{
-        vm.namePage = "не передано"
-      }
-      
-    })
-  },
-  
-  beforeRouteUpdate(to, from, next){
-      this.namePage = to.params.item.name
-      this.getCards(to.params.item.id)
-      
-      next(()=>{
-        
+    beforeRouteEnter(to, from, next){
+      console.log(to, from)
+      next(vm=>{
+        // // vm.$store.dispatch("cards/getList", to.params.id)
+        // console.log(from)
+        // if(to.params.item){
+        //   vm.namePage = to.params.item.name  
+        // }else{
+        //   vm.namePage = "не передано"
+        // }
         
       })
-  },
-  beforeRouteLeave(to, from , next){
-      console.log(to, from)
-      next()
-  },
+    },
+  
+  // beforeRouteUpdate(to, from, next){
+  //     this.namePage = to.params.item.name
+  //        console.log(to, from)
+  //     this.getCards(to.params.item.id)
+      
+  //     next(()=>{
+        
+        
+  //     })
+  // },
+  // beforeRouteLeave(to, from , next){
+  //     console.log(to, from)
+  //     next()
+  // },
   
 }
 </script>

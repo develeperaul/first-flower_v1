@@ -255,7 +255,8 @@ export default {
       this.$store.dispatch("basket/addProductToCart", { ...this.card});
     },
     getBackPage(){
-      this.$router.push({name: 'cards', params: {categories: this.card.categories}})
+      this.$router.go(-1)
+      // this.$router.push({name: 'cards', params: {categories: this.card.categories}})
     },
     getNullLabel (val) {
       return val === null ? 'null' : val
