@@ -22,7 +22,7 @@
       <q-footer class="bg-white">
         <BorderLine/>
       <q-toolbar class="flex justify-between tw-pt-2.5" @click="link">
-        <NavLink name="home"/>
+        <NavLink name="home" :exact="true"/>
         <NavLink name="favorite" />
         <NavLink name="basket" />
         <NavLink name="sale" />
