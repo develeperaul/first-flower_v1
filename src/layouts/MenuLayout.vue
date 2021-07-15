@@ -63,6 +63,19 @@
           </div>
           <BorderLine/>
         </div>
+        <div class="tw-flex tw-flex-col tw-mt-16 tw-mb-6  p-content ">
+          <span class="tw-font-semibold tw-text-lg">
+            Контакты магазина
+          </span>
+          <span class="tw-font-semibold tw-pt-3.5 tw-flex">
+            <Icon name="phone"  class="tw-mr-3"/>
+            896273454999
+          </span>
+          <span class="tw-font-semibold tw-pt-3.5 tw-flex">
+            <Icon name="location" class="tw-mr-3"/>
+            Чишмы,&nbsp;ул.&nbsp;Ленина,&nbsp;31
+          </span>
+        </div>
         
       </q-drawer>
       <q-page-container >
