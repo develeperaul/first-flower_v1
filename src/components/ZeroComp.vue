@@ -11,7 +11,7 @@
         v-if="to"
         :to="to"
         class="py-3"
-        type="button"
+        
         unelevated
         rounded
         color="info"
@@ -23,10 +23,11 @@
           </span>
       </q-btn>
       <q-btn
+        type="button"
         v-else
         @click="openMenu"
         class="py-3"
-        type="button"
+        
         unelevated
         rounded
         color="info"

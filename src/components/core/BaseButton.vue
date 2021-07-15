@@ -33,15 +33,14 @@ export default {
       type: String,
       required: true,
     },
-    to: {
-      type: Object,
-      required: false,
-      default: false
-    }, 
     type: {
       type: String,
       default: 'button',
       required: false
+    },
+    to:{
+      type: Object,
+      require: false
     }
   },
   // name: 'ComponentName',
