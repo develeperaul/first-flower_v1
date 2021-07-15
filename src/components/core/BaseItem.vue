@@ -57,6 +57,7 @@
 // import ShopIcon from "../icons/ShopIcon.vue";
 // import basket from "src/store/basket";
 // import { mapActions } from "vuex";
+  import {mapGetters} from "vuex"
 export default {
   // components: { ShopIcon },
   name: "BaseItem",
@@ -95,10 +96,19 @@ export default {
       this.$router.push({name:'cardproduct', params: {id: this.card.id}})
     },
     toggleFavorite(){
-      
+      if(this.favorite.isActive){
+        console.log('remove')
+      }else{
+        this.$store.dispatch("auth/addFavoriteItem", this.card)
+      }
       this.favorite.isActive = !this.favorite.isActive
     }
   },
+  computed: {
+    ...mapGetters([
+      
+    ])
+  }
 };
 </script>
 <style scoped lang="scss">
