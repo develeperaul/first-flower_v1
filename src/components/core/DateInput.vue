@@ -14,7 +14,11 @@
             :options="options"
             mask="DD.MM.YYYY"
             minimal
-            :locale="myLocale"></q-date>
+            :locale="myLocale">
+              <div class="row items-center justify-end">
+                <q-btn v-close-popup label="Ок" color="primary" flat></q-btn>
+              </div>
+            </q-date>
           </div>
           
         </q-popup-proxy>
