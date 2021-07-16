@@ -88,39 +88,15 @@
           <Hooper
             :settings="hooperSettings"
             style="height: 145px">
-            <!-- <Slide
-              
-              v-for="(item, index) in listPackge"
-              :key="index"
-              >
-                  <div class="el-slide tw-flex tw-flex-col">
-                    <div
-                      style="
-                        background: url('/mini.png') center no-repeat;
-                        background-size: cover;
-                        width: 100%;
-                        min-height: 76px;
-                      "
-                      class="tw-mb-4"
-                    >
-                      
-                    </div>
-                    <span class="tw-text-xs tw-mb-2.5" >Крафт</span>
-                    <span class="tw-text-xs tw-font-semibold tw-text-secondary">490&nbsp;руб.</span>
-                </div>
-            </Slide> -->
             <Slide>
               <div class="el-slide tw-flex tw-flex-col">
-                <div
-                  style="
-                    background: url('/upak_lenta.png') center no-repeat;
-                    background-size: cover;
-                    width: 100%;
-                    min-height: 76px;
-                  "
-                  class="tw-mb-4"
-                >
-                    
+
+                 <div>
+                   <q-img
+                    src="/upak_lenta.png"
+                    height="68px"
+                    class="tw-mb-4"
+                   />
                   </div>
                   <span class="tw-text-xs tw-mb-2.5" >Лента</span>
                   <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_lenta}}&nbsp;руб.</span>
@@ -128,16 +104,12 @@
             </Slide>
             <Slide>
               <div class="el-slide tw-flex tw-flex-col">
-                <div
-                  style="
-                    background: url('/upak_fetr.png') center no-repeat;
-                    background-size: cover;
-                    width: 100%;
-                    min-height: 76px;
-                  "
-                  class="tw-mb-4"
-                >
-                    
+                  <div>
+                    <q-img
+                      src="/upak_fetr.png"
+                      height="68px"
+                      class="tw-mb-4"
+                   />  
                   </div>
                   <span class="tw-text-xs tw-mb-2.5" >Фетр</span>
                   <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_fetr}}&nbsp;руб.</span>
@@ -145,16 +117,13 @@
             </Slide>
             <Slide>
               <div class="el-slide tw-flex tw-flex-col">
-                <div
-                  style="
-                    background: url('/upak_kraft.png') center no-repeat;
-                    background-size: cover;
-                    width: 100%;
-                    min-height: 76px;
-                  "
-                  class="tw-mb-4"
-                >
-                    
+                
+                  <div>
+                    <q-img
+                      src="/upak_kraft.png"
+                      height="68px"
+                      class="tw-mb-4"
+                   />  
                   </div>
                   <span class="tw-text-xs tw-mb-2.5" >Крафт</span>
                   <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_kraft}}&nbsp;руб.</span>
@@ -162,16 +131,13 @@
             </Slide>
             <Slide>
               <div class="el-slide tw-flex tw-flex-col">
-                <div
-                  style="
-                    background: url('/upak_kor.png') center no-repeat;
-                    background-size: cover;
-                    width: 100%;
-                    min-height: 76px;
-                  "
-                  class="tw-mb-4"
-                >
-                    
+                
+                  <div>
+                    <q-img
+                    src="/upak_kor.png"
+                    height="68px"
+                    class="tw-mb-4"
+                   />  
                   </div>
                   <span class="tw-text-xs tw-mb-2.5" >Корейка</span>
                   <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_kor}}&nbsp;руб.</span>
@@ -232,7 +198,7 @@ export default {
       count: 1,
       slide: 1,
       hooperSettings: {
-        trimWhiteSpace: true,
+        // trimWhiteSpace: true,
         transition: 700,
         // autoPlay: true,
         // playSpeed: 3500,
@@ -329,7 +295,7 @@ export default {
   }
 
   .hooper-slide{
-    width: 99px;
+    min-width: 99px;
     height: 145px;
     border: 1px solid #e0e0e0e0;
     border-radius: 5px;
