@@ -11,8 +11,8 @@
           @click="toggleMenu"
           class="tw-absolute"
         />
-        <div class="logo tw-m-auto">
-          <img src="/logo.svg" alt="" />
+        <div class="logo tw-m-auto" @click="onLogo">
+            <img src="/logo.svg" alt="" />
         </div>
         
       </q-toolbar>
@@ -138,6 +138,13 @@ export default {
           this.toggleMenu()
         }
         
+      },
+
+      onLogo(){
+        if(this.menu){
+          this.toggleMenu()
+        }
+        this.$router.push({name: 'home'})
       },
 
 
