@@ -48,20 +48,24 @@
       <div class="tw-mt-3.5">
           <Hooper
             :settings="hooperSettings"
-            style="height: 145px">
+            >
             <Slide
               
               v-for="(item, index) in newList"
               :key="index"
               >
                   <div class=" tw-flex tw-flex-col" @click="linkCard(item.id)">
-                    <div
+                    <!-- <div
                       :style="
                         `background-image: url(http://flowers.2apps.ru${item.img})`
                       "
                       class="image-pos tw-mb-4"
-                    >
-                      
+                    > -->
+                    <div>
+                      <q-img
+                        :src="`http://flowers.2apps.ru${item.img}`"
+                        class="tw-rounded-md"
+                      />
                     </div>
                     <span class="tw-text-lg tw-font-medium tw-text-left tw-mb-2.5" >{{item.name}}</span>
                     
@@ -123,7 +127,7 @@ export default {
 <style lang="scss" scoped>
     .hooper-slide{
     min-width: 123px;
-    height: 145px;
+    
     
     
     margin-right: 12px;
@@ -136,5 +140,6 @@ export default {
       background-size: cover;
       width: 100%;
       min-height: 76px;
+      
     }
 </style>
