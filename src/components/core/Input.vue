@@ -102,7 +102,7 @@ export default {
   methods: {
     onBlur(){
       if(!this.hasValue){
-        console.log(this.$refs.input.placeholder) 
+
         this.hasBlur = true
       }
       
@@ -119,16 +119,12 @@ export default {
     hasValue() {
       return !!this.innerValue;
     },
-    hasPlaceholder(){
-      // return this.$refs.input.placeholder
-      // console.log(this.$refs.input.placeholder)
-      return 1
-    }
+    
     
   },
   watch: {
     innerValue(value) {
-      console.log(value)
+      
       this.$emit("input", value);
     },
     value(val) {

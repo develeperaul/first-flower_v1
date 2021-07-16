@@ -74,7 +74,6 @@ const findCategories = (stateObj, nameObj, cards)=> {
       items[item.id] = {...item}
       }
     }else{
-      console.log(item.parent);
       if(item.parent === nameObj.parent){
       items[item.id] = {...item}
       }
@@ -110,9 +109,6 @@ export default {
     getChildren(item){
       if(Object.keys(item.children).length !== 0){
         this.list = item
-        // console.log('есть')
-        // this.list = item.children
-        // this.cards = false
       }else{
         this.$store.dispatch("cards/cardList", item.name)
         this.$router.push({name: 'cards', params: {categories: item.name}})
@@ -120,41 +116,15 @@ export default {
         this.cards = true
       }
       
-      
-      // if(Object.keys(list.children).length === 0){
-      //   // this.$store.dispatch("cards/cardList", list.name)
-      //   // this.$router.push({name: 'cards', params: {categories: list.name}})
-      //   this.cards = true
-      //   this.title = list
-        
-      //   // this.categoriesList = this.$store.state.categories.categories
-        
-      // } else {
-      //   this.categoriesList = Object.values(list.children)
-      //   this.title = list
-      //   this.titleButton = true
-      //   this.listButton = false
-      //   this.cards = false
-      // }
     },
     getParent(){
-    //   console.log(this.title)
-    //  this.categoriesList = findCategories(this.$store.state.categories.categories, this.title)
-    //  this.title = {name: 'Категории'}
-    //  this.titleButton = false
-    //     this.listButton = true
-    //     this.cards = false
-    
-    this.list = findCategories(this.$store.state.categories.categories, this.title, this.cards)
-    console.log('back')
+      this.list = findCategories(this.$store.state.categories.categories, this.title, this.cards)
     }
   },
   
   computed: {
     getCategories(){
       const categories = []
-      // if(Object.values(this.list)[0].parent === null){
-        // console.log(Object.values(this.list)[0].children.map(item=>item))
         let value
         if(Object.values(this.list)[0].parent === null) value = Object.values(this.list)[0].children;
         else value = this.list.children
@@ -164,17 +134,7 @@ export default {
           categories.push(value[key])
         }
         
-      return categories
-       
-      //  else{
-      //   const items = Object.values(this.list).map(item=>{
-      //   console.log(item)
-      //   return item.children})
-      // // console.log(items)
-      // return items
-      // //  return Object.values(this.categoriesList)
-      // }
-              
+      return categories        
     },
   },
   created() {

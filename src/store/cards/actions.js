@@ -29,7 +29,7 @@ export  async function cardList({commit}, name){
 
 
 export  async function getCard({commit}, id){
-    console.log('getItemSuccess')
+    
         const card = await getElementItem(id);
         commit('getItemSuccess', card)
     }

@@ -3,9 +3,9 @@
 
 export default function () {
   return {
-    homeWeek: null,
-    homeSale: null,
-    homeNew: null,
+    homeWeek: [],
+    homeSale: [],
+    homeNew: [],
 
     cards: null,
     card: null

@@ -67,7 +67,6 @@ export default {
       if(subSection){
         for(let key in subSection){
           if(subSection[key].id == this.$route.params.id){
-            console.log(true)
             return subSection[key].name
           }
         }
@@ -94,34 +93,6 @@ export default {
     // await this.$store.dispatch("cards/getList", item.id)
     
   },
-    beforeRouteEnter(to, from, next){
-      console.log(to, from)
-      next(vm=>{
-        // // vm.$store.dispatch("cards/getList", to.params.id)
-        // console.log(from)
-        // if(to.params.item){
-        //   vm.namePage = to.params.item.name  
-        // }else{
-        //   vm.namePage = "не передано"
-        // }
-        
-      })
-    },
-  
-  // beforeRouteUpdate(to, from, next){
-  //     this.namePage = to.params.item.name
-  //        console.log(to, from)
-  //     this.getCards(to.params.item.id)
-      
-  //     next(()=>{
-        
-        
-  //     })
-  // },
-  // beforeRouteLeave(to, from , next){
-  //     console.log(to, from)
-  //     next()
-  // },
   
 }
 </script>

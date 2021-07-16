@@ -247,7 +247,7 @@ const sort = name =>{
 }
 
 const findCard = id => {
-    console.log( cards.find(item => item.id == id))
+    
     return cards.find(item => item.id == id)
 }
 /*

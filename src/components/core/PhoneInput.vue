@@ -40,7 +40,6 @@ export default {
   watch: {
       innerValue: {
       handler(value) {
-        console.log(value)
         if (value.length <= 0) return this.$emit('update:raw', value);
         const clean = `${value.replace(/[^\d]/gi, '')}`;
         this.$emit('update:raw', clean);
@@ -48,7 +47,6 @@ export default {
       immediate: true,
     },
     value(newVal) {
-      console.log(newVal)
       if (newVal !== this.innerValue) {
         this.innerValue = newVal;
       }
