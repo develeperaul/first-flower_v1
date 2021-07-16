@@ -1,7 +1,7 @@
 <template>
   <Input
     v-model="innerValue"
-    rules="required|length:18"
+    rules="required|length:17"
     type="tel"
     label="Телефон"
     placeholder="8 (9__) ___-__-__"

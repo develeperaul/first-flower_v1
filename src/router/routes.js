@@ -6,15 +6,21 @@ const routes = [
     component: () => import('layouts/MenuLayout.vue'),
 
     children: [
-      { path: '', name: 'home', component: () => import('pages/Home.vue') },
-      { path: ':id', name: 'cardproduct', component: () => import('pages/CardProduct.vue') },
-      { path: '/sales', name: 'sale', component: () => import('pages/Sale.vue') },
+      { path: '/', name: 'home', component: () => import('pages/Home.vue') },
+      
+      { path: '/card/:id', name: 'cardproduct', component: () => import('pages/CardProduct.vue') },
+      //ошибка была здсб path: ':id'
+      { path: 'sales', name: 'sale', component: () => import('pages/Sale.vue') },
       { path: '/sales/:id', name: 'salecard', component: () => import('pages/SaleCard.vue') },
+
+      
 
       { path: '/favorit', name: 'favorite', component: () => import('pages/Favorites.vue') },
       { path: '/basket', name: 'basket', component: () => import('pages/Basket.vue') },
       { path: '/delivery', name: 'delivery', component: () => import('pages/Delivery.vue') },
       { path: '/confirm', name: 'confirmdelivery', component: () => import('pages/ConfirmDelivery.vue') },
+
+      
 
       { path: '/profile', name: 'profile', component: () => import('pages/Profile.vue'),
       children: [
