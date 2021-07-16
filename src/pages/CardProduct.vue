@@ -73,7 +73,7 @@
         <div class="tw-flex tw-justify-between tw-items-center tw-mb-8">
         <span class="tw-text-xl tw-font-semibold">Количество цветов</span>
         <span >
-          <input class="tw-font-medium count tw-flex tw-justify-center tw-items-center tw-text-center " type="number" :value="count" @input="setCurrentCount">
+          <input class="input-current tw-font-medium count tw-flex tw-justify-center tw-items-center tw-text-center " type="number" :value="count" @input="setCurrentCount">
           
         </span>
       </div>
@@ -335,5 +335,9 @@ export default {
     border-radius: 5px;
     margin-right: 12px;
     text-align: center;
+  }
+
+  .input-current{
+    outline: none;
   }
 </style>
