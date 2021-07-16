@@ -3,22 +3,22 @@
       <div class="tw-flex tw-flex-col tw-items-center">
         <Icon :name="nameIcon"/>
         <!-- <q-img v-if="hasImg" class="tw-w-10 tw-h-10 rounded" src="/basketFlower.svg" /> -->
-        <span class="tw-text-xl tw-font-semibold tw-text-center tw-mt-6">{{text}}</span>
+        <span class="tw-text-2xl tw-font-semibold tw-text-center tw-mt-6">{{text}}</span>
       
       </div>
       <!-- <BaseButton v-if="to" :text="textBtn" :to="to"/> -->
       <q-btn
         v-if="to"
         :to="to"
-        class="py-3"
+        class="tw-py-2.5"
         
         unelevated
         rounded
         color="info"
-       
+        
         no-caps
         >
-          <span class="tw-text-white tw-text-lg ">
+          <span class="tw-text-white tw-text-xl ">
             {{ textBtn }}
           </span>
       </q-btn>
@@ -26,7 +26,7 @@
         type="button"
         v-else
         @click="openMenu"
-        class="py-3"
+        class="tw-py-2.5"
         
         unelevated
         rounded
@@ -34,7 +34,7 @@
        
         no-caps
         >
-          <span class="tw-text-white tw-text-lg ">
+          <span class="tw-text-white tw-text-xl  ">
             {{ textBtn }}
           </span>
       </q-btn>

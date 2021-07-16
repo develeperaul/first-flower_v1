@@ -195,13 +195,17 @@
       <span class="tw-text-2xl tw-font-bold">{{card.price}}&nbsp;руб.</span>
       <q-btn
         @click="addProductToCart"
-        class="py-3"
+        
         unelevated
         rounded="rounded"
         color="info"
-        
+        class="tw-px-4 tw-py-1.5"
         no-caps
-        >В корзину
+        >
+        <span class="tw-text-white tw-text-xl ">
+          В корзину
+        </span>
+        
       </q-btn>
       <!-- <BaseButton text="Купить" class="tw-px-8 tw-py-1"/> -->
     </div>
