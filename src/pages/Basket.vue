@@ -7,38 +7,44 @@
   <div v-else>
     <q-page   class="tw-flex tw-flex-col  ">
     <div class="p-content">
-      <q-card
+      <div
         v-for="product in products"
         :key="product.id"
-        class="my-card tw-mt-6 tw-p-0"
-        flat
+        class=" tw-mt-3.5 tw-p-0 tw-flex tw-justify-between"
+        
         
       
       >
 
-        <div class="tw-grid tw-grid-cols-3">
-          <img class="tw-flex-shrink-0"  src="/flower.jpg" alt="" style="border-radius: 5px " > 
-          <div class="tw-col-span-2 tw-flex tw-flex-col tw-justify-between tw-ml-4">
+        
+             <q-img
+                src="/flower.jpg"
+                width="105px"
+                height="105px"
+                class="tw-rounded-md tw-flex-shrink-0"
+                
+              />
+          <div class="tw-flex-1 tw-flex tw-flex-col tw-justify-between tw-ml-5 sm:tw-ml-2.5">
             <div class="tw-flex tw-justify-between tw-items-center tw-flex-nowrap">
-              <h4 class="tw-text-sm tw-font-medium">{{ product.title }}</h4>
+              <h4 class="tw-text-sm tw-font-medium">{{ product.name }}</h4>
 
               
                 <q-icon @click="removeProduct(product.id)" size="14px" color="info" name="close" />
               
             </div> 
-            <div class="tw-flex tw-justify-between tw-items-center tw-flex-nowrap">
+            <div class="tw-flex tw-justify-between tw-items-center ">
               <BaseGroupButton
                   :count="product.count"
                   @incrementCount="incrementCount(product, $event)"
                   class="tw-mr-2.5"
                 />
 
-                <span class="tw-text-xl sm:tw-text-lg tw-font-semibold">{{ product.price }}&nbsp;руб.</span>
+                <span class="tw-text-xl sm:tw-text-base tw-font-semibold">1500&nbsp;руб.</span>
             </div> 
           </div>
           
-        </div>
-      </q-card>
+        
+      </div>
     </div>
     <div class="bg-total tw-flex tw-justify-between  tw-my-12 tw-py-5 p-content">
       

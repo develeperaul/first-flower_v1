@@ -9,7 +9,7 @@
     <q-btn size="5px" class="tw-pl-2.5  tw-pt-2.5 tw-pb-3 sm:tw-pl-1.5 sm:tw-pt-1.5 sm:tw-pb-2" round @click="incrementCount('decrement')" >
       <q-icon name="remove"></q-icon>
     </q-btn>
-    <span class="tw-font-medium tw-pt-2.5 tw-pb-3 tw-px-3 sm:tw-pt-1.5 sm:tw-pb-2 sm:tw-px-1.5 ">{{ count }}</span>
+    <span class="tw-font-medium tw-pt-2.5 tw-pb-3 tw-px-3  sm:tw-pt-1.5 sm:tw-pb-2 sm:tw-px-1.5 ">{{ count }}</span>
 
     <q-btn size="5px" class="tw-pr-2.5 tw-pt-2.5 tw-pb-3 sm:tw-pr-1.5 sm:tw-pt-1.5 sm:tw-pb-2"  @click="incrementCount('increment')" >
       <q-icon name="add"></q-icon>
