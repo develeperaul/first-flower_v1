@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hhh LpR fff" container style="height: 100vh">
-      <q-header reveal class="bg-white ">
-      <q-toolbar class="tw-relative">
+      <q-header reveal class="bg-white env-t ">
+      <q-toolbar class="tw-relative tw-mb-2">
         <q-btn
           color="primary"
           flat
@@ -19,9 +19,9 @@
         <BorderLine />
       </q-header>
 
-      <q-footer class="bg-white">
+      <q-footer class="bg-white env-b">
         <BorderLine/>
-      <q-toolbar class="flex justify-between tw-pt-2.5" @click="link">
+      <q-toolbar class="flex justify-between tw-pt-2.5 tw-pb-3.5 env-b" @click="link">
         <NavLink name="home" :exact="true"/>
         <NavLink name="favorite" />
         <NavLink name="basket" />

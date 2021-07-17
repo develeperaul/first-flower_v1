@@ -5,6 +5,13 @@
 // }
 
 @import "~hooper/dist/hooper.css";
+.env-t {
+  padding-top: env(safe-area-inset-top, 20px);
+}
+
+.env-b {
+  padding-bottom: env(safe-area-inset-bottom, 20px);
+}
 .q-menu {
   .q-date__calendar-item {
     font-size: 12px;
