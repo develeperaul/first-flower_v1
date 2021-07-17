@@ -4,7 +4,11 @@
         <div class="tw-text-center" @click="onChangeBack">{{namePage}}</div>
         <BaseList :cards="cards" class="tw-grid tw-grid-cols-2 tw-gap-4"/>
   </q-page> -->
-  <q-page class="p-content">
+  <ZeroComp
+    v-if="cards.length === 0  && cards[0] == null" 
+     text="В этой категории пока нету товаров" textBtn="Перейти в каталог"
+    />
+  <q-page v-else class="p-content">
     
     <div class="tw-text-center tw-mb-7  tw-relative">
       <q-icon
@@ -13,14 +17,17 @@
             class="tw-absolute tw-left-0 tw-top-1/2 tw-transform tw--translate-y-1/2 "
       >
       </q-icon>
+      
       <span class="tw-font-semibold">{{name}}</span>  
     </div>
     <BaseList :cards="cards" class="tw-grid tw-grid-cols-2 tw-gap-4"/>
   </q-page>
+  
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import ZeroComp from "components/ZeroComp"
 import BaseList from "components/BaseList.vue";
 
 
@@ -28,7 +35,8 @@ import BaseList from "components/BaseList.vue";
 export default {
 
     components: {
-    BaseList
+    BaseList,
+    ZeroComp
   },
   
   // name: 'PageName',
