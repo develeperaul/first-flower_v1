@@ -1,6 +1,6 @@
 <template>
   <q-btn
-    class="py-3"
+    class="tw-py-2"
     :type="type"
     unelevated
     :rounded="rounded"

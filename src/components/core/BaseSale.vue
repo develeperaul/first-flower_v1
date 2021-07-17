@@ -1,6 +1,7 @@
 <template>
   <q-card
       class="my-card tw-text-white tw-flex tw-justify-between  tw-pt-0 "
+      flat
       :style="{ background: color }"
   >
     <q-card-section class="tw-p-0 tw-my-5 tw-ml-6 tw-flex-grow">

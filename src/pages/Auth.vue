@@ -1,7 +1,7 @@
 <template>
   <q-page  class="p-content">
     <div class="tw-flex tw-flex-col tw-items-center tw-mt-12">
-      <span class="tw-text-3xl tw-font-semibold">Мой профиль</span>
+      <span class="tw-text-5xl tw-font-semibold tw-pb-1">Вход</span>
       <span class="tw-text-info-darken tw-text-xl tw-mb-12">Введите ваш номер телефона</span>
       <ValidationObserver tag="div"  >
 
@@ -13,10 +13,10 @@
           mask="###) ### ## ##"
           unmasked-value
           
-          class="tw-text-2xl  text-black  tw-mb-12  "
-          :input-style="{ width: '175px',marginLeft: '-12px', fontWeight: '400' }">
+          class="tw-text-4xl  text-black  tw-mb-12  "
+          :input-style="{ width: '200px',marginLeft: '-12px', fontWeight: '400' }">
           <template v-slot:prepend >
-            <span class="tw-text-2xl tw-font-normal text-black">+7 (</span>
+            <span class="tw-text-4xl tw-font-normal text-black">+7 (</span>
           </template>
           </q-input>
           {{errors[0]}}
