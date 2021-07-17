@@ -57,17 +57,20 @@
       </div>
     </div>
     <BorderLine class="-m-content tw-mt-4"/>
-    <div class="tw-pt-4">
-      <div class="tw-mb-5 tw-font-semibold tw-text-xl">
-        <span class="">Описание</span>
-      </div>
-      <div class="tw-mb-4 tw-text-xl">
-        <span >{{card.text}}</span>
-        
-      </div>
+    <div  class="tw-pt-4">
+      <template v-if="card.text">
+        <div class="tw-mb-5 tw-font-semibold tw-text-xl">
+          <span class="">Описание</span>
+        </div>
+        <div class="tw-mb-4 tw-text-xl">
+          <span >{{card.text}}</span>
+          
+        </div>
+        <BorderLine class="-m-content tw-mt-12 tw-mb-6"/>
+      </template>
       <div>
 
-      <BorderLine class="-m-content tw-mt-12 tw-mb-6"/>
+      
 
       </div>
         <div class="tw-flex tw-justify-between tw-items-center tw-mb-8">
@@ -158,7 +161,7 @@
     
 
     <div class="tw-flex tw-justify-between tw-items-center tw-pt-2.5 tw-pb-5">
-      <span class="tw-text-2xl tw-font-bold">{{card.price}}&nbsp;руб.</span>
+      <span class="tw-text-3xl sm:tw-text-2xl tw-font-bold">{{card.price}}&nbsp;руб.</span>
       <q-btn
         @click="addProductToCart"
         
