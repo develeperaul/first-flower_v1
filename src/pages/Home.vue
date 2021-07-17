@@ -13,7 +13,7 @@
             <div class="tw-flex tw-justify-between tw-items-center tw-flex-nowrap">
               
 
-              <span class="tw-text-lg sm:tw-text-base tw-font-medium">
+              <span class="tw-text-lg sm:tw-text-base tw-font-medium tw-pb-3">
                 {{weekItem.name}}
               </span>
               
