@@ -15,18 +15,22 @@
   
     </q-card-section>
      <!-- <q-card-section class="tw-p-0 tw-flex tw-items-end tw-flex-grow-0"> -->
-    <q-card-section 
+    <!-- <q-card-section 
       :style="
           `background-image: url(http://flowers.2apps.ru${img});`"
       class="image-pos"
+    > -->
+    <div class="tw-relative "
+      style="padding-left:121px;"
     >
-        <!-- <img
-          class="w-10 tw-h-auto tw-max-w-full "
-          :src="`http://flowers.2apps.ru${img}`"
-          alt=""
-        /> -->
-        
-      </q-card-section>
+      <q-img
+        :src="`http://flowers.2apps.ru${img}`"
+        width="114px"
+        height="100%"
+        class="tw-absolute tw-left-0 tw--bottom-0"
+      />
+    </div>
+      <!-- </q-card-section> -->
   </q-card>
   
 </template>
