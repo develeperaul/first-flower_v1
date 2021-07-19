@@ -19,16 +19,21 @@
         <BorderLine />
       </q-header>
 
-      <q-footer class="bg-white env-b">
-        <BorderLine/>
-      <q-toolbar class="flex justify-between tw-pt-2.5 tw-pb-3.5 env-b" @click="link">
-        <NavLink name="home" :exact="true"/>
-        <NavLink name="favorite" />
-        <NavLink name="basket" />
-        <NavLink name="sale" />
-        <NavLink name="profile" />
+      <q-footer v-if="openCardProduct" class="bg-white env-b">
+          <BorderLine/>
+          
+        <q-toolbar class="flex justify-between tw-pt-2.5 tw-pb-3.5 env-b" @click="link">
+          <NavLink name="home" :exact="true"/>
+          <NavLink name="favorite" />
+          
+          <NavLink name="basket" class="tw-relative">
+            <span v-if="basketCount" class="tw-text-xs tw-text-center  tw-absolute tw-rounded-full tw-right-0 tw--top-2 tw-transform " style="min-width: 20px; padding:3px 3.5px; background-color: #EF1717;">{{basketCount}}</span>
+          </NavLink>
+          
+          <NavLink name="sale" />
+          <NavLink name="profile" />
 
-      </q-toolbar>
+        </q-toolbar>
       </q-footer>
 
       <q-drawer
@@ -99,6 +104,9 @@ import NavLink from "components/NavLink";
 import BaseListDrawer from "components/BaseListDrawer";
 import Cards from "components/Cards"
 
+import {QSpinnerPuff} from 'quasar'
+
+
 export default {
   // name: 'LayoutName',
   components: {
@@ -124,12 +132,27 @@ export default {
     };
   },
     methods: {
+      showLoader(){
+        this.$q.loading.show(
+          {
+            spinner: QSpinnerPuff,
+            spinnerSize: 240,
+          }
+        )  
+      },
+      async getHomeList(){
+        this.showLoader()
+        await this.$store.dispatch("cards/actionHomeList")
+      },
+
+
       toggleMenu(){
         
         this.$store.commit("categories/clickMenu")
 
       },
       async getSectionList(){
+        this.showLoader()
         await this.$store.dispatch("categories/getSections");
         this.list = this.sections
       },
@@ -171,11 +194,28 @@ export default {
   
   computed: {
     ...mapGetters("categories", ["sections", "subSection", "menu"]),
+    openCardProduct(){
+      
+      if(this.$route.name === "cardproduct")return false
+      else return true
+    },
+    basketCount(){
+      const count = this.$store.state.basket.products.length
+      if(count === 0)return false
+      else return count
+      
+    }
+
   },
+
   created() {
     window.addEventListener('resize', this.updateWidth);
     this.updateWidth();
-    return this.getSectionList()
+    
+    this.getSectionList().then(()=>{this.$q.loading.hide()})
+    this.getHomeList().then(()=>{this.$q.loading.hide()})
+    
+    
   },
 
 

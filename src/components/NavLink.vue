@@ -9,7 +9,9 @@
   >
     <a class="tw-flex tw-flex-col tw-items-center " :active="isActive" :href="href" @click="navigate"
       >
-      
+      <template >
+        <slot></slot>
+      </template>
       <Icon :name="name" :active="isActive" />
       <span class="tw-text-xs tw-mt-0.5 " :class="[{ active: isActive }, { textColor: !isActive }]">
         {{ itemName }}

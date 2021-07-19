@@ -7,6 +7,7 @@ export function someAction (context) {
 export async function actionHomeList({commit}){
     const list = await getHomeList();
     commit('getHomeListSuccess', list);
+    return list
 }
 
 

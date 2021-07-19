@@ -84,6 +84,9 @@ import { Hooper, Slide } from 'hooper';
 import { mapGetters } from "vuex";
 import SaleButton from "components/SaleButton";
 
+
+
+
 export default {
   // name: 'PageName',
   components: {
@@ -119,7 +122,18 @@ export default {
   },
   
   created(){
-    return this.getHomeList();
+
+    //       this.$q.loading.show(
+    //         {
+    //           spinner: QSpinnerPuff,
+    //           spinnerSize: 240,
+    //         }
+    //       )
+    //       return this.getHomeList().then((list)=>{this.$q.loading.hide()  
+    //       console.log(list)
+    // });
+    
+    
     
   },
 };

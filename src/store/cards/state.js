@@ -8,6 +8,7 @@ export default function () {
     homeNew: [],
 
     cards: null,
+    sectionName: null,
     card: null
   }
 }

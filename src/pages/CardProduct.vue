@@ -1,54 +1,106 @@
 <template>
   <q-page class="p-content">      
     <NamePage :text="card.name" @getBackPage="getBackPage"/>
-    <q-carousel
-      v-if="card.add_imgs"
-      v-model="slide"
-      swipeable
-      infinite
-      transition-prev="slide-right"
-      transition-next="slide-left" 
-      control-type="flat"
-      animated
-      height="100%"
-      ref="carousel"
-      class="tw--mx-3 "  
-    > 
+    <div v-if="card.add_imgs" class="tw-relative">
+      <div class="tw-absolute tw-right-0 tw-top-4 tw-z-10 ">
+            <q-btn
+            round
+            unelevated
+            class="  tw-bg-white border-inset tw-mr-4"
+            size="9px"
+            >
+              <Icon name="share"/>
+            </q-btn>
+            <q-btn
+            round
+            unelevated
+            
+            class=" tw-top-0 tw-bg-white tw-right-0 border-inset "
+            @click="toggleFavorite"
+            size="9px"
+          >
+            <q-icon
+              
+              :name="favorite.isActive ? 'favorite' : 'favorite_border'"
+              :class="[favorite.isActive ? 'tw-text-info' : 'tw-text-border-icon']" />
+            
+          </q-btn>
+      </div>
     
-      <q-carousel-slide v-for="(item, index) in card.add_imgs" :key="index" :name="index+1" class="tw-p-0 " >
-        <div
-          :style="
-          `background-image: url(http://flowers.2apps.ru${item});`"
-          class="image-pos "
-        >
-
-        </div>
-        <!-- <img :src="`http://flowers.2apps.ru${item}`" alt=""> -->
+      <q-carousel
         
-      </q-carousel-slide>
-      <template v-slot:control>
-         <q-carousel-control
-          class="tw-flex tw-justify-between tw-w-full tw-bottom-1/2 tw-transform tw-translate-y-1/2  tw-px-3.5"
-          :offset="[0, 0]"
+        v-model="slide"
+        swipeable
+        infinite
+        transition-prev="slide-right"
+        transition-next="slide-left" 
+        control-type="flat"
+        animated
+        height="100%"
+        ref="carousel"
+        class="tw--mx-3 "  
+      > 
+        
+      
+        <q-carousel-slide v-for="(item, index) in card.add_imgs" :key="index" :name="index+1" class="tw-p-0 " >
+          <div
+            :style="
+            `background-image: url(http://flowers.2apps.ru${item});`"
+            class="image-pos "
+          >
+
+          </div>
+          <!-- <img :src="`http://flowers.2apps.ru${item}`" alt=""> -->
           
-        >
-          <q-btn
-            flat dense  
-            @click="$refs.carousel.previous()"
+        </q-carousel-slide>
+        <template v-slot:control>
+          <q-carousel-control
+            class="tw-flex tw-justify-between tw-w-full tw-bottom-1/2 tw-transform tw-translate-y-1/2  tw-px-3.5"
+            :offset="[0, 0]"
+            
           >
-            <img src="/prev.svg" alt="">
-          </q-btn>
-          <q-btn
-            flat
-            dense
-            @click="$refs.carousel.next()"
+            <q-btn
+              flat dense  
+              @click="$refs.carousel.previous()"
+            >
+              <img src="/prev.svg" alt="">
+            </q-btn>
+            <q-btn
+              flat
+              dense
+              @click="$refs.carousel.next()"
+            >
+              <img src="/next.svg" alt="">
+            </q-btn>
+          </q-carousel-control>
+        </template>
+      </q-carousel>
+    </div>
+    <div v-else class="-m-content tw-relative">
+      <div class="tw-absolute tw-right-0 tw--top-5 p-content">
+            <q-btn
+            round
+            unelevated
+            class="  tw-bg-white tw-right-0 border-inset tw-mr-4"
+            size="9px"
+            >
+              <Icon name="share"/>
+            </q-btn>
+            <q-btn
+            round
+            unelevated
+            
+            class=" tw-top-0 tw-bg-white tw-right-0 border-inset "
+            @click="toggleFavorite"
+            size="9px"
           >
-            <img src="/next.svg" alt="">
+            <q-icon
+              
+              :name="favorite.isActive ? 'favorite' : 'favorite_border'"
+              :class="[favorite.isActive ? 'tw-text-info' : 'tw-text-border-icon']" />
+            
           </q-btn>
-        </q-carousel-control>
-      </template>
-    </q-carousel>
-    <div v-else class="-m-content">
+      </div>
       <div
         :style="
         `background-image: url(http://flowers.2apps.ru${card.img});`"
@@ -187,6 +239,9 @@ import { Hooper, Slide } from 'hooper';
 import Slider from 'components/Slider'
 import {mapGetters} from 'vuex'
 
+import {QSpinnerPuff} from 'quasar'
+
+
 export default {
   components:{
     Slider,
@@ -201,15 +256,28 @@ export default {
       count: 1,
       slide: 1,
       hooperSettings: {
-        // trimWhiteSpace: true,
         transition: 700,
-        // autoPlay: true,
-        // playSpeed: 3500,
         itemsToShow: 4
-      }
+      },
+    favorite: {
+      isActive: false,
+      name:"favorite_border",
+      claaName: "tw-text-border-icon"
+    }
     }
   },
   methods:{
+    async getCard(){
+      await this.$store.dispatch('cards/getCard', this.$route.params.id)
+    },
+    toggleFavorite(){
+      if(this.favorite.isActive){
+        console.log('remove')
+      }else{
+        this.$store.dispatch("auth/addFavoriteItem", this.card)
+      }
+      this.favorite.isActive = !this.favorite.isActive
+    },
     setCurrentCount(e){
       const val = +e.target.value
       
@@ -225,7 +293,14 @@ export default {
       
     },
     addProductToCart() {
-      this.$store.dispatch("basket/addProductToCart", { ...this.card});
+      
+      this.$store.dispatch("basket/addProductToCart", {...this.card, count:this.count});
+      this.$q.notify({
+        message: `Добавлено в корзину ${this.count} штук${this.count===1? 'a' : this.count>1 && this.count<=4 ? 'и' : '' }`,
+        position: 'top',
+        
+        timeout: 500
+      })
     },
     getBackPage(){
       this.$router.go(-1)
@@ -264,13 +339,24 @@ export default {
        return list
      }
   },
-  beforeRouteEnter(to, from, next){
-    
-    next(vm=>{
-      vm.$store.dispatch('cards/getCard', to.params.id)
+  created(){
+    this.$q.loading.show(
+      {
+        spinner: QSpinnerPuff,
+        spinnerSize: 240,
+      }
+    ) 
+    return this.getCard().then(()=>{
+      this.$q.loading.hide()
     })
-
   },
+  // beforeRouteEnter(to, from, next){
+    
+  //   next(vm=>{
+  //     vm.$store.dispatch('cards/getCard', to.params.id)
+  //   })
+
+  // },
   
 
 };

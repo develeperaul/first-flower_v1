@@ -20,6 +20,10 @@ export function cards (state){
     return state.cards
 }
 
+export function listName (state){
+    return state.sectionName.section_name
+}
+
 export function card (state){
 
     return state.card

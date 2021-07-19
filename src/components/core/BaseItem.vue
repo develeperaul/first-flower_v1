@@ -25,7 +25,7 @@
         
         :name="favorite.isActive ? 'favorite' : 'favorite_border'"
         :class="[favorite.isActive ? 'tw-text-info' : 'tw-text-border-icon']" />
-      <!-- <q-icon name="favorite" class="tw-text-info" /> -->
+      
     </q-btn>
     
     

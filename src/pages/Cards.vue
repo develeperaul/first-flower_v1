@@ -1,9 +1,4 @@
 <template>
-  <!-- <q-page padding>
-  
-        <div class="tw-text-center" @click="onChangeBack">{{namePage}}</div>
-        <BaseList :cards="cards" class="tw-grid tw-grid-cols-2 tw-gap-4"/>
-  </q-page> -->
   <ZeroComp
     v-if="cards.length === 0  && cards[0] == null" 
      text="В этой категории пока нету товаров" textBtn="Перейти в каталог"
@@ -18,7 +13,7 @@
       >
       </q-icon>
       
-      <span class="tw-font-semibold">{{name}}</span>  
+      <span class="tw-font-semibold">{{listName}}</span>  
     </div>
     <BaseList :cards="cards" class="tw-grid tw-grid-cols-2 tw-gap-4"/>
   </q-page>
@@ -30,8 +25,8 @@ import { mapGetters } from "vuex";
 import ZeroComp from "components/ZeroComp"
 import BaseList from "components/BaseList.vue";
 
-
-
+import {QSpinnerPuff} from 'quasar'
+  
 export default {
 
     components: {
@@ -65,42 +60,39 @@ export default {
   computed: {
     ...mapGetters(
       
-      "cards", ["cards"], 
+      "cards", ["cards","listName"], 
       
-    ),
-    name(){
-
-      const subSection = this.$store.state.categories.subSection
-      // this.$store.getters.categories.subSection
-      if(subSection){
-        for(let key in subSection){
-          if(subSection[key].id == this.$route.params.id){
-            return subSection[key].name
-          }
-        }
-      }else{
-        console.error("ПРОГУЗИТЕ ПОДСЕЦИИ ДЛЯ ПОЛУЧЕНИЯ ИМЕНИ СТРАНИЦЫ");
-      }
-      
-      
-      
-    }
+    )
     
 
   },
   
   created(){
-    // this.$store.dispatch("cards/cardList", this.namePage)
-    
-    
-    
-    
-      return this.getCards(this.$route.params.id)
-    
-    
-    // await this.$store.dispatch("cards/getList", item.id)
-    
+    this.$q.loading.show(
+      {
+        spinner: QSpinnerPuff,
+        spinnerSize: 240,
+      }
+    )  
+      return this.getCards(this.$route.params.id).then(()=>{
+        this.$q.loading.hide()  
+      })
+      
   },
-  
+  beforeRouteUpdate(to, from, next){
+    this.$q.loading.show(
+        {
+          spinner: QSpinnerPuff,
+          spinnerSize: 240,
+          
+        }
+      )
+    this.getCards(to.params.id).then(()=>{
+            this.$q.loading.hide()  
+    }) 
+    next(()=>{
+      
+    })
+  }
 }
 </script>

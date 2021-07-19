@@ -1,12 +1,18 @@
 <template>
-  <q-page padding>
+  <q-page class="p-content">
     <!-- content -->
     <!-- <template v-if="isLoading">
       {{isLoading}}
     </template> -->
     <template >
-    <div class="tw-text-center tw-mb-5">
-      <span @click="getSalesPage"
+    <div class="tw-text-center tw-mb-5 tw-relative">
+      <q-icon
+      @click="getSalesPage"
+      name="arrow_back_ios"
+      class="tw-absolute tw-left-0 tw-top-1/2 tw-transform tw--translate-y-1/2 "
+      >
+      </q-icon>
+      <span 
           class="tw-text-xl tw-font-semibold "  
       >
         {{sale.name}}
@@ -28,6 +34,10 @@
 <script>
 
 import  {mapGetters} from 'vuex'
+
+import {QSpinnerPuff} from 'quasar'
+
+
 export default {
   name: 'SaleCard',
   data(){
@@ -53,8 +63,15 @@ export default {
     
   },
   created(){
-    
-    return this.getSaleItem()
+    this.$q.loading.show(
+      {
+        spinner: QSpinnerPuff,
+        spinnerSize: 240,
+      }
+    ) 
+    return this.getSaleItem().then(()=>{
+      this.$q.loading.hide()  
+    })
   },
   
 }

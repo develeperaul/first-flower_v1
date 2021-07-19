@@ -2,14 +2,10 @@
 export function someAction (context) {
 }
 */
-export async function addProductToCart ({state, commit}, product){
-    const productItem = state.products.find(item=>item.id === product.id)
-    if(!productItem){
+export async function addProductToCart ({state, commit}, {...product}){
+     
         commit('addProduct', product)
-    }
-    else {
-        commit('incrementProducts', productItem)
-    }
+    
     
 }
 

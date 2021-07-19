@@ -11,7 +11,15 @@ export function remove (state, card){
     state.products = state.products.filter((item) => item.id !== card.id);
 }
 export function addProduct (state, payload){
-    state.products.push({...payload, count: 1})
+    const cardItem = state.products.find(item => item.id === payload.id)
+    if(!cardItem){
+        state.products.push({...payload})    
+    }
+    else{
+        cardItem.count = payload.count
+    }
+    
+    
 }
 
 export function incrementProducts (state, {id}){
