@@ -79,10 +79,11 @@
             <span class="tw-font-semibold tw-text-lg">
               Контакты магазина
             </span>
-            <span class="tw-font-medium tw-pt-3.5 tw-flex">
+            <!-- <>Позвоните нам!</a> -->
+            <a href="tel:+796273454999" class="tw-font-medium tw-pt-3.5 tw-flex">
               <Icon name="phone"  class="tw-mr-3"/>
               896273454999
-            </span>
+            </a>
             <span class="tw-font-medium tw-pt-3.5 tw-flex">
               <Icon name="location" class="tw-mr-3"/>
               Чишмы,&nbsp;ул.&nbsp;Ленина,&nbsp;31
