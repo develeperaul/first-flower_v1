@@ -1,7 +1,7 @@
 <template>
   <ZeroComp
     v-if="cards.length === 0  && cards[0] == null" 
-     text="В этой категории пока нету товаров" textBtn="Перейти в каталог"
+     text="В этой категории пока нет товаров" textBtn="Перейти в каталог"
     />
   <q-page v-else class="p-content">
     
