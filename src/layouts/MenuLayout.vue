@@ -11,7 +11,7 @@
           @click="toggleMenu"
           class="tw-absolute"
         />
-        <div class="logo tw-m-auto" @click="onLogo">
+        <div class="logo tw-m-auto tw-pt-2" @click="onLogo">
             <img src="/logo.svg" alt="" />
         </div>
         
