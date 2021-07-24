@@ -12,53 +12,53 @@
 .env-b {
   padding-bottom: env(safe-area-inset-bottom, 20px);
 }
-.q-menu {
-  .q-date__calendar-item {
-    font-size: 12px;
-  }
+// .q-menu {
+//   .q-date__calendar-item {
+//     font-size: 12px;
+//   }
 
-  .q-btn {
-    font-size: 10px;
-  }
-  .q-date__calendar-item {
-    .q-btn {
-      width: 24px;
-      height: 24px;
-    }
-  }
-  .q-date {
-    width: 230px;
-    min-width: 220px;
-  }
-  .q-date__content {
-    width: 230px;
-  }
-  .q-date__view {
-    min-height: 170px;
-    height: 240px;
-  }
-  .q-date__calendar-days-container {
-    min-height: 150px;
-  }
+//   .q-btn {
+//     font-size: 10px;
+//   }
+//   .q-date__calendar-item {
+//     .q-btn {
+//       width: 24px;
+//       height: 24px;
+//     }
+//   }
+//   .q-date {
+//     width: 230px;
+//     min-width: 220px;
+//   }
+//   .q-date__content {
+//     width: 230px;
+//   }
+//   .q-date__view {
+//     min-height: 170px;
+//     height: 240px;
+//   }
+//   .q-date__calendar-days-container {
+//     min-height: 150px;
+//   }
 
-  // .q-date__calendar-item > div,
-  // .q-date__calendar-item button {
-  //   width: 16px;
-  //   height: 16px;
-  //   transform: translateY(-50%);
-  // }
-  // .q-date__today {
-  //   transform: translateY(-50%);
-  // }
-  // .q-btn__content {
-  //   span {
-  //     position: absolute;
-  //     transform: translateY(50%);
-  //     top: -50%;
-  //   }
-  //   top: 50%;
-  // }
-}
+//   // .q-date__calendar-item > div,
+//   // .q-date__calendar-item button {
+//   //   width: 16px;
+//   //   height: 16px;
+//   //   transform: translateY(-50%);
+//   // }
+//   // .q-date__today {
+//   //   transform: translateY(-50%);
+//   // }
+//   // .q-btn__content {
+//   //   span {
+//   //     position: absolute;
+//   //     transform: translateY(50%);
+//   //     top: -50%;
+//   //   }
+//   //   top: 50%;
+//   // }
+// }
 
 .q-slider {
   &__track-container {
