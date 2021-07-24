@@ -1,5 +1,5 @@
 <template>
-  <q-page class="p-content">      
+  <q-page class="p-content tw-flex tw-flex-col tw-justify-between">      
     <NamePage :text="card.name" @getBackPage="getBackPage"/>
     <div v-if="card.add_imgs" class="tw-relative">
       <div class="tw-absolute tw-right-0 tw-top-4 tw-z-10 ">
@@ -115,7 +115,7 @@
           <span class="">Описание</span>
         </div>
         <div class="tw-mb-4 tw-text-xl">
-          <span >{{card.text}}</span>
+          <p >{{card.text}}</p>
           
         </div>
         <BorderLine class="-m-content tw-mt-12 tw-mb-6"/>
@@ -201,9 +201,9 @@
           </Hooper>
         </div>
         <div class="tw-mt-4">
-          <span class="tw-text-sm">
+          <p class="tw-text-sm">
             Параметры упаковки (цвет и т.д.) укажите в комментарии к заказу
-          </span>
+          </p>
         </div>
         <BorderLine class="-m-content tw-mt-6"/>
       </template>
