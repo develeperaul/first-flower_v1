@@ -2,7 +2,7 @@
   <q-page class="p-content">
     <div>
       <span class="tw-font-semibold tw-text-xl ">Букет недели</span>
-      <div class="tw-grid tw-grid-cols-3 tw-mt-4                       ">
+      <div class="tw-flex  tw-mt-4">
           <img 
             @click="linkCard(weekItem.id)"
             width="123"
@@ -19,7 +19,7 @@
               
             </div> 
             <div class="tw-flex tw-justify-between tw-items-center tw-flex-nowrap ">
-                <span class="tw-text-xl sm:tw-text-base tw-font-semibold">{{weekItem.price}}&nbsp;руб.</span>
+                <span class="tw-text-xl sm:tw-text-base tw-font-semibold tw-mr-11">{{weekItem.price}}&nbsp;руб.</span>
                 <div>
                   <span style="color:red;text-decoration:line-through;">
                     <span class="tw-text-xl sm:tw-text-base tw-font-semibold tw-text-info-light">{{weekItem.oldprice}}&nbsp;руб.</span>
@@ -64,7 +64,7 @@
                     <div>
                       <q-img
                         :src="`http://flowers.2apps.ru${item.img}`"
-                        class="tw-rounded-md"
+                        class="tw-rounded-md tw-mb-4"
                       />
                     </div>
                     <span class="tw-text-lg tw-font-medium tw-text-left tw-mb-2.5" >{{item.name}}</span>
@@ -144,7 +144,7 @@ export default {
     
     
     
-    margin-right: 12px;
+    margin-right: 17px;
     text-align: center;
     }
     .image-pos{
