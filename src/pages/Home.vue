@@ -3,13 +3,13 @@
     <div>
       <span class="tw-font-semibold tw-text-xl ">Букет недели</span>
       <div class="tw-flex  tw-mt-4">
-          <img 
+          <q-img 
             @click="linkCard(weekItem.id)"
-            width="123"
-            height="123"
+            width="123px"
+            height="123px"
             
-            class="tw-flex-shrink-0"  src="/flower.jpg" alt="" style="border-radius: 5px " > 
-          <div class="tw-col-span-2 tw-flex tw-flex-col   tw-ml-4">
+            class=""  src="/flower.jpg" alt="" style="border-radius: 5px " /> 
+          <div class=" tw-flex tw-flex-col   tw-ml-4">
             <div class="tw-flex tw-justify-between tw-items-center tw-flex-nowrap">
               
 
