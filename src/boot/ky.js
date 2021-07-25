@@ -6,4 +6,6 @@ const apiFlower = ky.create({
     timeout: 10000,
 })
 
+
+//проверка
 export { apiFlower }
