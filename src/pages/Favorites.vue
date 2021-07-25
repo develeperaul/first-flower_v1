@@ -20,11 +20,19 @@ export default {
     BaseList,
     ZeroComp,
   },
+  methods: {
+    getFavorites(){
+      this.$store.dispatch("cards/getFavorite")
+    }
+  },
+
   created() {
-    // this.$store.dispatch("cards/list");
+    
+
+    this.getFavorites()
   },
   computed: {
-    ...mapGetters("auth", ["favorite"])
+    ...mapGetters("cards", ["favorite"])
   }
 };
 </script>

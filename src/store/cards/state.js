@@ -7,8 +7,11 @@ export default function () {
     homeSale: [],
     homeNew: [],
 
-    cards: null,
+    cards: [],
     sectionName: null,
-    card: null
+    card: null,
+
+    favorite: [],
+
   }
 }

@@ -20,3 +20,20 @@ export function getItemSuccess(state, card){
     state.card=card[0]
 }
 
+export function getFavorite(state, item){
+    if(item === null){
+        state.favorite = []
+    }else {
+        state.favorite = item
+    }
+}
+
+export function addFavorite(state, item){
+    // state.favorite = {...item}
+    state.favorite = item
+    // state.favorite.splice(state.favorite.length, 0,{...item} )
+}
+
+export function removeFavorite(state, item){
+    state.favorite = item
+}

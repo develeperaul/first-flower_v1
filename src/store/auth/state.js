@@ -4,6 +4,5 @@ export default function () {
     id: null,
     currentUser: null,
     isLoading: false,
-    favorite: [],
   }
 }

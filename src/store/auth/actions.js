@@ -34,13 +34,3 @@ export function outProfile ({commit}){
     })
 }
 
-export async function getFavoriteList({commit}){
-    //получаем список избранных
-    // const listFavorite
-    
-}
-
-export async function addFavoriteItem({commit}, item){
-    //добавляем карточку в избранные
-    commit('addFavorite', item)
-}

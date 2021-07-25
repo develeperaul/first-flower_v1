@@ -15,7 +15,9 @@
       
       <span class="tw-font-semibold">{{listName}}</span>  
     </div>
-    <BaseList :cards="cards" class="tw-grid tw-grid-cols-2 tw-gap-4"/>
+    
+    <BaseList :cards="newCards" class="tw-grid tw-grid-cols-2 tw-gap-4"/>
+    
   </q-page>
   
 </template>
@@ -26,6 +28,7 @@ import ZeroComp from "components/ZeroComp"
 import BaseList from "components/BaseList.vue";
 
 import {QSpinnerPuff} from 'quasar'
+
   
 export default {
 
@@ -47,6 +50,9 @@ export default {
       this.$router.push({name: 'home', params: {menuOpen: true}})
       
     },
+    getFavorites(){
+      this.$store.dispatch("cards/getFavorite")
+    },
     async getCards(id){
       await this.$store.dispatch("cards/getList", id)
     },
@@ -60,14 +66,33 @@ export default {
   computed: {
     ...mapGetters(
       
-      "cards", ["cards","listName"], 
+      "cards", ["cards","listName" , "favorite", ]
       
-    )
+    ),
+    newCards(){
+      
+      return this.favorite.length === 0 ? this.cards : this.cards.map(item=>{
+        
+        for(let i=0; i<this.favorite.length; i++){
+            if(item.id == this.favorite[i].id){
+              
+            return this.favorite[i]
+            }
+            else{
+            return item
+            }
+            
+        }
+        
+    })
+    }
+    
     
 
   },
   
   created(){
+    this.getFavorites()
     this.$q.loading.show(
       {
         spinner: QSpinnerPuff,

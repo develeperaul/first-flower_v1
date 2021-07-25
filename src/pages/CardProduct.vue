@@ -21,8 +21,8 @@
           >
             <q-icon
               
-              :name="favorite.isActive ? 'favorite' : 'favorite_border'"
-              :class="[favorite.isActive ? 'tw-text-info' : 'tw-text-border-icon']" />
+              :name="isFavorite ? 'favorite' : 'favorite_border'"
+              :class="[isFavorite ? 'tw-text-info' : 'tw-text-border-icon']" />
             
           </q-btn>
       </div>
@@ -96,8 +96,8 @@
           >
             <q-icon
               
-              :name="favorite.isActive ? 'favorite' : 'favorite_border'"
-              :class="[favorite.isActive ? 'tw-text-info' : 'tw-text-border-icon']" />
+              :name="isFavorite ? 'favorite' : 'favorite_border'"
+              :class="[isFavorite ? 'tw-text-info' : 'tw-text-border-icon']" />
             
           </q-btn>
       </div>
@@ -230,6 +230,7 @@
       </q-btn>
       <!-- <BaseButton text="Купить" class="tw-px-8 tw-py-1"/> -->
     </div>
+    {{isFavorite}}
   </q-page>
 </template>
 
@@ -259,11 +260,11 @@ export default {
         transition: 700,
         itemsToShow: 4
       },
-    favorite: {
+    
       isActive: false,
       name:"favorite_border",
       claaName: "tw-text-border-icon"
-    }
+    
     }
   },
   methods:{
@@ -271,13 +272,14 @@ export default {
       await this.$store.dispatch('cards/getCard', this.$route.params.id)
     },
     toggleFavorite(){
-      if(this.favorite.isActive){
-        console.log('remove')
+      if(this.isFavorite){
+        this.$store.dispatch("cards/removeFavoriteItem", this.card)
       }else{
-        this.$store.dispatch("auth/addFavoriteItem", this.card)
+        this.$store.dispatch("cards/addFavoriteItem", this.card)
       }
-      this.favorite.isActive = !this.favorite.isActive
+      this.isActive = !this.isActive
     },
+    
     setCurrentCount(e){
       const val = +e.target.value
       
@@ -314,8 +316,15 @@ export default {
 
   },
   computed: {
-    ...mapGetters("cards", ["card"]),
-
+    ...mapGetters("cards", ["card", "favorite"]),
+    isFavorite(){
+      if(this.favorite.find(item=>item.id === this.card.id)){
+        return true
+      }else{
+        return false
+      }
+      
+      },
     //для вида упаковки
      isPackage(){
        

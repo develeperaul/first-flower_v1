@@ -192,7 +192,7 @@ export default {
       transition: all .6s ease-in-out;
       font-size: 0.625rem;
       color: #272727;
-      background: hsla(100%,100%,100%, 100%);
+      // background: hsla(100%,100%,100%, 100%);
       z-index: 1;
       // background: red;
       padding: 0 4px;

@@ -26,7 +26,3 @@ export function outProfileSuccess(state){
     state.currentUser = null
 }
 
-export function addFavorite(state, item){
-    // state.favorite = {...item}
-    state.favorite.splice(state.favorite.length, 0,{...item} )
-}

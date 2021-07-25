@@ -23,8 +23,8 @@
     >
       <q-icon
         
-        :name="favorite.isActive ? 'favorite' : 'favorite_border'"
-        :class="[favorite.isActive ? 'tw-text-info' : 'tw-text-border-icon']" />
+        :name="card.isActive ? 'favorite' : 'favorite_border'"
+        :class="[card.isActive ? 'tw-text-info' : 'tw-text-border-icon']" />
       
     </q-btn>
     
@@ -54,9 +54,8 @@
 </template>
 
 <script>
-// import ShopIcon from "../icons/ShopIcon.vue";
-// import basket from "src/store/basket";
-// import { mapActions } from "vuex";
+
+
   import {mapGetters} from "vuex"
 export default {
   // components: { ShopIcon },
@@ -73,7 +72,7 @@ export default {
       active: "tw-bg-secondary",
       inactive: "tw-bg-white",
       favorite: {
-        isActive: false,
+        isActive: this.card.isActive,
         name:"favorite_border",
         claaName: "tw-text-border-icon"
       }
@@ -97,9 +96,10 @@ export default {
     },
     toggleFavorite(){
       if(this.favorite.isActive){
-        console.log('remove')
+        
+        this.$store.dispatch("cards/removeFavoriteItem", this.card)
       }else{
-        this.$store.dispatch("auth/addFavoriteItem", this.card)
+        this.$store.dispatch("cards/addFavoriteItem", this.card)
       }
       this.favorite.isActive = !this.favorite.isActive
     }
