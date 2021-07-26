@@ -1,12 +1,14 @@
 <template>
+  <q-page  v-if="favoriteCard" class="p-content">
+
+    <BaseList :cards="favoriteCard " class="tw-grid tw-grid-cols-2 tw-gap-4"/>
+
+  </q-page>
   <ZeroComp
-    v-if="favorite.length === 0"
+    v-else
     text="В избранном пока ничего нет"
     textBtn="Перейти в каталог" />
-  <q-page  v-else class="p-content">
 
-    <BaseList :cards="favorite " class="tw-grid tw-grid-cols-2 tw-gap-4"/>
-  </q-page>
 </template>
 
 <script>
@@ -20,10 +22,31 @@ export default {
     BaseList,
     ZeroComp,
   },
-  methods: {
-    getFavorites(){
-      this.$store.dispatch("cards/getFavorite")
+  data(){
+    return {
+      favoriteCard: null
     }
+  },
+  methods: {
+    async getCard(id){
+      await this.$store.dispatch('cards/getCard', id)
+    },
+    async getFavorites(){
+      let cardFavorite = []
+      this.getCard()
+      if(this.favorite){
+        for(let key in this.favorite){
+         await this.getCard(key)
+          cardFavorite.push(this.card)
+        }
+        this.favoriteCard = cardFavorite
+      }
+      
+    
+      
+      
+    },
+
   },
 
   created() {
@@ -32,7 +55,7 @@ export default {
     this.getFavorites()
   },
   computed: {
-    ...mapGetters("cards", ["favorite"])
+    ...mapGetters("cards", ["favorite", "card"])
   }
 };
 </script>
