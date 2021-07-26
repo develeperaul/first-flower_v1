@@ -6,9 +6,19 @@
 <script>
 export default {
   name: 'App',
-  mounted(){
-  
-    this.$store.dispatch('auth/getProfile')
-  }
-}
+  created() {
+    const favorite = localStorage.getItem('favorite');
+    if (favorite) {
+      try {
+        const obj = JSON.parse(favorite);
+        this.$store.commit('cards/setFavorites', obj);
+      } catch (e) {
+        localStorage.removeItem('favorite');
+      }
+    }
+  },
+  mounted() {
+    this.$store.dispatch('auth/getProfile');
+  },
+};
 </script>

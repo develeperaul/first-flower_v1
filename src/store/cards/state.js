@@ -11,7 +11,7 @@ export default function () {
     sectionName: null,
     card: null,
 
-    favorite: [],
+    favorite: null,
 
   }
 }
