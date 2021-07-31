@@ -1,5 +1,5 @@
 <template>
-  <q-page  v-if="favoriteCard" class="p-content">
+  <q-page  v-if="favorite" class="p-content">
 
     <BaseList :cards="favoriteCard " class="tw-grid tw-grid-cols-2 tw-gap-4"/>
 

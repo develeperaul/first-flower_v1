@@ -34,11 +34,15 @@ export function getFavorite(state, item) {
 }
 
 export function addFavorite(state, id) {
+
   if (state.favorite === null) state.favorite = {};
   Vue.set(state.favorite, id, true);
+  
 }
 
 export function removeFavorite(state, id) {
+  
   if (state.favorite === null) return;
   if (id in state.favorite) Vue.delete(state.favorite, id);
+  if(Object.keys(state.favorite).length === 0) state.favorite = null
 }
