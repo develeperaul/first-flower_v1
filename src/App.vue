@@ -7,11 +7,12 @@
 export default {
   name: 'App',
   created() {
-    const favorite = localStorage.getItem('favorite');
+    const favorite = localStorage.getItem('favorite') ;
     const basket = localStorage.getItem('basket');
     console.log(favorite, basket)
     if (favorite) {
       try {
+        
         const obj = JSON.parse(favorite);
         this.$store.commit('cards/setFavorites', obj);
       } catch (e) {
@@ -25,7 +26,7 @@ export default {
         console.log(obj)
         this.$store.commit('basket/setBasket', obj)
       } catch (e) {
-        // localStorage.removeItem('basket');
+        localStorage.removeItem('basket');
       }
     }
   },
