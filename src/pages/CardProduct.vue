@@ -21,8 +21,8 @@
           >
             <q-icon
               
-              :name="isActive ? 'favorite' : 'favorite_border'"
-              :class="[isActive ? 'tw-text-info' : 'tw-text-border-icon']" />
+              :name="favorite && favorite[card.id] ? 'favorite' : 'favorite_border'"
+              :class="[ favorite && favorite[card.id] ? 'tw-text-info' : 'tw-text-border-icon']" />
             
           </q-btn>
       </div>
@@ -50,7 +50,7 @@
           >
 
           </div>
-          <!-- <img :src="`http://flowers.2apps.ru${item}`" alt=""> -->
+          
           
         </q-carousel-slide>
         <template v-slot:control>
@@ -122,8 +122,6 @@
       </template>
       <div>
 
-      
-
       </div>
         <div class="tw-flex tw-justify-between tw-items-center tw-mb-8">
         <span class="tw-text-xl tw-font-semibold">Количество цветов</span>
@@ -144,7 +142,9 @@
             :settings="hooperSettings"
             style="height: 145px">
             <Slide>
-              <div class="el-slide tw-flex tw-flex-col">
+              <div
+                @click="choicePackage(1)"
+                class="el-slide tw-flex tw-flex-col">
 
                  <div>
                    <q-img
@@ -158,7 +158,9 @@
                 </div>
             </Slide>
             <Slide>
-              <div class="el-slide tw-flex tw-flex-col">
+              <div
+                @click="choicePackage(2)"
+                class="el-slide tw-flex tw-flex-col">
                   <div>
                     <q-img
                       src="/upak_fetr.png"
@@ -171,7 +173,9 @@
                 </div>
             </Slide>
             <Slide>
-              <div class="el-slide tw-flex tw-flex-col">
+              <div
+                @click="choicePackage(3)"
+                class="el-slide tw-flex tw-flex-col">
                 
                   <div>
                     <q-img
@@ -185,7 +189,9 @@
                 </div>
             </Slide>
             <Slide>
-              <div class="el-slide tw-flex tw-flex-col">
+              <div
+                @click="choicePackage(4)"
+                class="el-slide tw-flex tw-flex-col">
                 
                   <div>
                     <q-img
@@ -209,8 +215,6 @@
       </template>
 
     </div>    
-    
-    
 
     <div class="tw-flex tw-justify-between tw-items-center tw-pt-2.5 tw-pb-5">
       <span class="tw-text-3xl sm:tw-text-2xl tw-font-bold">{{card.price}}&nbsp;руб.</span>
@@ -256,8 +260,9 @@ export default {
     
       isActive: false,
       name:"favorite_border",
-      claaName: "tw-text-border-icon"
-    
+      claaName: "tw-text-border-icon",
+      
+      package: 0
     }
   },
   methods:{
@@ -273,7 +278,11 @@ export default {
         this.$store.dispatch('cards/addFavoriteItem', this.card);
       }
     },
-    
+    choicePackage(i){
+      this.package = i;
+      console.log(this.package)
+    },
+
     
     setCurrentCount(e){
       const val = +e.target.value
@@ -290,8 +299,7 @@ export default {
       
     },
     addProductToCart() {
-      
-      this.$store.dispatch("basket/addProductToCart", {...this.card, count:this.count});
+      this.$store.dispatch("basket/addProductToCart", {...this.card, count:this.count, id: `${this.card.id}_${this.package}`});
       this.$q.notify({
         position: 'bottom',
         attrs: {'class': 'raul'},
@@ -310,10 +318,6 @@ export default {
       return val === null ? 'null' : val
     },
 
-    //для упаковки
-    notify(){
-      console.log(1)
-    }
 
   },
   computed: {

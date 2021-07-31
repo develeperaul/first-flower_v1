@@ -7,3 +7,7 @@ export function amountProducts(state){
         return sum + (item.price*item.count)
     },0)
 }
+
+export function products(state){
+    return state.products
+}

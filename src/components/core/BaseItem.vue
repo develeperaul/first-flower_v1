@@ -26,7 +26,7 @@
         ]"
       />
     </q-btn>
-
+  <!-- {{card.id}} -->
     <q-card-section class="tw-p-3">
       <div class="tw-text-sm">{{ card.name }}</div>
       <div
@@ -42,11 +42,11 @@
           round
           size="8px"
           class="tw-border tw-border-primary tw-border-solid"
-          :class="[isActive ? active : inactive]"
+          :class="[this.products.find(item=>item.id.match(/[\d]+[^_]/g).join() == this.card.id) ? active : inactive]"
         >
           <Icon
             name="basket"
-            :color="isActive ? '#ffffff' : '#838383'"
+            :color="this.products.find(item=>item.id.match(/[\d]+[^_]/g).join() == this.card.id) ? '#ffffff' : '#838383'"
             class="tw-w-4 tw-h-3"
           />
         </q-btn>
@@ -56,6 +56,7 @@
 </template>
 
 <script>
+import cards from 'src/store/cards';
 import { mapGetters } from 'vuex';
 export default {
   // components: { ShopIcon },
@@ -79,10 +80,10 @@ export default {
   },
   methods: {
     addProductToCart() {
-      if (this.isActive) {
-        this.$store.commit('basket/remove', this.card);
+      if (this.products.find(item=>item.id.match(/[\d]+[^_]/g).join() == this.card.id)) {
+        this.$store.dispatch('basket/removeProductCart', this.card);
       } else {
-        this.$store.commit('basket/add', this.card);
+        this.$store.dispatch('basket/addProductToCart', this.card);
       }
       // this.$store.dispatch("basket/addProductToCart", this.card);
       this.isActive = !this.isActive;
@@ -101,7 +102,11 @@ export default {
     },
   },
   computed: {
-    ...mapGetters('cards', { favorites: 'favorite' }),
+    ...mapGetters({
+      favorites: 'cards/favorite',
+      products: 'basket/products'
+    }),
+
   },
 };
 </script>
