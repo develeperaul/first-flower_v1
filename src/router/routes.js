@@ -9,7 +9,7 @@ const routes = [
       { path: '/', name: 'home', component: () => import('pages/Home.vue') },
       
       { path: '/card/:id', name: 'cardproduct', component: () => import('pages/CardProduct.vue') },
-      //ошибка была здсб path: ':id'
+
       { path: 'sales', name: 'sale', component: () => import('pages/Sale.vue') },
       { path: '/sales/:id', name: 'salecard', component: () => import('pages/SaleCard.vue') },
 

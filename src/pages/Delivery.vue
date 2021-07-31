@@ -52,9 +52,9 @@
       <span class="tw-text-2xl tw-font-semibold tw-mb-3.5 tw-mt-7">
           Способ оплаты
       </span>
-      <div class="tw-flex tw-items-center tw-mb-4">
+      <div class="tw-flex tw-items-center tw-mb-4" v-if="picked === 'pickup'">
         <input type="radio" id="card" value="card" v-model="money">
-        <label  for="card">Картой онлайн</label>  
+        <label  for="card">Картой в магазине</label>  
       </div>
       <div class="tw-flex tw-items-center tw-mb-4">
         <input type="radio" id="cash" value="cash" v-model="money">
@@ -65,8 +65,15 @@
     
     </div>
     <!-- <button class="btn text-brand-gray mt-10">Оформить заказ</button> -->
-  
-    <BaseButton type="submit" class="tw-text-xl tw-mb-12 tw-mt-4" text="Оформить заказ"/>
+
+    <button
+    
+      class="tw-bg-secondary tw-rounded-full tw-text-white "
+      type="buttom"
+      style="padding: 9.5px 32px; line-height: 24.5px; font-size: 20px"
+      >Оформить заказ
+    </button>
+    
   </form>
   </ValidationObserver>
     
@@ -91,8 +98,8 @@ export default {
     }
   }, 
   methods:{
-    onSubmit(){
-      alert('hi ')
+    onSubmit(e){
+      alert(e)
     }
   }
 }

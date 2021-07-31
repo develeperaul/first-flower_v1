@@ -72,7 +72,8 @@
                   class=""
                 />
               </div>
-              <BorderLine/>
+              
+              <BorderLine v-if="(index+1)!==list.length"/>
             </div>
           </div>
           <div class="tw-flex tw-flex-col  p-content tw-mt-3 tw-mb-12  tw-ml-4">

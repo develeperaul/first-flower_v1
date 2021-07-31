@@ -1,5 +1,5 @@
 <template>
-  <q-page class="p-content tw-flex tw-flex-col tw-justify-between">      
+  <q-page class="p-content tw-flex tw-flex-col tw-justify-between" v-if="card">      
     <NamePage :text="card.name" @getBackPage="getBackPage"/>
     <div v-if="card.add_imgs" class="tw-relative">
       <div class="tw-absolute tw-right-0 tw-top-4 tw-z-10 ">
@@ -21,8 +21,8 @@
           >
             <q-icon
               
-              :name="isFavorite ? 'favorite' : 'favorite_border'"
-              :class="[isFavorite ? 'tw-text-info' : 'tw-text-border-icon']" />
+              :name="isActive ? 'favorite' : 'favorite_border'"
+              :class="[isActive ? 'tw-text-info' : 'tw-text-border-icon']" />
             
           </q-btn>
       </div>
@@ -214,23 +214,16 @@
 
     <div class="tw-flex tw-justify-between tw-items-center tw-pt-2.5 tw-pb-5">
       <span class="tw-text-3xl sm:tw-text-2xl tw-font-bold">{{card.price}}&nbsp;руб.</span>
-      <q-btn
-        @click="addProductToCart"
-        
-        unelevated
-        rounded="rounded"
-        color="info"
-        class="tw-px-4 tw-py-1.5"
-        no-caps
-        >
-        <span class="tw-text-white tw-text-xl ">
-          В корзину
-        </span>
-        
-      </q-btn>
-      <!-- <BaseButton text="Купить" class="tw-px-8 tw-py-1"/> -->
+      <button
+      @click="addProductToCart"
+      class="tw-bg-secondary tw-rounded-full tw-text-white "
+      type="buttom"
+      style="padding: 9.5px 32px; line-height: 24.5px; font-size: 20px"
+      >В корзину</button>
+      
+      
     </div>
-    {{isFavorite}}
+    
   </q-page>
 </template>
 
@@ -253,7 +246,7 @@ export default {
     return {
       rangeValue: 0,
       min: 1,
-      max: 201,
+      max: 101,
       count: 1,
       slide: 1,
       hooperSettings: {
@@ -272,13 +265,15 @@ export default {
       await this.$store.dispatch('cards/getCard', this.$route.params.id)
     },
     toggleFavorite(){
-      if(this.isFavorite){
-        this.$store.dispatch("cards/removeFavoriteItem", this.card)
-      }else{
-        this.$store.dispatch("cards/addFavoriteItem", this.card)
+      if (this.favorite && this.favorite[this.card.id]) {
+        this.isActive = false
+        this.$store.dispatch('cards/removeFavoriteItem', this.card);
+      } else {
+        this.isActive = true
+        this.$store.dispatch('cards/addFavoriteItem', this.card);
       }
-      this.isActive = !this.isActive
     },
+    
     
     setCurrentCount(e){
       const val = +e.target.value
@@ -298,10 +293,13 @@ export default {
       
       this.$store.dispatch("basket/addProductToCart", {...this.card, count:this.count});
       this.$q.notify({
-        message: `Добавлено в корзину ${this.count} штук${this.count===1? 'a' : this.count>1 && this.count<=4 ? 'и' : '' }`,
-        position: 'top',
-        
-        timeout: 500
+        position: 'bottom',
+        attrs: {'class': 'raul'},
+        actions: [
+            
+          {label:`Добавлено в корзину ${this.count} штук${this.count===1? 'a' : this.count>1 && this.count<=4 ? 'и' : ''  }`, attrs: {'style': 'color: white; font-size: 12px; margin: 0 auto; padding-bottom:10px'}},
+          {label:'оформить заказ', attrs: { 'style': "margin: 0 auto: border-radius: 50%; background-color: #CE406A; color: white; width: 100%" }, handler:()=>{this.$router.push({name: 'basket'})} }],
+        timeout: 200000
       })
     },
     getBackPage(){
@@ -313,18 +311,14 @@ export default {
     },
 
     //для упаковки
+    notify(){
+      console.log(1)
+    }
 
   },
   computed: {
     ...mapGetters("cards", ["card", "favorite"]),
-    isFavorite(){
-      if(this.favorite.find(item=>item.id === this.card.id)){
-        return true
-      }else{
-        return false
-      }
-      
-      },
+
     //для вида упаковки
      isPackage(){
        
@@ -359,15 +353,6 @@ export default {
       this.$q.loading.hide()
     })
   },
-  // beforeRouteEnter(to, from, next){
-    
-  //   next(vm=>{
-  //     vm.$store.dispatch('cards/getCard', to.params.id)
-  //   })
-
-  // },
-  
-
 };
 </script>
 <style scoped lang="scss">

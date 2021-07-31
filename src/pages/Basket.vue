@@ -18,7 +18,7 @@
 
         
              <q-img
-                src="/flower.jpg"
+                :src="product.img"
                 width="105px"
                 height="105px"
                 class="tw-rounded-md tw-flex-shrink-0"
@@ -39,7 +39,7 @@
                   class="tw-mr-2.5"
                 />
 
-                <span class="tw-text-xl sm:tw-text-base tw-font-semibold">1500&nbsp;руб.</span>
+                <span class="tw-text-xl sm:tw-text-base tw-font-semibold">{{product.price}}&nbsp;руб.</span>
             </div> 
           </div>
           

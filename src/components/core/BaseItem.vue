@@ -92,6 +92,7 @@ export default {
       this.$router.push({ name: 'cardproduct', params: { id: this.card.id } });
     },
     toggleFavorite() {
+      
       if (this.favorites && this.favorites[this.card.id]) {
         this.$store.dispatch('cards/removeFavoriteItem', this.card);
       } else {

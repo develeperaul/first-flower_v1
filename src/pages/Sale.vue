@@ -1,15 +1,19 @@
 <template>
-  <q-page class="p-content">
+  <q-page v-if="sales" class="p-content">
     
     <SaleButton :sales="sales" />
     
   </q-page>
+  <ZeroComp
+    v-else
+    text="В избранном пока ничего нет"
+    textBtn="Перейти в каталог" />
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 import SaleButton from "components/SaleButton";
-
+import ZeroComp from 'components/ZeroComp'
 import {QSpinnerPuff} from 'quasar'
 
 export default {
@@ -22,6 +26,7 @@ export default {
   },
   components: {
     SaleButton,
+    ZeroComp
   },
   created() {
     if(!this.sales){

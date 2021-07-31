@@ -1,6 +1,6 @@
 <template>
   <q-page class="p-content">
-    <div>
+    <div v-if="weekItem">
       <span class="tw-font-semibold tw-text-xl ">Букет недели</span>
       <div class="tw-flex  tw-mt-4">
           <q-img 
@@ -31,7 +31,7 @@
           
       </div>
     </div>  
-    <div class=" tw-mt-8">
+    <div class=" tw-mt-8" v-if="saleItem">
       <span class="tw-font-semibold tw-text-xl ">Акция недели</span>
         <BaseSale v-bind="{ ...saleItem }" class="tw-mb-5 tw-mt-3">
           <router-link
@@ -43,7 +43,7 @@
           </router-link>
         </BaseSale>
     </div>
-    <div>
+    <div v-if="newList.length>0">
       <span class="tw-font-semibold tw-text-xl ">Новинки</span>
       <div class="tw-mt-3.5">
           <Hooper
@@ -55,12 +55,6 @@
               :key="index"
               >
                   <div class=" tw-flex tw-flex-col" @click="linkCard(item.id)">
-                    <!-- <div
-                      :style="
-                        `background-image: url(http://flowers.2apps.ru${item.img})`
-                      "
-                      class="image-pos tw-mb-4"
-                    > -->
                     <div>
                       <q-img
                         :src="`http://flowers.2apps.ru${item.img}`"

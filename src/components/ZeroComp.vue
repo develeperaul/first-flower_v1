@@ -7,40 +7,30 @@
       
       </div>
       <!-- <BaseButton v-if="to" :text="textBtn" :to="to"/> -->
-      <q-btn
+      <button
         v-if="to"
-        :to="to"
-        class="tw-py-2.5"
-        
-        unelevated
-        rounded
-        color="info"
-        
-        no-caps
-        >
-          <span class="tw-text-white tw-text-xl ">
-            {{ textBtn }}
-          </span>
-      </q-btn>
-      <q-btn
-        type="button"
+        class="tw-bg-secondary tw-rounded-full tw-text-white "
+        type="buttom"
+        style="padding-top: 14px; padding-bottom: 14px; line-height: 24.5px; font-size: 20px"
+      >
+        <router-link 
+         :to="to">
+          {{textBtn}}
+        </router-link>
+       
+      </button>
+      <button
         v-else
         @click="openMenu"
-        class="tw-py-2.5"
-        
-        unelevated
-        rounded
-        color="info"
+        class="tw-bg-secondary tw-rounded-full tw-text-white "
+        type="buttom"
+        style="padding-top: 14px; padding-bottom: 14px; line-height: 24.5px; font-size: 20px"
+      >
+          {{textBtn}}
        
-        no-caps
-        >
-          <span class="tw-text-white tw-text-xl  ">
-            {{ textBtn }}
-          </span>
-      </q-btn>
-      
-      
-      
+       
+      </button>
+     
     </q-page>
 </template>
 
