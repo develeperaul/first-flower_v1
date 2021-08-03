@@ -1,4 +1,4 @@
-import * as souvenirsApi  from '../../boot/helpers/souvenirs'
+import * as souvenirsApi  from '../../api/souvenirs'
 
 export async function createSouvenirs({commit}){
     const candies = souvenirsApi.getAllcandies();

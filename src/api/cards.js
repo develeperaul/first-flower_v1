@@ -1,29 +1,29 @@
-import { apiFlower } from "src/boot/ky";
+import { serverAPI } from "src/api/helpers/ky";
 
 
 export function getSectionsList(){
-    return apiFlower('section_list.php').json();
+    return serverAPI('section_list.php').json();
 }
 
 export function getSubSection(id){
-    return apiFlower(`section_list.php?id=${id}`).json();
+    return serverAPI(`section_list.php?id=${id}`).json();
 }
 
 export function getElementList(id){
-    return apiFlower(`elements_list.php?id=${id}`).json();
+    return serverAPI(`elements_list.php?id=${id}`).json();
 }
 
 export function getElementItem(id){
-    return apiFlower(`element_det.php?id=${id}`).json();
+    return serverAPI(`element_det.php?id=${id}`).json();
 }
 
 export function getHomeList(){
-    return apiFlower('main_list.php').json();
+    return serverAPI('main_list.php').json();
 }
 
 
 const cards = [
-    {   
+    {
         id: 1,
         categories: 'розы',
         title: 'роза красная 30 см',
@@ -136,7 +136,7 @@ const cards = [
         description: 'Красная эквадорская роза Красная эквадорская роза',
         logo: '/flower.jpg'
     },
-    
+
 ]
 
 
@@ -146,7 +146,7 @@ const categories = [
         id: 1,
         name: 'категории',
         parent: null
-        
+
     },
     {
         id: 2,
@@ -223,32 +223,32 @@ const categories = [
         name: "экзотика",
         parent: 2
     },
-        
+
 ]
 
 function struct(list, parent=null){
     const items = {};
-  
+
 
     list.map(item => {
         if(item.parent === parent){
             items[item.id] = {
-                ...item, 
+                ...item,
                 children: struct(list, item.id)
             };
         }
     });
- 
+
     return items
 }
 
 const sort = name =>{
-    
+
     return cards.filter(item => item.categories === name)
 }
 
 const findCard = id => {
-    
+
     return cards.find(item => item.id == id)
 }
 /*
@@ -282,7 +282,7 @@ const findCard = id => {
 подарки
 
 цветы
-розы 
+розы
 хризантемы
 альстрометрии
 эустомы
@@ -299,7 +299,7 @@ function getAllCards() {
 }
 
 function getCategories(){
-       
+
     return struct(categories)
 }
 export {getAllCards, getCategories, sort, findCard}

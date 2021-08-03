@@ -3,13 +3,8 @@ export function someAction (context) {
 }
 */
 
-import {getSmsCode} from "../../boot/helpers/profile"
+import { getSmsCode } from "src/api/profile";
 
-export async function  getSms({commit},phone){
-    
-  const sms = await getSmsCode(phone)
-  
+export async function getSms({ commit }, phone) {
+  const sms = await getSmsCode(phone);
 }
-
-
-

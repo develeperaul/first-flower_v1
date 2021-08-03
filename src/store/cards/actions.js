@@ -1,16 +1,13 @@
-import * as cardsApi from "../../boot/helpers/cards";
+import * as cardsApi from "src/api/cards";
 import {
   getElementList,
   getElementItem,
-  getHomeList,
-  
-  findCard
-} from "../../boot/helpers/cards";
+  getHomeList
+} from "src/api/cards";
 /*
 export function someAction (context) {
 }
 */
-
 
 export async function actionHomeList({ commit }) {
   const list = await getHomeList();
