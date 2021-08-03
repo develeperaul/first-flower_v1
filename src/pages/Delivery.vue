@@ -99,7 +99,7 @@ export default {
   }, 
   methods:{
     onSubmit(e){
-      alert(e)
+      this.$store.dispatch("basket/order", {delivery: this.adress===""? '': this.adress, name:this.name, phone: this.cellphone, date: this.date, time: this.time, comment: this.comment, payment: this.money })
     }
   }
 }

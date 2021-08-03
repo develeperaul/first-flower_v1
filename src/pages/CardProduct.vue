@@ -96,14 +96,22 @@
           >
             <q-icon
               
-              :name="isFavorite ? 'favorite' : 'favorite_border'"
-              :class="[isFavorite ? 'tw-text-info' : 'tw-text-border-icon']" />
+              :name="favorite && favorite[card.id] ? 'favorite' : 'favorite_border'"
+              :class="[favorite && favorite[card.id] ? 'tw-text-info' : 'tw-text-border-icon']" />
             
           </q-btn>
       </div>
       <div
+        v-if="card.img"
         :style="
         `background-image: url(http://flowers.2apps.ru${card.img});`"
+        class="image-pos "
+      >
+      </div>
+      <div
+        v-else
+        :style="
+        `background-image: url(/no_photo.png);`"
         class="image-pos "
       >
       </div>
@@ -143,7 +151,7 @@
             style="height: 145px">
             <Slide>
               <div
-                @click="choicePackage(1)"
+                @click="choicePackage($event,1)"
                 class="el-slide tw-flex tw-flex-col">
 
                  <div>
@@ -278,9 +286,10 @@ export default {
         this.$store.dispatch('cards/addFavoriteItem', this.card);
       }
     },
-    choicePackage(i){
+    choicePackage(e,i){
       this.package = i;
-      console.log(this.package)
+
+      console.log(e.style.borderColor = 'red' ,this.package)
     },
 
     

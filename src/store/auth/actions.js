@@ -3,7 +3,10 @@ export function someAction (context) {
 }
 */
 
-import authApi from '../../boot/helpers/auth'
+// import authApi from '../../boot/helpers/auth';
+
+
+
 
 export  function getProfile ({commit}){
     return new Promise(resolve =>{

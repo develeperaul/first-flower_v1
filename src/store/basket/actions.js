@@ -2,6 +2,21 @@
 export function someAction (context) {
 }
 */
+import {basket, sendOrder} from "../../boot/helpers/profile"
+
+export async function order({commit, getters}, list){
+    const ids = getters.products
+  const status = await sendOrder({ids, ...list})
+}
+
+export async function sendBasket({commit}, list){
+    
+    const sum = await basket(list)
+    console.log(sum)
+}
+
+
+
 export async function addProductToCart ({state, commit}, {...product}){
      
         commit('addProduct', product)

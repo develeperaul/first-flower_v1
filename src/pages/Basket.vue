@@ -11,19 +11,26 @@
         v-for="product in products"
         :key="product.id"
         class=" tw-mt-3.5 tw-p-0 tw-flex tw-justify-between"
-        
-        
-      
       >
-
-        
-             <q-img
-                :src="product.img"
+            <q-img
+                v-if="product.img"
+                :src="`http://flowers.2apps.ru${product.img}`"
                 width="105px"
                 height="105px"
                 class="tw-rounded-md tw-flex-shrink-0"
                 
-              />
+            />
+
+            <q-img
+              v-else
+              src="/no_photo.png"
+              width="105px"
+              height="105px"
+              class="tw-rounded-md tw-flex-shrink-0"
+              
+            />
+
+
           <div class="tw-flex-1 tw-flex tw-flex-col tw-justify-between tw-ml-5 sm:tw-ml-2.5">
             <div class="tw-flex tw-justify-between tw-items-center tw-flex-nowrap">
               <h4 class="tw-text-sm tw-font-medium">{{ product.name }}</h4>
@@ -87,12 +94,15 @@ export default {
   
   computed: {
     ...mapGetters(
-      "basket", ["amountProducts"]
+      "basket", ["amountProducts", "products"]
     ),
-    products() {
-      return this.$store.state.basket.products;
-    },
+    // products() {
+    //   return this.$store.state.basket.products;
+    // },
   },
+  created(){
+    this.$store.dispatch("basket/sendBasket", ['16_0', '17_0'])
+  }
 };
 </script>
 <style scoped>

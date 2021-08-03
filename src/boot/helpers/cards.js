@@ -1,5 +1,6 @@
 import { apiFlower } from "src/boot/ky";
 
+
 export function getSectionsList(){
     return apiFlower('section_list.php').json();
 }

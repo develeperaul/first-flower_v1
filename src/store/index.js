@@ -7,6 +7,8 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 import auth from './auth'
+
+import profile from './profile'
 import cards from './cards'
 import sales from './sales'
 import basket from './basket'
@@ -18,6 +20,8 @@ export default function () {
   const Store =  new Vuex.Store({
     modules: {
       auth,
+
+      profile,
       cards,
       sales,
       basket,

@@ -1,5 +1,6 @@
 <template>
   <q-btn
+    v-if="to"
     class="tw-py-2"
     :type="type"
     unelevated
@@ -13,6 +14,21 @@
       </span>
   </q-btn>
   
+
+    <q-btn
+    v-else
+    class="tw-py-2"
+    :type="type"
+    unelevated
+    :rounded="rounded"
+    :color="color"
+    
+    no-caps
+    >
+      <span class="tw-text-white tw-text-lg ">
+        {{ text }}
+      </span>
+  </q-btn>
 </template>
 
 <script>

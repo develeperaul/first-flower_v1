@@ -7,9 +7,10 @@
 export default {
   name: 'App',
   created() {
+    localStorage.setItem("favorite", JSON.stringify({22:true}));
     const favorite = localStorage.getItem('favorite') ;
     const basket = localStorage.getItem('basket');
-    console.log(favorite, basket)
+    
     if (favorite) {
       try {
         
@@ -23,7 +24,7 @@ export default {
     if(basket) {
       try {
         const obj = JSON.parse(basket);
-        console.log(obj)
+        
         this.$store.commit('basket/setBasket', obj)
       } catch (e) {
         localStorage.removeItem('basket');

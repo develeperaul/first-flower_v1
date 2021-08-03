@@ -15,7 +15,6 @@ export function newList(state) {
   return state.homeNew;
 }
 export function cards(state) {
-  // console.log(state.cards.length )
   return state.cards;
 }
 

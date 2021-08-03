@@ -12,7 +12,7 @@
           class="tw-absolute"
         />
         <div class="logo tw-m-auto tw-pt-2" @click="onLogo">
-            <img src="/logo.svg" alt="" />
+            <img src="logo.svg" alt="" />
         </div>
         
       </q-toolbar>
@@ -22,7 +22,10 @@
       <q-footer v-if="openCardProduct" class="bg-white env-b">
           <BorderLine/>
           
-        <q-toolbar class="flex justify-between tw-pt-2.5 tw-pb-3.5 env-b" @click="link">
+        <q-toolbar
+          class="flex justify-between env-b"
+          @click="link"
+          style="padding-top: 10px; padding-bottom: 14px">
           <NavLink name="home" :exact="true"/>
           <NavLink name="favorite" />
           
@@ -177,11 +180,12 @@ export default {
       this.width = window.innerWidth;
     },
     async getChildren(item){
-      if(this.title === null){
+      if(this.title === null && item.UF_HASCHILD){
         await this.$store.dispatch("categories/getSubSectionList", item.id)
         this.title = item.name
         this.list = this.subSection
-      }else{
+      }
+      else{
         this.$store.commit("categories/clickMenu")
         this.$router.push({name: 'cards', params:{id: item.id, item: item}})
       }

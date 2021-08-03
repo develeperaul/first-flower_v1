@@ -12,9 +12,7 @@ export function remove (state, card){
     state.products = state.products.filter((item) => item.id.match(/[\d]+[^_]/g).join() !== card.id);
 }
 export function addProduct (state, payload){
-    console.log(payload.count ? true : false)
     const cardItem = state.products.find(item => item.id === payload.id)
-    console.log(payload.id)
     if(payload.count)    
         if(!cardItem){
             state.products.push({...payload})    

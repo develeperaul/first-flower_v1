@@ -35,10 +35,6 @@ export default {
   data () {
     return {}
   },
-  methods:{
-    getSale(){
-      console.log('click btn')
-    }
-  }
+  
 }
 </script>

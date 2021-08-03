@@ -1,32 +1,37 @@
 <template>
-  <q-card flat class="tw-border my-card">
-    <!-- <img
-        :src="`http://flowers.2apps.ru${card.img}`"
-
+  <q-card flat class="tw-border my-card tw-flex tw-flex-col tw-justify-between">
+    <div>
+      <div
+        v-if="card.img"
         @click="linkCard"
-      /> -->
-    <div
-      @click="linkCard"
-      :style="`background-image: url(http://flowers.2apps.ru${card.img});`"
-      class="image-pos"
-    ></div>
-    <q-btn
-      round
-      unelevated
-      class="tw-absolute tw-top-0 tw-bg-white tw-right-0 border-inset tw-m-2.5"
-      @click="toggleFavorite"
-      size="8px"
-    >
-      <q-icon
-        :name="favorites && favorites[card.id] ? 'favorite' : 'favorite_border'"
-        :class="[
-          favorites && favorites[card.id]
-            ? 'tw-text-info'
-            : 'tw-text-border-icon',
-        ]"
-      />
-    </q-btn>
-  <!-- {{card.id}} -->
+        :style="`background-image: url(http://flowers.2apps.ru${card.img});`"
+        class="image-pos"
+      ></div>
+      <div
+        v-else
+        @click="linkCard"
+        :style="`background-image: url(/no_photo.png);`"
+        class="image-pos"
+      ></div>
+      <q-btn
+        round
+        unelevated
+        class="tw-absolute tw-top-0 tw-bg-white tw-right-0 border-inset"
+        style="margin:10px"
+        @click="toggleFavorite"
+        size="8px"
+      >
+        <q-icon
+          :name="favorites && favorites[card.id] ? 'favorite' : 'favorite_border'"
+          :class="[
+            favorites && favorites[card.id]
+              ? 'tw-text-info'
+              : 'tw-text-border-icon',
+          ]"
+        />
+      </q-btn>
+    </div>
+
     <q-card-section class="tw-p-3">
       <div class="tw-text-sm">{{ card.name }}</div>
       <div

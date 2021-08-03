@@ -7,8 +7,8 @@
             @click="linkCard(weekItem.id)"
             width="123px"
             height="123px"
-            
-            class=""  src="/flower.jpg" alt="" style="border-radius: 5px " /> 
+             :src="`http://flowers.2apps.ru${weekItem.img}`" alt="" style="border-radius: 5px; min-width:123px "
+             /> 
           <div class=" tw-flex tw-flex-col   tw-ml-4">
             <div class="tw-flex tw-justify-between tw-items-center tw-flex-nowrap">
               
@@ -19,10 +19,10 @@
               
             </div> 
             <div class="tw-flex tw-justify-between tw-items-center tw-flex-nowrap ">
-                <span class="tw-text-xl sm:tw-text-base tw-font-semibold tw-mr-11">{{weekItem.price}}&nbsp;руб.</span>
+                <span class="tw-text-xl sm:tw-text-sm tw-font-semibold sm:tw-mr-4  tw-mr-11">{{weekItem.price}}&nbsp;руб.</span>
                 <div>
                   <span style="color:red;text-decoration:line-through;">
-                    <span class="tw-text-xl sm:tw-text-base tw-font-semibold tw-text-info-light">{{weekItem.oldprice}}&nbsp;руб.</span>
+                    <span class="tw-text-xl sm:tw-text-sm tw-font-semibold tw-text-info-light">{{weekItem.oldprice}}&nbsp;руб.</span>
                   </span>
                 </div>
                 
@@ -59,6 +59,9 @@
                       <q-img
                         :src="`http://flowers.2apps.ru${item.img}`"
                         class="tw-rounded-md tw-mb-4"
+                        width="123px"
+                        height="123px"
+                        style="min-width: 123px; min-height: 123px"
                       />
                     </div>
                     <span class="tw-text-lg tw-font-medium tw-text-left tw-mb-2.5" >{{item.name}}</span>
@@ -93,7 +96,7 @@ export default {
       
 
       hooperSettings: {
-        trimWhiteSpace: true,
+        // trimWhiteSpace: true,
         transition: 700,
         // autoPlay: true,
         // playSpeed: 3500,

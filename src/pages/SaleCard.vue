@@ -49,7 +49,7 @@ export default {
   
   methods:{
     getSalesPage(){
-      console.log("getSalesPage")
+      
       this.$router.go(-1)
     },
     async getSaleItem(){

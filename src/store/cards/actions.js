@@ -3,12 +3,15 @@ import {
   getElementList,
   getElementItem,
   getHomeList,
+  
   findCard
 } from "../../boot/helpers/cards";
 /*
 export function someAction (context) {
 }
 */
+
+
 export async function actionHomeList({ commit }) {
   const list = await getHomeList();
   commit("getHomeListSuccess", list);

@@ -1,8 +1,11 @@
+import { apiFlower } from "src/boot/ky";
+
 let users = {
     id: 123,
     currentUser: '9999999999'
 }
-// const user = null
+
+const user = null
 const  getUser  = async () =>{
     
     return users;
