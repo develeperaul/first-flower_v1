@@ -43,12 +43,15 @@
         
       
         <q-carousel-slide v-for="(item, index) in card.add_imgs" :key="index" :name="index+1" class="tw-p-0 " >
+          <!-- :style="
+            `background-image: url(http://flowers.2apps.ru${item});`" -->
           <div
-            :style="
-            `background-image: url(http://flowers.2apps.ru${item});`"
+            
             class="image-pos "
           >
-
+            <q-img :src="`http://flowers.2apps.ru${item}`" 
+            
+            />
           </div>
           
           
