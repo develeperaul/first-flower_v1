@@ -1,10 +1,7 @@
 <template>
   <q-page class="p-content">
-    <!-- content -->
-    <!-- <template v-if="isLoading">
-      {{isLoading}}
-    </template> -->
-    <template >
+
+    <template v-if="sale">
     <div class="tw-text-center tw-mb-5 tw-relative">
       <q-icon
       @click="getSalesPage"

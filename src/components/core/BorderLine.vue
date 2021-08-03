@@ -1,5 +1,6 @@
 <template>
-  <div class="tw-border-t tw-border-gray-300" ></div>
+  <div class="tw-border-t "
+  style="border-color: #E0E0E0" ></div>
 </template>
 
 <script>
