@@ -59,3 +59,5 @@ computed(filled:"(error during evaluation)")
 
 
 12 урок accessTocen
+
+biuld не видит лого, не_фото, паддинг с верху, отступ в карточке козины, упаковка нету фото

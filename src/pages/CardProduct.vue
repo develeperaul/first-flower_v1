@@ -63,14 +63,14 @@
               flat dense  
               @click="$refs.carousel.previous()"
             >
-              <img src="/prev.svg" alt="">
+              <img src="prev.svg" alt="предыдущий">
             </q-btn>
             <q-btn
               flat
               dense
               @click="$refs.carousel.next()"
             >
-              <img src="/next.svg" alt="">
+              <img src="next.svg" alt="следующий">
             </q-btn>
           </q-carousel-control>
         </template>
@@ -111,7 +111,7 @@
       <div
         v-else
         :style="
-        `background-image: url(/no_photo.png);`"
+        `background-image: url(no_photo.png);`"
         class="image-pos "
       >
       </div>
@@ -149,67 +149,75 @@
           <Hooper
             :settings="hooperSettings"
             style="height: 145px">
-            <Slide>
+            <Slide
+              :style="package == 1 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}"
+            >
               <div
-                @click="choicePackage($event,1)"
+                @click="choicePackage(1)"
                 class="el-slide tw-flex tw-flex-col">
 
                  <div>
                    <q-img
-                    src="/upak_lenta.png"
+                    src="upak_lenta.png"
                     height="68px"
                     class="tw-mb-4"
                    />
                   </div>
                   <span class="tw-text-xs tw-mb-2.5" >Лента</span>
-                  <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_lenta}}&nbsp;руб.</span>
+                  <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_lenta ? card.upak_lenta : 0}}&nbsp;руб.</span>
                 </div>
             </Slide>
-            <Slide>
+            <Slide
+              :style="package == 2 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}"
+            >
               <div
                 @click="choicePackage(2)"
                 class="el-slide tw-flex tw-flex-col">
                   <div>
                     <q-img
-                      src="/upak_fetr.png"
+                      src="upak_fetr.png"
                       height="68px"
                       class="tw-mb-4"
                    />  
                   </div>
                   <span class="tw-text-xs tw-mb-2.5" >Фетр</span>
-                  <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_fetr}}&nbsp;руб.</span>
+                  <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_fetr ? card.upak_fetr : 0 }}&nbsp;руб.</span>
                 </div>
             </Slide>
-            <Slide>
+            <Slide
+              :style="package == 3 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}"
+            >
               <div
                 @click="choicePackage(3)"
                 class="el-slide tw-flex tw-flex-col">
                 
                   <div>
                     <q-img
-                      src="/upak_kraft.png"
+                      src="upak_kraft.png"
                       height="68px"
                       class="tw-mb-4"
                    />  
                   </div>
                   <span class="tw-text-xs tw-mb-2.5" >Крафт</span>
-                  <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_kraft}}&nbsp;руб.</span>
+                  <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_kraft ? card.upak_kraft : 0}}&nbsp;руб.</span>
                 </div>
             </Slide>
-            <Slide>
+            <Slide
+              :style="package == 4 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}"
+            >
               <div
                 @click="choicePackage(4)"
                 class="el-slide tw-flex tw-flex-col">
                 
                   <div>
                     <q-img
-                    src="/upak_kor.png"
+                    src="upak_kor.png"
                     height="68px"
                     class="tw-mb-4"
                    />  
                   </div>
                   <span class="tw-text-xs tw-mb-2.5" >Корейка</span>
-                  <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_kor}}&nbsp;руб.</span>
+                  <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_kor ? card.upak_kor : 0}}&nbsp;руб.</span>
                 </div>
             </Slide>
           </Hooper>
@@ -224,8 +232,10 @@
 
     </div>    
 
-    <div class="tw-flex tw-justify-between tw-items-center tw-pt-2.5 tw-pb-5">
-      <span class="tw-text-3xl sm:tw-text-2xl tw-font-bold">{{card.price}}&nbsp;руб.</span>
+    <div class="tw-flex tw-justify-between tw-items-center tw-pb-5"
+      style="padding-top: 10px"
+      >
+      <span class="tw-text-3xl sm:tw-text-2xl tw-font-bold">{{Number(card.price)+Number(packagePrice)}}&nbsp;руб.</span>
       <button
       @click="addProductToCart"
       class="tw-bg-secondary tw-rounded-full tw-text-white "
@@ -265,12 +275,16 @@ export default {
         transition: 700,
         itemsToShow: 4
       },
+      // package: {
+      //   current: ''
+      // },
     
       isActive: false,
       name:"favorite_border",
       claaName: "tw-text-border-icon",
       
-      package: 0
+      package: 0,
+      // package_price: ''
     }
   },
   methods:{
@@ -286,10 +300,8 @@ export default {
         this.$store.dispatch('cards/addFavoriteItem', this.card);
       }
     },
-    choicePackage(e,i){
+    choicePackage(i){
       this.package = i;
-
-      console.log(e.style.borderColor = 'red' ,this.package)
     },
 
     
@@ -333,6 +345,20 @@ export default {
     ...mapGetters("cards", ["card", "favorite"]),
 
     //для вида упаковки
+    packagePrice(){
+      switch(this.package){
+        case 1:
+         return this.card.upak_lenta;
+        case 2:
+          return this.card.upak_fetr
+        case 3:
+          return this.card.upak_kraft
+        case 4: 
+          return this.card.upak_kor
+        default: 
+          return 0
+      }
+    },
      isPackage(){
        
        if(this.listPackge.length > 0){
@@ -393,7 +419,7 @@ export default {
   .hooper-slide{
     min-width: 99px;
     height: 145px;
-    border: 1px solid #e0e0e0e0;
+    
     border-radius: 5px;
     margin-right: 12px;
     text-align: center;

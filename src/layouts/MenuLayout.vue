@@ -12,7 +12,8 @@
           class="tw-absolute"
         />
         <div class="logo tw-m-auto tw-pt-2" @click="onLogo">
-            <img src="logo.svg" alt="" />
+             <img src="firstFlower.svg" alt="логитип">
+            
         </div>
         
       </q-toolbar>
@@ -83,7 +84,6 @@
             <span class="tw-font-semibold tw-text-lg">
               Контакты магазина
             </span>
-            <!-- <>Позвоните нам!</a> -->
             <a href="tel:+796273454999" class="tw-font-medium tw-pt-3.5 tw-flex">
               <Icon name="phone"  class="tw-mr-3"/>
               896273454999
@@ -96,7 +96,8 @@
        
       </q-drawer>
       <q-page-container >
-        <router-view class="tw-my-2.5" />
+        <router-view 
+        style="margin-top: 10px; margin-bottom: 10px"/>
       </q-page-container>
     </q-layout>
 

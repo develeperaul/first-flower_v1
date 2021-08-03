@@ -10,7 +10,7 @@
       <div
         v-else
         @click="linkCard"
-        :style="`background-image: url(/no_photo.png);`"
+        :style="`background-image: url(no_photo.png);`"
         class="image-pos"
       ></div>
       <q-btn
