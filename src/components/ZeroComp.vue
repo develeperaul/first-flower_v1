@@ -1,37 +1,38 @@
 <template>
-    <q-page  class="tw-flex tw-flex-col tw-justify-around p-content">
-      <div class="tw-flex tw-flex-col tw-items-center">
-        <Icon :name="nameIcon"/>
-        <!-- <q-img v-if="hasImg" class="tw-w-10 tw-h-10 rounded" src="/basketFlower.svg" /> -->
-        <span class="tw-text-2xl tw-font-semibold tw-text-center tw-mt-6">{{text}}</span>
-      
-      </div>
-      <!-- <BaseButton v-if="to" :text="textBtn" :to="to"/> -->
-      <button
-        v-if="to"
-        class="tw-bg-secondary tw-rounded-full tw-text-white "
-        type="buttom"
-        style="padding-top: 14px; padding-bottom: 14px; line-height: 24.5px; font-size: 20px"
-      >
-        <router-link 
-         :to="to">
-          {{textBtn}}
-        </router-link>
-       
-      </button>
-      <button
-        v-else
-        @click="openMenu"
-        class="tw-bg-secondary tw-rounded-full tw-text-white "
-        type="buttom"
-        style="padding-top: 14px; padding-bottom: 14px; line-height: 24.5px; font-size: 20px"
-      >
-          {{textBtn}}
-       
-       
-      </button>
-     
-    </q-page>
+  <q-page class="tw-flex tw-flex-col tw-justify-around p-content">
+    <div class="tw-flex tw-flex-col tw-items-center">
+      <Icon
+        v-if="hasImg"
+        :name="nameIcon"
+      />
+      <!-- <q-img v-if="hasImg" class="tw-w-10 tw-h-10 rounded" src="/basketFlower.svg" /> -->
+      <span class="tw-text-2xl tw-font-semibold tw-text-center tw-mt-6">{{text}}</span>
+
+    </div>
+    <!-- <BaseButton v-if="to" :text="textBtn" :to="to"/> -->
+    <button
+      v-if="to"
+      class="tw-bg-secondary tw-rounded-full tw-text-white "
+      type="buttom"
+      style="padding-top: 14px; padding-bottom: 14px; line-height: 24.5px; font-size: 20px"
+    >
+      <router-link :to="to">
+        {{textBtn}}
+      </router-link>
+
+    </button>
+    <button
+      v-else
+      @click="openMenu"
+      class="tw-bg-secondary tw-rounded-full tw-text-white "
+      type="buttom"
+      style="padding-top: 14px; padding-bottom: 14px; line-height: 24.5px; font-size: 20px"
+    >
+      {{textBtn}}
+
+    </button>
+
+  </q-page>
 </template>
 
 <script>
@@ -51,8 +52,8 @@ export default {
       required: true,
       type: String
     },
-    to:{
-      
+    to: {
+
       required: false,
       type: Object
     },
@@ -65,8 +66,8 @@ export default {
   data () {
     return {}
   },
-  methods:{
-    openMenu(){
+  methods: {
+    openMenu () {
       this.$store.commit("categories/clickMenu")
     }
   }

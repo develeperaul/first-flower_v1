@@ -1,8 +1,11 @@
 import * as BasketAPI from "src/api/profile";
 
-export async function order ({ commit, getters }, list) {
-  const ids = getters.products;
-  const status = await sendOrder({ ids, ...list });
+export async function order ({ getters }, list) {
+  const ids = getters.ids;
+  const token = localStorage.getItem("accessToken")
+  const status = await BasketAPI.sendOrder(ids, list, token ? JSON.parse(token).token : null);
+  console.log('order', status)
+  return status
 }
 
 export async function addToCart ({ commit }, list) {
@@ -40,4 +43,9 @@ export function decrementCount ({ commit, state }, product) {
 export async function remove ({ commit, state }, { id }) {
   commit("removeProduct", id);
   localStorage.setItem("basket", JSON.stringify(state.products));
+}
+
+export function clearBasket ({ commit }) {
+  commit("clear");
+  localStorage.removeItem("basket");
 }

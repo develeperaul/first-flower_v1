@@ -56,3 +56,8 @@ export function decrementProducts (state, { id }) {
 export function removeProduct (state, id) {
     state.products = state.products.filter((item) => item.id !== id);
 }
+
+
+export function clear (state) {
+    state.products = [];
+}

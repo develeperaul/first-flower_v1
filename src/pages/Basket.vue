@@ -109,6 +109,7 @@ export default {
     // },
   },
   created () {
+    console.log(this.products.map(item => item.id))
     this.$store.dispatch('basket/addToCart', ['12_1_1', '17_3_2', '10_2_6']);
   },
 };
