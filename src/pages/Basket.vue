@@ -1,11 +1,17 @@
 <template>
   <div v-if="!products.length">
-    <ZeroComp text="Ваша корзина пуста" textBtn="Перейти в каталог" />
+    <ZeroComp
+      text="Ваша корзина пуста"
+      textBtn="Перейти в каталог"
+    />
   </div>
   <div v-else>
     <q-page class="tw-flex tw-flex-col">
       <div class="p-content tw--my-3.5">
-        <div v-for="(product, index) in products" :key="product.id">
+        <div
+          v-for="(product, index) in products"
+          :key="product.id"
+        >
           <div class="indent tw-mt-3.5 tw-p-0 tw-flex tw-justify-between">
             <q-img
               v-if="product.img"
@@ -23,17 +29,13 @@
               class="tw-rounded-md tw-flex-shrink-0"
             />
 
-            <div
-              class="
+            <div class="
                 tw-flex-1 tw-flex tw-flex-col tw-justify-between tw-ml-5
                 sm:tw-ml-2.5
-              "
-            >
-              <div
-                class="
+              ">
+              <div class="
                   tw-flex tw-justify-between tw-items-center tw-flex-nowrap
-                "
-              >
+                ">
                 <h4 class="tw-text-sm tw-font-medium">{{ product.name }}</h4>
 
                 <q-icon
@@ -50,24 +52,21 @@
                   class="tw-mr-2.5"
                 />
 
-                <span class="tw-text-xl sm:tw-text-base tw-font-semibold"
-                  >{{ product.price }}&nbsp;руб.</span
-                >
+                <span class="tw-text-xl sm:tw-text-base tw-font-semibold">{{ product.price }}&nbsp;руб.</span>
               </div>
             </div>
           </div>
 
-          <BorderLine v-if="index + 1 !== products.length" class="-m-content" />
+          <BorderLine
+            v-if="index + 1 !== products.length"
+            class="-m-content"
+          />
         </div>
       </div>
 
-      <div
-        class="bg-total tw-flex tw-justify-between tw-my-12 tw-py-5 p-content"
-      >
+      <div class="bg-total tw-flex tw-justify-between tw-my-12 tw-py-5 p-content">
         <span class="tw-text-xl">Итого</span>
-        <span class="tw-text-xl tw-font-semibold"
-          >{{ amountProducts }} руб.</span
-        >
+        <span class="tw-text-xl tw-font-semibold">{{ amountProducts }} руб.</span>
       </div>
       <div class="p-content">
         <BaseButton
@@ -89,16 +88,16 @@ export default {
     ZeroComp,
   },
 
-  data() {
+  data () {
     return {
       ph: '',
     };
   },
   methods: {
-    incrementCount(id, value) {
+    incrementCount (id, value) {
       this.$store.dispatch(`basket/${value}Count`, id);
     },
-    removeProduct(id) {
+    removeProduct (id) {
       this.$store.dispatch('basket/remove', { id });
     },
   },
@@ -109,7 +108,7 @@ export default {
     //   return this.$store.state.basket.products;
     // },
   },
-  created() {
+  created () {
     this.$store.dispatch('basket/addToCart', ['12_1_1', '17_3_2', '10_2_6']);
   },
 };

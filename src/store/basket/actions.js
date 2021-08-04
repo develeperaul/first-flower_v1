@@ -1,40 +1,43 @@
 import * as BasketAPI from "src/api/profile";
 
-export async function order({ commit, getters }, list) {
+export async function order ({ commit, getters }, list) {
   const ids = getters.products;
   const status = await sendOrder({ ids, ...list });
 }
 
-export async function addToCart({ commit }, list) {
+export async function addToCart ({ commit }, list) {
   const res = await BasketAPI.add(list);
   console.log(2);
   console.log(1, res);
   return res;
 }
 
-export async function sendBasket({ commit }, list) {
+export async function sendBasket ({ commit }, list) {
   const sum = await basket(list);
   console.log(sum);
 }
 
-export async function addProductToCart({ state, commit }, { ...product }) {
+export async function addProductToCart ({ state, commit }, { ...product }) {
   commit("addProduct", product);
   localStorage.setItem("basket", JSON.stringify(state.products));
 }
 
-export async function removeProductCart({ state, commit }, { ...product }) {
+export async function removeProductCart ({ state, commit }, { ...product }) {
   commit("remove", product);
   localStorage.setItem("basket", JSON.stringify(state.products));
 }
 
-export async function incrementCount({ commit }, product) {
+export async function incrementCount ({ commit, state }, product) {
   commit("incrementProducts", product);
+  localStorage.setItem("basket", JSON.stringify(state.products));
 }
 
-export function decrementCount({ commit }, product) {
+export function decrementCount ({ commit, state }, product) {
   commit("decrementProducts", product);
+  localStorage.setItem("basket", JSON.stringify(state.products));
 }
 
-export async function remove({ commit }, { id }) {
+export async function remove ({ commit, state }, { id }) {
   commit("removeProduct", id);
+  localStorage.setItem("basket", JSON.stringify(state.products));
 }

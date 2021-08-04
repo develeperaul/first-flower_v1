@@ -1,5 +1,8 @@
 <template>
-  <q-card flat class="tw-border my-card tw-flex tw-flex-col tw-justify-between">
+  <q-card
+    flat
+    class="tw-border my-card tw-flex tw-flex-col tw-justify-between"
+  >
     <div>
       <div
         v-if="card.img"
@@ -34,11 +37,9 @@
 
     <q-card-section class="tw-p-3">
       <div class="tw-text-sm">{{ card.name }}</div>
-      <div
-        class="
+      <div class="
           tw-font-semibold tw-text-xl tw-flex tw-justify-between tw-items-end
-        "
-      >
+        ">
         <span> {{ card.price }}&nbsp;руб. </span>
         <q-btn
           @click="addProductToCart"
@@ -47,11 +48,11 @@
           round
           size="8px"
           class="tw-border tw-border-primary tw-border-solid"
-          :class="[this.products.find(item=>item.id.match(/[\d]+[^_]/g).join() == this.card.id) ? active : inactive]"
+          :class="[this.products.find(item=>item.id.match(/\d+/g)[0] == this.card.id) ? active : inactive]"
         >
           <Icon
             name="basket"
-            :color="this.products.find(item=>item.id.match(/[\d]+[^_]/g).join() == this.card.id) ? '#ffffff' : '#838383'"
+            :color="this.products.find(item=>item.id.match(/\d+/g)[0] == this.card.id) ? '#ffffff' : '#838383'"
             class="tw-w-4 tw-h-3"
           />
         </q-btn>
@@ -72,7 +73,7 @@ export default {
       reqaured: true,
     },
   },
-  data() {
+  data () {
     return {
       isActive: false,
       active: 'tw-bg-secondary',
@@ -84,8 +85,9 @@ export default {
     };
   },
   methods: {
-    addProductToCart() {
-      if (this.products.find(item=>item.id.match(/[\d]+[^_]/g).join() == this.card.id)) {
+    addProductToCart () {
+      console.log(this.products.find(item => item.id.match(/\d+/g)[0] == this.card.id))
+      if (this.products.find(item => item.id.match(/\d+/g)[0] == this.card.id)) {
         this.$store.dispatch('basket/removeProductCart', this.card);
       } else {
         this.$store.dispatch('basket/addProductToCart', this.card);
@@ -93,12 +95,12 @@ export default {
       // this.$store.dispatch("basket/addProductToCart", this.card);
       this.isActive = !this.isActive;
     },
-    linkCard() {
+    linkCard () {
       console.log('linkCard', this.card.id);
       this.$router.push({ name: 'cardproduct', params: { id: this.card.id } });
     },
-    toggleFavorite() {
-      
+    toggleFavorite () {
+
       if (this.favorites && this.favorites[this.card.id]) {
         this.$store.dispatch('cards/removeFavoriteItem', this.card);
       } else {
@@ -129,7 +131,7 @@ export default {
 
   &::after {
     position: absolute;
-    content: '';
+    content: "";
     width: 30px;
     height: 30px;
     top: 50%;
