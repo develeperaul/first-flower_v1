@@ -7,7 +7,10 @@
         class="tw-flex tw-flex-col tw-justify-between"
       >
         <div class="tw-flex tw-flex-col tw-justify-between">
-          <span class="tw-text-2xl tw-font-semibold tw-mb-3.5 tw-mt-7">
+          <span
+            class="tw-text-2xl tw-font-semibold tw-mt-7"
+            style="margin-bottom: 14px"
+          >
             Способ доставки
           </span>
           <div class="tw-flex tw-items-center tw-mb-4">
@@ -43,7 +46,10 @@
 
         </div>
         <div class="tw-flex tw-flex-col tw-justify-between">
-          <span class="tw-text-2xl tw-font-semibold tw-mb-3.5 tw-mt-7">
+          <span
+            class="tw-text-2xl tw-font-semibold tw-mt-7"
+            style="margin-bottom: 14px"
+          >
             Данные получателя
           </span>
           <Input
@@ -59,8 +65,11 @@
 
         </div>
         <div class="tw-flex tw-flex-col tw-justify-between">
-          <span class="tw-text-2xl tw-font-semibold tw-my-3.5">
-            Условия самовывоза
+          <span
+            class="tw-text-2xl tw-font-semibold"
+            style="margin: 14px 0"
+          >
+            Условия {{picked === 'pickup' ? 'самовывоза' : 'доставки'}}
           </span>
           <DateInput :valuedate.sync="date" />
           <TimeInput :valuetime.sync="time" />
@@ -70,7 +79,10 @@
         </div>
 
         <div class="tw-flex tw-flex-col tw-justify-between">
-          <span class="tw-text-2xl tw-font-semibold tw-mb-3.5 tw-mt-7">
+          <span
+            class="tw-text-2xl tw-font-semibold tw-mt-7"
+            style="margin-bottom: 14px"
+          >
             Способ оплаты
           </span>
           <div
@@ -85,7 +97,7 @@
             >
             <label for="card">Картой в магазине</label>
           </div>
-          <div class="tw-flex tw-items-center tw-mb-4">
+          <div class="tw-flex tw-items-center tw-mb-10">
             <input
               type="radio"
               id="cash"
@@ -96,8 +108,6 @@
           </div>
 
         </div>
-        <!-- <button class="btn text-brand-gray mt-10">Оформить заказ</button> -->
-
         <button
           class="tw-bg-secondary tw-rounded-full tw-text-white "
           type="buttom"

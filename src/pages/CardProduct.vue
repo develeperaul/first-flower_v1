@@ -173,7 +173,7 @@
         <div class="tw--mr-3.5">
           <Hooper
             :settings="hooperSettings"
-            style="height: 145px"
+            style="height: 145px; outline:none"
           >
             <Slide :style="package == 1 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}">
               <div

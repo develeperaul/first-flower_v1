@@ -31,7 +31,6 @@
       >ОК</span>
 
     </div>
-    {{code}}
   </q-page>
 </template>
 

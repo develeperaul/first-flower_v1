@@ -6,6 +6,7 @@
     :name="name || label"
     v-slot="{ errors, ariaInput, ariaMsg }"
   >
+
     <input
       :class="{ 'tw-border-input': !errors[0], 'tw-border-secondary': errors[0], 'has-value': hasValue, 'has-placeholder': hasBlur }"
       class="tw-w-full tw-py-3 tw-px-4 tw-leading-normal tw-bg-transparent tw-border"
@@ -16,8 +17,8 @@
       ref="input"
       v-model="innerValue"
       v-bind="ariaInput"
-      @blur="onBlur"
-      @focus="onFocus"
+      @blur="onBlur(errors[0])"
+      @focus="onFocus(errors[0])"
     >
     <label
       class="tw-absolute tw-block tw-bottom-1/2 tw-transform tw-translate-y-1/2 tw-w-full tw-px-4  tw-leading-normal"
@@ -26,7 +27,11 @@
       ref="label"
       :class="{ 'tw-text-border-input ': !errors[0], 'tw-text-secondary': errors[0] }"
     >
-      <span class="tw-font-medium">{{ label || name }}</span>
+      <span
+        :class="{ 'tw-text-border-input ': !errors[0], 'tw-text-secondary': errors[0] }"
+        ref="span"
+        class="tw-font-medium"
+      >{{ label || name }}</span>
 
     </label>
     <template>
@@ -99,17 +104,23 @@ export default {
     valuePlaceholder: null
   }),
   methods: {
-    onBlur () {
+    onBlur (e) {
+
+
       if (!this.hasValue) {
+        // console.log()
 
         this.hasBlur = true
+        // this.$refs.input.
       }
 
     },
-    onFocus () {
+    onFocus (e) {
+
       if (!this.hasValue) {
         this.valuePlaceholder = this.placeholder
         this.$refs.input.placeholder = this.valuePlaceholder
+        console.log(this.$refs.span.style.color)
       }
 
     }
@@ -122,8 +133,8 @@ export default {
 
   },
   watch: {
-    innerValue (value) {
 
+    innerValue (value) {
       this.$emit("input", value);
     },
     value (val) {
@@ -164,7 +175,6 @@ export default {
   input::-webkit-calendar-picker-indicator {
     display: none;
   }
-
   label {
     & span {
       padding: 0 0px;
@@ -187,7 +197,6 @@ export default {
     & span {
       transition: all 0.6s ease-in-out;
       font-size: 0.625rem;
-      color: #272727;
       background: rgba(100%, 100%, 100%, 100%);
       z-index: 1;
       // background: red;

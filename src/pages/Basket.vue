@@ -70,9 +70,17 @@
       </div>
       <div class="p-content">
         <BaseButton
+          v-if="phone"
           class="tw-w-full"
           text="Оформить заказ"
           :to="{ name: 'delivery' }"
+        />
+
+        <BaseButton
+          v-else
+          class="tw-w-full"
+          text="Войдите для оформления заказа"
+          :to="{ name: 'auth' }"
         />
       </div>
     </q-page>
@@ -103,10 +111,14 @@ export default {
   },
 
   computed: {
-    ...mapGetters('basket', ['amountProducts', 'products']),
-    // products() {
-    //   return this.$store.state.basket.products;
-    // },
+    // ...mapGetters('basket', ['amountProducts', 'products']),
+    ...mapGetters({
+      amountProducts: 'basket/amountProducts',
+      products: 'basket/products',
+      phone: 'profile/phone'
+    }),
+
+
   },
   created () {
     console.log(this.products.map(item => item.id))

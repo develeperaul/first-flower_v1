@@ -16,6 +16,8 @@
               v-model="phone"
               mask="###) ### ## ##"
               unmasked-value
+              autofocus
+              type="tel"
               class="tw-text-4xl  text-black  tw-mb-12  "
               :input-style="{ width: '200px',marginLeft: '-12px', fontWeight: '400' }"
             >
