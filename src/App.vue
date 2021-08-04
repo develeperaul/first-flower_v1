@@ -6,14 +6,14 @@
 <script>
 export default {
   name: 'App',
-  created() {
-    localStorage.setItem("favorite", JSON.stringify({22:true}));
-    const favorite = localStorage.getItem('favorite') ;
+  created () {
+    // localStorage.setItem("favorite", JSON.stringify({22:true}));
+    const favorite = localStorage.getItem('favorite');
     const basket = localStorage.getItem('basket');
-    
+
     if (favorite) {
       try {
-        
+
         const obj = JSON.parse(favorite);
         this.$store.commit('cards/setFavorites', obj);
       } catch (e) {
@@ -21,17 +21,17 @@ export default {
       }
     }
 
-    if(basket) {
+    if (basket) {
       try {
         const obj = JSON.parse(basket);
-        
+
         this.$store.commit('basket/setBasket', obj)
       } catch (e) {
         localStorage.removeItem('basket');
       }
     }
   },
-  mounted() {
+  mounted () {
     this.$store.dispatch('auth/getProfile');
   },
 };
