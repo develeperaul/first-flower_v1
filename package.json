@@ -1,8 +1,8 @@
 {
   "name": "first-flower-v1",
-  "version": "0.0.1",
-  "description": "A Quasar Framework app",
-  "productName": "Quasar App",
+  "version": "1.0.0",
+  "description": "Первый цветочный - цветочный интернет магазин для оформления товаров как для доставки так и для самовывоза в удобное для вас время",
+  "productName": "Первый цветочный",
   "author": "Ralfik <developeraul@gmail.com>",
   "private": true,
   "scripts": {
