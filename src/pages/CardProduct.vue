@@ -414,6 +414,9 @@ export default {
       this.$q.loading.hide()
     })
   },
+  destroyed () {
+    this.$store.commit("cards/clearCard")
+  }
 };
 </script>
 <style scoped lang="scss">
