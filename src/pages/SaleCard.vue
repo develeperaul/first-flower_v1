@@ -18,6 +18,8 @@
         width="100%"
         height="100%"
         style="border-radius: 5px"
+        spinner-color="grey"
+        spinner-size="50px"
       />
       <div class="tw-mx-4 tw-mt-7">
         <span class="tw-text-lg tw-font-medium ">
@@ -71,6 +73,10 @@ export default {
       this.$q.loading.hide()
     })
   },
+  beforeRouteLeave (to, from, next) {
+    this.$store.commit("sales/clear")
+    next()
+  }
 
 }
 /*

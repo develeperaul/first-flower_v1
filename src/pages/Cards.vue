@@ -4,7 +4,10 @@
     text="В этой категории пока нет товаров"
     textBtn="Перейти в каталог"
   />
-  <q-page v-else class="p-content">
+  <q-page
+    v-else
+    class="p-content"
+  >
     <div class="tw-text-center tw-mb-7 tw-relative">
       <q-icon
         @click="getParent"
@@ -18,7 +21,10 @@
       <span class="tw-font-semibold">{{ listName }}</span>
     </div>
 
-    <BaseList :cards="cards" class="tw-grid tw-grid-cols-2 tw-gap-4" />
+    <BaseList
+      :cards="cards"
+      class="tw-grid tw-grid-cols-2 tw-gap-4"
+    />
   </q-page>
 </template>
 
@@ -37,17 +43,17 @@ export default {
 
   // name: 'PageName',
   methods: {
-    onChangeBack() {
+    onChangeBack () {
       // this.$router.go(-1)
       this.$router.push({ name: 'home', params: { menuOpen: true } });
     },
-    getFavorites() {
+    getFavorites () {
       this.$store.dispatch('cards/getFavorite');
     },
-    async getCards(id) {
+    async getCards (id) {
       await this.$store.dispatch('cards/getList', id);
     },
-    getParent() {
+    getParent () {
       this.$store.commit('categories/clickMenu');
       // this.$router.go(+1)
     },
@@ -56,7 +62,8 @@ export default {
     ...mapGetters('cards', ['cards', 'listName', 'favorite']),
   },
 
-  created() {
+  created () {
+    console.log(this.$route)
     this.$q.loading.show({
       spinner: QSpinnerPuff,
       spinnerSize: 240,
@@ -65,7 +72,7 @@ export default {
       this.$q.loading.hide();
     });
   },
-  beforeRouteUpdate(to, from, next) {
+  beforeRouteUpdate (to, from, next) {
     this.$q.loading.show({
       spinner: QSpinnerPuff,
       spinnerSize: 240,
@@ -73,7 +80,7 @@ export default {
     this.getCards(to.params.id).then(() => {
       this.$q.loading.hide();
     });
-    next(() => {});
+    next(() => { });
   },
 };
 </script>
