@@ -2,78 +2,79 @@
   <q-page class="p-content">
 
     <template v-if="sale">
-    <div class="tw-text-center tw-mb-5 tw-relative">
-      <q-icon
-      @click="getSalesPage"
-      name="arrow_back_ios"
-      class="tw-absolute tw-left-0 tw-top-1/2 tw-transform tw--translate-y-1/2 "
-      >
-      </q-icon>
-      <span 
-          class="tw-text-xl tw-font-semibold "  
-      >
-        {{sale.name}}
-      </span>
-    </div>
-    <BaseSale v-bind="{ ...sale }" />
-    <div class="tw-mx-4 tw-mt-7">
-      <span
-        class="tw-text-lg tw-font-medium ">
-        {{sale.preview_text}}
-      </span>
-    </div>
+      <div class="tw-text-center tw-mb-5 tw-relative">
+        <q-icon
+          @click="getSalesPage"
+          name="arrow_back_ios"
+          class="tw-absolute tw-left-0 tw-top-1/2 tw-transform tw--translate-y-1/2 "
+        >
+        </q-icon>
+        <span class="tw-text-xl tw-font-semibold ">
+          {{sale.name}}
+        </span>
+      </div>
+      <q-img
+        :src="`http://flowers.2apps.ru${sale.img_det}`"
+        width="100%"
+        height="100%"
+        style="border-radius: 5px"
+      />
+      <div class="tw-mx-4 tw-mt-7">
+        <span class="tw-text-lg tw-font-medium ">
+          {{sale.detail_text}}
+        </span>
+      </div>
     </template>
-    
-    
+
   </q-page>
 </template>
 
 <script>
 
-import  {mapGetters} from 'vuex'
+import { mapGetters } from 'vuex'
 
-import {QSpinnerPuff} from 'quasar'
+import { QSpinnerPuff } from 'quasar'
 
 
 export default {
   name: 'SaleCard',
-  data(){
+  data () {
     return {
-      
+
     }
   },
-  
-  
-  methods:{
-    getSalesPage(){
-      
+
+
+  methods: {
+    getSalesPage () {
+
       this.$router.go(-1)
     },
-    async getSaleItem(){
+    async getSaleItem () {
       await this.$store.dispatch("sales/actionSaleItem", this.$route.params.id);
     }
   },
-  computed:{
+  computed: {
     ...mapGetters(
       "sales", ["sale"],
     ),
-    
+
   },
-  created(){
+  created () {
     this.$q.loading.show(
       {
         spinner: QSpinnerPuff,
         spinnerSize: 240,
       }
-    ) 
-    return this.getSaleItem().then(()=>{
-      this.$q.loading.hide()  
+    )
+    return this.getSaleItem().then(() => {
+      this.$q.loading.hide()
     })
   },
-  
+
 }
 /*
-  при обновлении компонент не видит 
+  при обновлении компонент не видит
 */
 </script>
 
