@@ -4,7 +4,7 @@
     tag="div"
     v-bind="{ rules, vid}"
     :name="name || label"
-    v-slot="{ errors, ariaInput, ariaMsg }"
+    v-slot="{ errors }"
   >
 
     <input
@@ -16,7 +16,6 @@
       :placeholder="valuePlaceholder"
       ref="input"
       v-model="innerValue"
-      v-bind="ariaInput"
       @blur="onBlur(errors[0])"
       @focus="onFocus(errors[0])"
     >
@@ -184,8 +183,12 @@ export default {
     font-size: 1rem;
   }
 
-  input:focus {
+  input:focus,
+  input:focus ~ label {
     border-color: #272727;
+    & span {
+      color: black;
+    }
   }
   input.has-placeholder ~ label,
   input.has-value ~ label,
@@ -199,6 +202,7 @@ export default {
       font-size: 0.625rem;
       background: rgba(100%, 100%, 100%, 100%);
       z-index: 1;
+
       // background: red;
       padding: 0 4px;
     }
