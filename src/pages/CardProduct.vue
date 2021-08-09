@@ -54,10 +54,13 @@
           :name="index+1"
           class="tw-p-0 "
         >
-          <!-- :style="
-            `background-image: url(http://flowers.2apps.ru${item});`" -->
           <div class="image-pos ">
-            <q-img :src="`http://flowers.2apps.ru${item}`" />
+            <q-img
+              @click="toggle"
+              :icon="$q.fullscreen.isActive ? 'fullscreen_exit' : 'fullscreen'"
+              :label="$q.fullscreen.isActive ? 'Exit Fullscreen' : 'Go Fullscreen'"
+              :src="`http://flowers.2apps.ru${item}`"
+            />
           </div>
 
         </q-carousel-slide>
@@ -119,10 +122,14 @@
       </div>
       <div
         v-if="card.img"
-        :style="
-        `background-image: url(http://flowers.2apps.ru${card.img});`"
-        class="image-pos "
+        class="image-pos"
       >
+        <q-img
+          @click="toggle"
+          :icon="$q.fullscreen.isActive ? 'fullscreen_exit' : 'fullscreen'"
+          :label="$q.fullscreen.isActive ? 'Exit Fullscreen' : 'Go Fullscreen'"
+          :src="`http://flowers.2apps.ru${card.img}`"
+        />
       </div>
       <div
         v-else
@@ -310,6 +317,21 @@ export default {
     }
   },
   methods: {
+    toggle (e) {
+      const target = e.target.parentNode
+
+      this.$q.fullscreen.toggle(target)
+        .then(() => {
+          // success!
+        })
+        .catch((err) => {
+          alert(err)
+          // uh, oh, error!!
+          // console.error(err)
+        })
+    },
+
+
     async getCard () {
       await this.$store.dispatch('cards/getCard', this.$route.params.id)
     },
