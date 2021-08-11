@@ -116,35 +116,58 @@
           <BorderLine v-if="(index+1)!==list.length" />
         </div>
       </div>
-      <div class="tw-flex tw-flex-col  p-content tw-mt-3 tw-mb-12  tw-ml-4">
+      <div class="tw-flex tw-flex-col  p-content tw-mt-3 tw-mb-12  tw-mx-4">
         <span class="tw-font-semibold tw-text-lg">
-          Контакты магазина
+          Контакты магазина 
         </span>
         <a
-          href="tel:+796273454999"
+          href="tel:+79178000907"
+          class="tw-font-medium tw-pt-3.5 tw-flex"
+        >
+          <Icon
+            name="phone"
+            class="tw-mr-3"
+            
+          />
+          тел. 89178000907 (WhatsApp) цветы
+        </a>
+        <a
+          href="https://goo.gl/maps/XjYFnUJRMnuUPQ9R7"
+          class="tw-font-medium tw-pt-3.5 tw-flex"
+        >
+          <Icon
+            name="location"
+            class="tw-mr-3"
+            
+          />
+          Чишмы, пр. Дружбы 1/1 (8:00 – 21:00);
+        </a>  
+
+        <a
+          href="tel:+79177818939"
           class="tw-font-medium tw-pt-3.5 tw-flex"
         >
           <Icon
             name="phone"
             class="tw-mr-3"
           />
-          896273454999
+          тел. 89177818939 (WhatsApp) шары
         </a>
         <a
-          href="https://goo.gl/maps/3pdTeXEyvSMhM2369"
+          href="https://goo.gl/maps/CNV3YUJATWpASB446"
           class="tw-font-medium tw-pt-3.5 tw-flex"
         >
           <Icon
             name="location"
             class="tw-mr-3"
           />
-          Чишмы,&nbsp;ул.&nbsp;Ленина,&nbsp;31
+          Чишмы, ул. Шоссейная 29 (10:00 – 22:00).
         </a>
       </div>
 
     </q-drawer>
-    <q-page-container>
-      <router-view style="margin-top: 10px; margin-bottom: 10px" />
+    <q-page-container >
+      <router-view  style="padding-top: 10px; "/>
     </q-page-container>
   </q-layout>
 

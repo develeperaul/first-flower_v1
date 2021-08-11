@@ -6,8 +6,9 @@
   >
     <q-card-section class="tw-p-0 tw-my-5 tw-ml-6 tw-flex-grow">
       
-        <div class="tw-mb-3">
-          <span class="text-color tw-text-lg tw-font-medium"> {{ text }}</span>
+        <div class="tw-mb-3 tw-pr-3">
+          <span class="text-color tw-text-lg tw-font-medium" v-html="text"
+          style="overflow-wrap: anywhere;"> </span>
         </div>
         <template>
           <slot></slot>
