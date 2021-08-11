@@ -135,14 +135,16 @@
 
       </div>
         <div class="tw-flex tw-justify-between tw-items-center tw-mb-8">
-        <span class="tw-text-xl tw-font-semibold">Количество цветов</span>
+        <span class="tw-text-xl tw-font-semibold">Количество</span>
         <span >
-          <input class="input-current tw-font-medium count tw-flex tw-justify-center tw-items-center tw-text-center " type="number" :value="count" @input="setCurrentCount">
-          
+          <input v-if="card.may_use_count" class="input-current tw-font-medium count tw-flex tw-justify-center tw-items-center tw-text-center " type="number" :value="count" @input="setCurrentCount">
+          <span v-else class="input-current tw-font-medium count tw-flex tw-justify-center tw-items-center tw-text-center ">1</span>
         </span>
       </div>
-      <Slider :valueSlider.sync="count"  :min="min" :max="max"/>
+      <template>
+        <Slider v-if="card.may_use_count" :valueSlider.sync="count"  :min="min" :max="max"/>
 
+      </template>
       <BorderLine class="-m-content tw-mt-9 tw-mb-6"/>
       <template v-if="isPackage">
         <div class="tw-mb-5 tw-font-semibold tw-text-xl">
@@ -153,6 +155,7 @@
             :settings="hooperSettings"
             style="height: 145px">
             <Slide
+              v-if="card.upak_lenta"
               :style="package == 1 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}"
             >
               <div
@@ -171,6 +174,7 @@
                 </div>
             </Slide>
             <Slide
+              v-if="card.upak_fetr"
               :style="package == 2 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}"
             >
               <div
@@ -188,6 +192,7 @@
                 </div>
             </Slide>
             <Slide
+              v-if="card.upak_kraft"
               :style="package == 3 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}"
             >
               <div
@@ -206,6 +211,7 @@
                 </div>
             </Slide>
             <Slide
+              v-if="card.upak_kor"
               :style="package == 4 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}"
             >
               <div
@@ -221,6 +227,25 @@
                   </div>
                   <span class="tw-text-xs tw-mb-2.5" >Корейка</span>
                   <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_kor ? card.upak_kor : 0}}&nbsp;руб.</span>
+                </div>
+            </Slide>
+                        <Slide
+              v-if="card.upak_kor"
+              :style="package == 4 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}"
+            >
+              <div
+                @click="choicePackage(4)"
+                class="el-slide tw-flex tw-flex-col">
+                
+                  <div>
+                    <q-img
+                    src="upak_kor.png"
+                    height="68px"
+                    class="tw-mb-4"
+                   />  
+                  </div>
+                  <span class="tw-text-xs tw-mb-2.5" >Фоамиран</span>
+                  <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_foamiran ? card.upak_foamiran : 0}}&nbsp;руб.</span>
                 </div>
             </Slide>
           </Hooper>
