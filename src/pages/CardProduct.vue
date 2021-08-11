@@ -154,7 +154,7 @@
       <div>
 
       </div>
-<<<<<<< HEAD
+
         <div class="tw-flex tw-justify-between tw-items-center tw-mb-8">
         <span class="tw-text-xl tw-font-semibold">Количество</span>
         <span >
@@ -167,27 +167,9 @@
 
       </template>
       <BorderLine class="-m-content tw-mt-9 tw-mb-6"/>
-=======
-      <div class="tw-flex tw-justify-between tw-items-center tw-mb-8">
-        <span class="tw-text-xl tw-font-semibold">Количество цветов</span>
-        <span>
-          <input
-            class="input-current tw-font-medium count tw-flex tw-justify-center tw-items-center tw-text-center "
-            type="number"
-            :value="count"
-            @input="setCurrentCount"
-          >
 
-        </span>
-      </div>
-      <Slider
-        :valueSlider.sync="count"
-        :min="min"
-        :max="max"
-      />
+      
 
-      <BorderLine class="-m-content tw-mt-9 tw-mb-6" />
->>>>>>> 8c0327b0650c4d624ff65b4a8bd72d3ac05ae7e1
       <template v-if="isPackage">
         <div class="tw-mb-5 tw-font-semibold tw-text-xl">
           <span class="">Вид упаковки</span>
@@ -195,17 +177,12 @@
         <div class="tw--mr-3.5">
           <Hooper
             :settings="hooperSettings"
-<<<<<<< HEAD
+
             style="height: 145px">
             <Slide
               v-if="card.upak_lenta"
               :style="package == 1 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}"
             >
-=======
-            style="height: 145px; outline:none"
-          >
-            <Slide :style="package == 1 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}">
->>>>>>> 8c0327b0650c4d624ff65b4a8bd72d3ac05ae7e1
               <div
                 @click="choicePackage(1)"
                 class="el-slide tw-flex tw-flex-col"
@@ -222,14 +199,10 @@
                 <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_lenta ? card.upak_lenta : 0}}&nbsp;руб.</span>
               </div>
             </Slide>
-<<<<<<< HEAD
             <Slide
               v-if="card.upak_fetr"
               :style="package == 2 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}"
             >
-=======
-            <Slide :style="package == 2 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}">
->>>>>>> 8c0327b0650c4d624ff65b4a8bd72d3ac05ae7e1
               <div
                 @click="choicePackage(2)"
                 class="el-slide tw-flex tw-flex-col"
@@ -245,14 +218,10 @@
                 <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_fetr ? card.upak_fetr : 0 }}&nbsp;руб.</span>
               </div>
             </Slide>
-<<<<<<< HEAD
             <Slide
               v-if="card.upak_kraft"
               :style="package == 3 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}"
             >
-=======
-            <Slide :style="package == 3 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}">
->>>>>>> 8c0327b0650c4d624ff65b4a8bd72d3ac05ae7e1
               <div
                 @click="choicePackage(3)"
                 class="el-slide tw-flex tw-flex-col"
@@ -269,19 +238,15 @@
                 <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_kraft ? card.upak_kraft : 0}}&nbsp;руб.</span>
               </div>
             </Slide>
-<<<<<<< HEAD
             <Slide
               v-if="card.upak_kor"
               :style="package == 4 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}"
             >
-=======
-            <Slide :style="package == 4 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}">
->>>>>>> 8c0327b0650c4d624ff65b4a8bd72d3ac05ae7e1
+            
               <div
                 @click="choicePackage(4)"
                 class="el-slide tw-flex tw-flex-col"
               >
-
                 <div>
                   <q-img
                     src="upak_kor.png"
