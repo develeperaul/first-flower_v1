@@ -3,7 +3,9 @@
 // * {
 //   font-family: "AvenirNextCyr";
 // }
-
+*{
+  outline: none
+}
 @import "~hooper/dist/hooper.css";
 .env-t {
   padding-top: env(safe-area-inset-top, 20px);

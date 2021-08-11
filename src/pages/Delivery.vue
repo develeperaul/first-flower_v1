@@ -1,89 +1,130 @@
 <template>
   <q-page class="p-content">
-    <ValidationObserver 
-    v-slot="{ passes }"
-    
-    >
+    <ValidationObserver v-slot="{ passes }">
 
-  <form @submit.prevent="passes(onSubmit)"
-    class="tw-flex tw-flex-col tw-justify-between"
-  >
-    <div class="tw-flex tw-flex-col tw-justify-between">
-      <span class="tw-text-2xl tw-font-semibold tw-mb-3.5 tw-mt-7">
-        Способ доставки
-      </span>
-      <div class="tw-flex tw-items-center tw-mb-4">
-        <input type="radio" id="pickup" value="pickup" v-model="picked">
-        <label  for="pickup">Самовывоз</label>  
-      </div>
-      <div class="tw-flex tw-items-center tw-mb-4">
-        <input type="radio" id="delivery" value="delivery" v-model="picked">
-        <label  for="delivery">Доставка</label>
-      </div>
-      <div >
-        <span v-if="picked === 'pickup'">
-          Адрес магазина: Чишмы, ул. Ленина, 31
-        </span>
-        <Input v-if="picked === 'delivery'" v-model="adress" rules="required" label="Адрес" placeholder="Доставка"/>
-      </div>
-      
-    </div>
-    <div class="tw-flex tw-flex-col tw-justify-between">
-      <span class="tw-text-2xl tw-font-semibold tw-mb-3.5 tw-mt-7">
-        Данные получателя
-      </span>
-      <Input rules="required" label="Имя" placeholder="Павел" v-model="name"/>
-      <PhoneInput v-model="cellphoneMasked" :raw.sync="cellphone"/>
-      
-    </div>
-    <div class="tw-flex tw-flex-col tw-justify-between">
-      <span class="tw-text-2xl tw-font-semibold tw-my-3.5">
-        Условия самовывоза 
-      </span>
-      <DateInput :valuedate.sync="date"/>
-      <TimeInput :valuetime.sync="time"/>
-      
-      <CommentInput :valuecomment.sync="comment"/>
-      
-    </div>
-    
-      
-      <div class="tw-flex tw-flex-col tw-justify-between">
-      <span class="tw-text-2xl tw-font-semibold tw-mb-3.5 tw-mt-7">
-          Способ оплаты
-      </span>
-      <div class="tw-flex tw-items-center tw-mb-4" v-if="picked === 'pickup'">
-        <input type="radio" id="card" value="card" v-model="money">
-        <label  for="card">Картой в магазине</label>  
-      </div>
-      <div class="tw-flex tw-items-center tw-mb-4">
-        <input type="radio" id="cash" value="cash" v-model="money">
-        <label  for="cash">Наличными</label>
-      </div>
-      
-      
-    
-    </div>
-    <!-- <button class="btn text-brand-gray mt-10">Оформить заказ</button> -->
+      <form
+        @submit.prevent="passes(onSubmit)"
+        class="tw-flex tw-flex-col tw-justify-between"
+      >
+        <div class="tw-flex tw-flex-col tw-justify-between">
+          <span
+            class="tw-text-2xl tw-font-semibold tw-mt-7"
+            style="margin-bottom: 14px"
+          >
+            Способ доставки
+          </span>
+          <div class="tw-flex tw-items-center tw-mb-4">
+            <input
+              type="radio"
+              id="pickup"
+              value="pickup"
+              v-model="picked"
+            >
+            <label for="pickup">Самовывоз</label>
+          </div>
+          <div class="tw-flex tw-items-center tw-mb-4">
+            <input
+              type="radio"
+              id="delivery"
+              value="delivery"
+              v-model="picked"
+            >
+            <label for="delivery">Доставка</label>
+          </div>
+          <div>
+            <span v-if="picked === 'pickup'">
+              Адрес магазина: Чишмы, ул. Ленина, 31
+            </span>
+            <Input
+              v-if="picked === 'delivery'"
+              v-model="adress"
+              rules="required"
+              label="Адрес"
+              placeholder="Доставка"
+            />
+          </div>
 
-    <button
-    
-      class="tw-bg-secondary tw-rounded-full tw-text-white "
-      type="buttom"
-      style="padding: 9.5px 32px; line-height: 24.5px; font-size: 20px"
-      >Оформить заказ
-    </button>
-    
-  </form>
-  </ValidationObserver>
-    
+        </div>
+        <div class="tw-flex tw-flex-col tw-justify-between">
+          <span
+            class="tw-text-2xl tw-font-semibold tw-mt-7"
+            style="margin-bottom: 14px"
+          >
+            Данные получателя
+          </span>
+          <Input
+            rules="required"
+            label="Имя"
+            placeholder="Павел"
+            v-model="name"
+          />
+          <PhoneInput
+            v-model="cellphoneMasked"
+            :raw.sync="cellphone"
+          />
+
+        </div>
+        <div class="tw-flex tw-flex-col tw-justify-between">
+          <span
+            class="tw-text-2xl tw-font-semibold"
+            style="margin: 14px 0"
+          >
+            Условия {{picked === 'pickup' ? 'самовывоза' : 'доставки'}}
+          </span>
+          <DateInput :valuedate.sync="date" />
+          <TimeInput :valuetime.sync="time" />
+
+          <CommentInput :valuecomment.sync="comment" />
+
+        </div>
+
+        <div class="tw-flex tw-flex-col tw-justify-between">
+          <span
+            class="tw-text-2xl tw-font-semibold tw-mt-7"
+            style="margin-bottom: 14px"
+          >
+            Способ оплаты
+          </span>
+          <div
+            class="tw-flex tw-items-center tw-mb-4"
+            v-if="picked === 'pickup'"
+          >
+            <input
+              type="radio"
+              id="card"
+              value="card"
+              v-model="money"
+            >
+            <label for="card">Картой в магазине</label>
+          </div>
+          <div class="tw-flex tw-items-center tw-mb-10">
+            <input
+              type="radio"
+              id="cash"
+              value="cash"
+              v-model="money"
+            >
+            <label for="cash">Наличными</label>
+          </div>
+
+        </div>
+        <button
+          class="tw-bg-secondary tw-rounded-full tw-text-white "
+          type="buttom"
+          style="padding: 9.5px 32px; line-height: 24.5px; font-size: 20px"
+        >Оформить заказ
+        </button>
+
+      </form>
+    </ValidationObserver>
+
   </q-page>
 </template>
 
 <script>
 export default {
   // name: 'PageName',
-  data(){
+  data () {
     return {
       adress: '',
       name: '',
@@ -96,75 +137,78 @@ export default {
       money: 'card',
       picked: 'pickup'
     }
-  }, 
-  methods:{
-    onSubmit(e){
-      this.$store.dispatch("basket/order", {delivery: this.adress===""? '': this.adress, name:this.name, phone: this.cellphone, date: this.date, time: this.time, comment: this.comment, payment: this.money })
+  },
+  methods: {
+    onSubmit (e) {
+      this.$store.dispatch("basket/order", { delivery: this.adress === "" ? 'Самовывоз' : this.adress, name: this.name, phone: this.cellphone, date: this.date, time: this.time, comment: this.comment, payment: this.money })
+        .then(() => {
+          this.$store.dispatch("basket/clearBasket");
+          this.$router.push({ name: 'confirmdelivery' })
+        })
     }
   }
 }
 </script>
 <style scoped>
-  input[type="radio"]:checked, 
-input[type="radio"]:not(:checked) 
-{
-    position: absolute;
-    left: -9999px;
+input[type="radio"]:checked,
+input[type="radio"]:not(:checked) {
+  position: absolute;
+  left: -9999px;
 }
 
-input[type="radio"]:checked + label, 
+input[type="radio"]:checked + label,
 input[type="radio"]:not(:checked) + label {
-    display: inline-block;
-    position: relative;
-    padding-left: 30px;
-    line-height: 20px;
-    cursor: pointer;
+  display: inline-block;
+  position: relative;
+  padding-left: 30px;
+  line-height: 20px;
+  cursor: pointer;
 }
 
-input[type="radio"]:checked + label:before, 
+input[type="radio"]:checked + label:before,
 input[type="radio"]:not(:checked) + label:before {
-    content: "";
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 20px;
-    height: 20px;
-    border: 1px solid #dddddd;
-    background-color: #ffffff;
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #dddddd;
+  background-color: #ffffff;
 }
 
-input[type="radio"]:checked + label:before, 
+input[type="radio"]:checked + label:before,
 input[type="radio"]:not(:checked) + label:before {
-    border-radius: 100%;
+  border-radius: 100%;
 }
 
-input[type="radio"]:checked + label:after, 
+input[type="radio"]:checked + label:after,
 input[type="radio"]:not(:checked) + label:after {
-    content: "";
-    position: absolute;
-    -webkit-transition: all 0.2s ease;
-    -moz-transition: all 0.2s ease;
-    -o-transition: all 0.2s ease;
-    transition: all 0.2s ease;
+  content: "";
+  position: absolute;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
-input[type="radio"]:checked + label:after, 
+input[type="radio"]:checked + label:after,
 input[type="radio"]:not(:checked) + label:after {
-    left: 3.2px;
-    top: 50%;
-    transform: translate(0%, -50%);
-    width: 13.6px;
-    height: 13.6px;
-    border-radius: 100%;
-    background-color: #e145a3;
+  left: 3.2px;
+  top: 50%;
+  transform: translate(0%, -50%);
+  width: 13.6px;
+  height: 13.6px;
+  border-radius: 100%;
+  background-color: #e145a3;
 }
- 
+
 input[type="radio"]:not(:checked) + label:after {
-    opacity: 0;
+  opacity: 0;
 }
 
 input[type="radio"]:checked + label:after {
-    opacity: 1;
+  opacity: 1;
 }
 </style>
 <style scoped lang="scss">
@@ -192,5 +236,4 @@ input[type="radio"]:checked + label:after {
 //       transition: all 0.2s ease-in-out;
 //     }
 //  }
-
 </style>

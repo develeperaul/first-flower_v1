@@ -4,10 +4,10 @@
     tag="div"
     v-bind="{ rules, vid}"
     :name="name || label"
-    v-slot="{ errors, ariaInput, ariaMsg }"
+    v-slot="{ errors }"
   >
+
     <input
-      
       :class="{ 'tw-border-input': !errors[0], 'tw-border-secondary': errors[0], 'has-value': hasValue, 'has-placeholder': hasBlur }"
       class="tw-w-full tw-py-3 tw-px-4 tw-leading-normal tw-bg-transparent tw-border"
       :id="name"
@@ -16,30 +16,33 @@
       :placeholder="valuePlaceholder"
       ref="input"
       v-model="innerValue"
-      v-bind="ariaInput"
-      @blur="onBlur"
-      @focus="onFocus"
-      
+      @blur="onBlur(errors[0])"
+      @focus="onFocus(errors[0])"
     >
     <label
       class="tw-absolute tw-block tw-bottom-1/2 tw-transform tw-translate-y-1/2 tw-w-full tw-px-4  tw-leading-normal"
       @click="$refs.input.focus()"
       :for="name"
       ref="label"
-      :class="{ 'tw-text-border-input ': !errors[0], 'tw-text-secondary': errors[0] }">
-      <span class="tw-font-medium">{{ label || name }}</span>
-      
+      :class="{ 'tw-text-border-input ': !errors[0], 'tw-text-secondary': errors[0] }"
+    >
+      <span
+        :class="{ 'tw-text-border-input ': !errors[0], 'tw-text-secondary': errors[0] }"
+        ref="span"
+        class="tw-font-medium"
+      >{{ label || name }}</span>
+
     </label>
     <template>
       <slot></slot>
     </template>
-    
+
     <!-- <span
       class="tw-block tw-text-secondary tw-text-xs tw-absolute tw-bottom-0 tw-left-0"
       v-bind="ariaMsg"
       v-if="errors[0]"
     >{{ errors[0] }}</span> -->
-    
+
   </ValidationProvider>
 </template>
 
@@ -73,7 +76,7 @@ export default {
     type: {
       type: String,
       default: "text",
-      validator(value) {
+      validator (value) {
         return [
           "url",
           "text",
@@ -100,62 +103,67 @@ export default {
     valuePlaceholder: null
   }),
   methods: {
-    onBlur(){
-      if(!this.hasValue){
+    onBlur (e) {
+
+
+      if (!this.hasValue) {
+        // console.log()
 
         this.hasBlur = true
+        // this.$refs.input.
       }
-      
+
     },
-    onFocus(){
-      if(!this.hasValue){
+    onFocus (e) {
+
+      if (!this.hasValue) {
         this.valuePlaceholder = this.placeholder
-        this.$refs.input.placeholder  = this.valuePlaceholder
+        this.$refs.input.placeholder = this.valuePlaceholder
+        console.log(this.$refs.span.style.color)
       }
-      
+
     }
   },
   computed: {
-    hasValue() {
+    hasValue () {
       return !!this.innerValue;
     },
-    
-    
+
+
   },
   watch: {
-    innerValue(value) {
-      
+
+    innerValue (value) {
       this.$emit("input", value);
     },
-    value(val) {
-      
+    value (val) {
+
       if (val !== this.innerValue) {
         this.innerValue = val;
       }
     },
-    
+
   },
-  created() {
+  created () {
     if (this.value) {
       this.innerValue = this.value;
     }
-    
+
   },
-  mounted(){
+  mounted () {
     this.$refs.input.placeholder = null
   },
-  
+
 };
 </script>
 
 <style lang="scss" scoped>
 .BaseInput {
-  
   input {
     position: relative;
     z-index: 99999;
     border-radius: 3px;
-    transition: border-color .4s ease-in-out;
+    transition: border-color 0.4s ease-in-out;
     z-index: 0;
     &.has-value,
     &:focus {
@@ -164,40 +172,39 @@ export default {
   }
 
   input::-webkit-calendar-picker-indicator {
-    display: none
+    display: none;
   }
-  
-
   label {
-    & span{
+    & span {
       padding: 0 0px;
     }
-    
+
     user-select: none;
     font-size: 1rem;
   }
 
-  input:focus {
-    border-color:#272727;
-
+  input:focus,
+  input:focus ~ label {
+    border-color: #272727;
+    & span {
+      color: black;
+    }
   }
   input.has-placeholder ~ label,
   input.has-value ~ label,
   input:focus ~ label {
-    transition: all .4s ease-in-out;
+    transition: all 0.4s ease-in-out;
     // bottom: 100%;
     transform: translateY(-60%);
-    
-    & span { 
-      transition: all .6s ease-in-out;
+
+    & span {
+      transition: all 0.6s ease-in-out;
       font-size: 0.625rem;
-      color: #272727;
-      background: rgba(100%,100%,100%, 100%);
+      background: rgba(100%, 100%, 100%, 100%);
       z-index: 1;
+
       // background: red;
       padding: 0 4px;
-      
-      
     }
   }
 }

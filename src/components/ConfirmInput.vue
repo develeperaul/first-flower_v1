@@ -92,7 +92,7 @@ export default {
       default: false,
     },
   },
-  data() {
+  data () {
     const { fields, values } = this;
     let vals;
     let autoFocusIndex = 0;
@@ -112,19 +112,19 @@ export default {
     this.id = +new Date();
     return { values: vals, autoFocusIndex, provider: null };
   },
-  mounted() {
+  mounted () {
     this.provider = this.$refs.provider;
   },
   computed: {
-    widthClass() {
+    widthClass () {
       return 'tw-w-1/' + this.fields;
     },
   },
   methods: {
-    onFocus(e) {
+    onFocus (e) {
       e.target.select(e);
     },
-    onValueChange(e) {
+    onValueChange (e) {
       const index = parseInt(e.target.dataset.id);
       const { type, fields } = this;
       if (type === 'number') {
@@ -166,7 +166,7 @@ export default {
       }
       this.triggerChange(values);
     },
-    onKeyDown(e) {
+    onKeyDown (e) {
       const index = parseInt(e.target.dataset.id);
       const prevIndex = index - 1;
       const nextIndex = index + 1;
@@ -206,7 +206,7 @@ export default {
           break;
       }
     },
-    triggerChange(values = this.values) {
+    triggerChange (values = this.values) {
       const { fields } = this;
       const val = values.join('');
       this.$emit('change', val);
@@ -215,6 +215,14 @@ export default {
       }
     },
   },
+  watch: {
+    values: {
+      handler (val) {
+        console.log(val.join(""))
+        this.$emit("update:valueCod", val.join(""));
+      }
+    }
+  }
 };
 </script>
 <style scoped>
@@ -234,6 +242,6 @@ export default {
 
 .input-error {
   @apply tw-text-negative;
-  border-bottom-color: theme('colors.negative');
+  border-bottom-color: theme("colors.negative");
 }
 </style>

@@ -6,14 +6,26 @@
 <script>
 export default {
   name: 'App',
-  created() {
-    localStorage.setItem("favorite", JSON.stringify({22:true}));
-    const favorite = localStorage.getItem('favorite') ;
+  created () {
+    // localStorage.setItem("favorite", JSON.stringify({22:true}));
+    const favorite = localStorage.getItem('favorite');
     const basket = localStorage.getItem('basket');
-    
+    const accessToken = localStorage.getItem('accessToken')
+    console.log(accessToken)
+
+    if (accessToken) {
+      try {
+        console.log(accessToken)
+        this.$store.commit("profile/getPhone", JSON.parse(localStorage.getItem("accessToken")).phone)
+      }
+      catch (e) {
+
+      }
+    }
+
     if (favorite) {
       try {
-        
+
         const obj = JSON.parse(favorite);
         this.$store.commit('cards/setFavorites', obj);
       } catch (e) {
@@ -21,17 +33,17 @@ export default {
       }
     }
 
-    if(basket) {
+    if (basket) {
       try {
         const obj = JSON.parse(basket);
-        
+
         this.$store.commit('basket/setBasket', obj)
       } catch (e) {
         localStorage.removeItem('basket');
       }
     }
   },
-  mounted() {
+  mounted () {
     this.$store.dispatch('auth/getProfile');
   },
 };

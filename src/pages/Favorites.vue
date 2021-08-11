@@ -1,20 +1,29 @@
 <template>
-  <q-page  v-if="favorite" class="p-content">
+  <q-page
+    v-if="favorite"
+    class="p-content"
+  >
 
-    <BaseList :cards="favoriteCard " class="tw-grid tw-grid-cols-2 tw-gap-4"/>
+    <BaseList
+      :cards="favoriteCard "
+      class="tw-grid tw-grid-cols-2 tw-gap-4"
+    />
 
   </q-page>
   <ZeroComp
     v-else
     text="В избранном пока ничего нет"
-    textBtn="Перейти в каталог" />
+    textBtn="Перейти в каталог"
+  />
 
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import ZeroComp from 'components/ZeroComp'
+import ZeroComp from 'components/ZeroComp';
 import BaseList from "components/BaseList.vue";
+
+import { QSpinnerPuff } from 'quasar'
 // class="tw-flex tw-flex-center "
 export default {
   name: "PageIndex",
@@ -22,37 +31,43 @@ export default {
     BaseList,
     ZeroComp,
   },
-  data(){
+  data () {
     return {
       favoriteCard: null
     }
   },
   methods: {
-    async getCard(id){
+    async getCard (id) {
       await this.$store.dispatch('cards/getCard', id)
     },
-    async getFavorites(){
+    async getFavorites () {
       let cardFavorite = []
       this.getCard()
-      if(this.favorite){
-        for(let key in this.favorite){
-         await this.getCard(key)
+      if (this.favorite) {
+        for (let key in this.favorite) {
+          await this.getCard(key)
           cardFavorite.push(this.card)
         }
         this.favoriteCard = cardFavorite
       }
-      
-    
-      
-      
+
+
+
+
     },
 
   },
 
-  created() {
-    
-
-    this.getFavorites()
+  created () {
+    this.$q.loading.show(
+      {
+        spinner: QSpinnerPuff,
+        spinnerSize: 240,
+      }
+    )
+    this.getFavorites().then(() => {
+      this.$q.loading.hide()
+    })
   },
   computed: {
     ...mapGetters("cards", ["favorite", "card"])
