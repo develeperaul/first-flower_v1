@@ -12,14 +12,14 @@
       class="tw-relative"
     >
       <div class="tw-absolute tw-right-0 tw-top-4 tw-z-10 ">
-        <q-btn
+        <!-- <q-btn
           round
           unelevated
           class="  tw-bg-white border-inset tw-mr-4"
           size="9px"
         >
           <Icon name="share" />
-        </q-btn>
+        </q-btn> -->
         <q-btn
           round
           unelevated
@@ -146,7 +146,7 @@
           <span class="">Описание</span>
         </div>
         <div class="tw-mb-4 tw-text-xl">
-          <p>{{card.text}}</p>
+          <p v-html="card.text"></p>
 
         </div>
         <BorderLine class="-m-content tw-mt-12 tw-mb-6" />
@@ -259,7 +259,7 @@
               </div>
             </Slide>
                         <Slide
-              v-if="card.upak_kor"
+              v-if="card.upak_foamiran"
               :style="package == 4 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}"
             >
               <div
@@ -268,7 +268,7 @@
                 
                   <div>
                     <q-img
-                    src="upak_kor.png"
+                    src="upak_foamiran.jpg"
                     height="68px"
                     class="tw-mb-4"
                    />  

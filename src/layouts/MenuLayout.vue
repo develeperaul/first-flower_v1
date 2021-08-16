@@ -117,23 +117,38 @@
         </div>
       </div>
       <div class="tw-flex tw-flex-col  p-content tw-mt-3 tw-mb-12  tw-mx-4">
-        <span class="tw-font-semibold tw-text-lg">
+        <span class="tw-font-semibold tw-text-lg"
+        style="margin-bottom: 16px">
           Контакты магазина 
         </span>
-        <a
+        <span
+          style="margin-bottom: 16px"
+        >
+          <a
           href="tel:+79178000907"
           class="tw-font-medium tw-pt-3.5 tw-flex"
+          style="display: inline"
         >
           <Icon
             name="phone"
             class="tw-mr-3"
+            style="display: inline"
             
           />
-          тел. 89178000907 (WhatsApp) цветы
-        </a>
+          тел. 89178000907
+          </a>
+          <a href="https://wa.me/79178000907"
+          style="display: inline">
+            (WhatsApp) цветы
+          </a>
+        </span>
+        
+           
+        
         <a
           href="https://goo.gl/maps/XjYFnUJRMnuUPQ9R7"
           class="tw-font-medium tw-pt-3.5 tw-flex"
+          style="margin-bottom: 16px"
         >
           <Icon
             name="location"
@@ -143,19 +158,32 @@
           Чишмы, пр. Дружбы 1/1 (8:00 – 21:00);
         </a>  
 
-        <a
+
+        <span
+        style="margin-bottom: 16px"
+        >
+          <a
           href="tel:+79177818939"
           class="tw-font-medium tw-pt-3.5 tw-flex"
-        >
-          <Icon
-            name="phone"
-            class="tw-mr-3"
-          />
-          тел. 89177818939 (WhatsApp) шары
-        </a>
+          style="display: inline"
+          >
+            <Icon
+              name="phone"
+              class="tw-mr-3"
+              style="display: inline"
+            />
+            тел. 89177818939
+          </a>
+          <a href="https://wa.me/79177818939"
+          style="display: inline">
+            (WhatsApp) шары
+          </a>
+        </span>
+        
         <a
           href="https://goo.gl/maps/CNV3YUJATWpASB446"
           class="tw-font-medium tw-pt-3.5 tw-flex"
+          style="margin-bottom: 16px"
         >
           <Icon
             name="location"

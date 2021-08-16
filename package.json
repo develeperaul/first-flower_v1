@@ -6,12 +6,15 @@
   "author": "Ralfik <developeraul@gmail.com>",
   "private": true,
   "scripts": {
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0",
+    "generate:icons": "icongenie g -p ./icongenie-prod.json"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
+    "@quasar/icongenie": "^2.4.0",
     "core-js": "^3.6.5",
     "dotenv": "^10.0.0",
+    "global": "^4.4.0",
     "hooper": "^0.3.4",
     "ky": "^0.28.5",
     "moment": "^2.29.1",

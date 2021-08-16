@@ -9,6 +9,7 @@
         @click="linkCard"
         :style="`background-image: url(http://flowers.2apps.ru${card.img});`"
         class="image-pos"
+        style="border-top-left-radius: 4px; border-top-right-radius: 4px;"
       ></div>
       <div
         v-else
