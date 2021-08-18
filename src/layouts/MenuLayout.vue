@@ -1,13 +1,6 @@
 <template>
-  <q-layout
-    view="hhh LpR fff"
-    container
-    style="height: 100vh"
-  >
-    <q-header
-      reveal
-      class="bg-white env-t "
-    >
+  <q-layout view="lHh Lpr lFf" style="min-height: 100vh">
+    <q-header reveal class="bg-white">
       <q-toolbar class="tw-relative tw-mb-2">
         <q-btn
           color="primary"
@@ -18,52 +11,45 @@
           @click="toggleMenu"
           class="tw-absolute"
         />
-        <div
-          class="logo tw-m-auto tw-pt-2"
-          @click="onLogo"
-        >
-          <img
-            src="firstFlower.svg"
-            alt="логитип"
-          >
-
+        <div class="logo tw-m-auto tw-pt-2" @click="onLogo">
+          <img src="firstFlower.svg" alt="логитип" />
         </div>
-
       </q-toolbar>
       <BorderLine />
     </q-header>
 
-    <q-footer
-      v-if="openCardProduct"
-      class="bg-white env-b"
-    >
+    <q-footer v-if="openCardProduct" class="bg-white">
       <BorderLine />
 
-      <q-toolbar
-        class="flex justify-between env-b"
-        @click="link"
-        style="padding-top: 10px; padding-bottom: 14px"
-      >
-        <NavLink
-          name="home"
-          :exact="true"
-        />
-        <NavLink name="favorite" />
+      <q-toolbar class="env-b" @click="link">
+        <div class="tw-py-3 flex justify-between tw-w-full">
+          <NavLink name="home" :exact="true" />
+          <NavLink name="favorite" />
 
-        <NavLink
-          name="basket"
-          class="tw-relative"
-        >
-          <span
-            v-if="basketCount"
-            class="tw-text-xs tw-text-center  tw-absolute tw-rounded-full tw-right-0 tw--top-2 tw-transform "
-            style="min-width: 20px; padding:3px 3.5px; background-color: #EF1717;"
-          >{{basketCount}}</span>
-        </NavLink>
+          <NavLink name="basket" class="tw-relative">
+            <span
+              v-if="basketCount"
+              class="
+                tw-text-xs
+                tw-text-center
+                tw-absolute
+                tw-rounded-full
+                tw-right-0
+                tw--top-2
+                tw-transform
+              "
+              style="
+                min-width: 20px;
+                padding: 3px 3.5px;
+                background-color: #ef1717;
+              "
+              >{{ basketCount }}</span
+            >
+          </NavLink>
 
-        <NavLink name="sale" />
-        <NavLink name="profile" />
-
+          <NavLink name="sale" />
+          <NavLink name="profile" />
+        </div>
       </q-toolbar>
     </q-footer>
 
@@ -75,255 +61,214 @@
       behavior="desktop"
       :width="width"
       :mini-width="300"
-      content-class="gradient-green tw-pt-6 
+      content-class="gradient-green tw-pt-6
         tw-flex tw-flex-col tw-justify-between
         "
     >
-
       <div>
-
-        <div
-          v-if="!title"
-          class="tw-text-center tw-mb-3.5 tw-pl-4"
-        >
+        <div v-if="!title" class="tw-text-center tw-mb-3.5 tw-pl-4">
           <span class="tw-font-semibold">Категории</span>
         </div>
-        <div
-          v-else
-          class="tw-text-center tw-mb-3.5 tw-relative  p-content "
-        >
+        <div v-else class="tw-text-center tw-mb-3.5 tw-relative p-content">
           <q-icon
             @click="getParent"
             name="arrow_back_ios"
-            class="tw-absolute tw-left-0 tw-top-1/2 tw-transform tw--translate-y-1/2 tw-pl-7 "
+            class="
+              tw-absolute
+              tw-left-0
+              tw-top-1/2
+              tw-transform
+              tw--translate-y-1/2
+              tw-pl-7
+            "
           ></q-icon>
-          <span class="tw-font-semibold">{{title}}</span>
+          <span class="tw-font-semibold">{{ title }}</span>
         </div>
         <div
-          v-for="(item,index) in list"
+          v-for="(item, index) in list"
           :key="index"
-          @click="getChildren(item) "
+          @click="getChildren(item)"
         >
-          <div class="tw-flex tw-justify-between tw-items-center p-content tw-py-5 tw-ml-4">
-            <span class="tw-font-medium">{{item.name}}</span>
-            <q-icon
-              v-if="!title"
-              name="arrow_forward_ios"
-              class=""
-            />
+          <div
+            class="
+              tw-flex tw-justify-between tw-items-center
+              p-content
+              tw-py-5 tw-ml-4
+            "
+          >
+            <span class="tw-font-medium">{{ item.name }}</span>
+            <q-icon v-if="!title" name="arrow_forward_ios" class="" />
           </div>
 
-          <BorderLine v-if="(index+1)!==list.length" />
+          <BorderLine v-if="index + 1 !== list.length" />
         </div>
       </div>
-      <div class="tw-flex tw-flex-col  p-content tw-mt-3 tw-mb-12  tw-mx-4">
-        <span class="tw-font-semibold tw-text-lg"
-        style="margin-bottom: 16px">
-          Контакты магазина 
+      <div class="tw-flex tw-flex-col p-content tw-mt-3 tw-mb-12 tw-mx-4">
+        <span class="tw-font-semibold tw-text-lg" style="margin-bottom: 16px">
+          Контакты магазина
         </span>
-        <span
-          style="margin-bottom: 16px"
-        >
+        <span style="margin-bottom: 16px">
           <a
-          href="tel:+79178000907"
-          class="tw-font-medium tw-pt-3.5 tw-flex"
-          style="display: inline"
-        >
-          <Icon
-            name="phone"
-            class="tw-mr-3"
+            href="tel:+79178000907"
+            class="tw-font-medium tw-pt-3.5 tw-flex"
             style="display: inline"
-            
-          />
-          тел. 89178000907
+          >
+            <Icon name="phone" class="tw-mr-3" style="display: inline" />
+            тел. 89178000907
           </a>
-          <a href="https://wa.me/79178000907"
-          style="display: inline">
+          <a href="https://wa.me/79178000907" style="display: inline">
             (WhatsApp) цветы
           </a>
         </span>
-        
-           
-        
+
         <a
           href="https://goo.gl/maps/XjYFnUJRMnuUPQ9R7"
           class="tw-font-medium tw-pt-3.5 tw-flex"
           style="margin-bottom: 16px"
         >
-          <Icon
-            name="location"
-            class="tw-mr-3"
-            
-          />
+          <Icon name="location" class="tw-mr-3" />
           Чишмы, пр. Дружбы 1/1 (8:00 – 21:00);
-        </a>  
+        </a>
 
-
-        <span
-        style="margin-bottom: 16px"
-        >
+        <span style="margin-bottom: 16px">
           <a
-          href="tel:+79177818939"
-          class="tw-font-medium tw-pt-3.5 tw-flex"
-          style="display: inline"
+            href="tel:+79177818939"
+            class="tw-font-medium tw-pt-3.5 tw-flex"
+            style="display: inline"
           >
-            <Icon
-              name="phone"
-              class="tw-mr-3"
-              style="display: inline"
-            />
+            <Icon name="phone" class="tw-mr-3" style="display: inline" />
             тел. 89177818939
           </a>
-          <a href="https://wa.me/79177818939"
-          style="display: inline">
+          <a href="https://wa.me/79177818939" style="display: inline">
             (WhatsApp) шары
           </a>
         </span>
-        
+
         <a
           href="https://goo.gl/maps/CNV3YUJATWpASB446"
           class="tw-font-medium tw-pt-3.5 tw-flex"
           style="margin-bottom: 16px"
         >
-          <Icon
-            name="location"
-            class="tw-mr-3"
-          />
+          <Icon name="location" class="tw-mr-3" />
           Чишмы, ул. Шоссейная 29 (10:00 – 22:00).
         </a>
       </div>
-
     </q-drawer>
-    <q-page-container >
-      <router-view  style="padding-top: 10px; "/>
+    <q-page-container>
+      <router-view style="padding-top: 10px" />
     </q-page-container>
   </q-layout>
-
 </template>
 <script>
+import { mapGetters } from 'vuex';
 
-import { mapGetters } from "vuex";
+import NavLink from 'components/NavLink';
+import BaseListDrawer from 'components/BaseListDrawer';
+import Cards from 'components/Cards';
 
-import NavLink from "components/NavLink";
-import BaseListDrawer from "components/BaseListDrawer";
-import Cards from "components/Cards"
-
-import { QSpinnerPuff } from 'quasar'
-
+import { QSpinnerPuff } from 'quasar';
 
 export default {
   // name: 'LayoutName',
   components: {
     BaseListDrawer,
     NavLink,
-    Cards
+    Cards,
   },
-  data () {
+  data() {
     return {
       list: null,
       title: null,
 
-
       cards: false,
-
 
       // leftDrawerOpen: this.menu,
 
       titleButton: false,
       listButton: true,
       cards: false,
-      width: 0
+      width: 0,
     };
   },
   methods: {
-    showLoader () {
-      this.$q.loading.show(
-        {
-          spinner: QSpinnerPuff,
-          spinnerSize: 240,
-        }
-      )
+    showLoader() {
+      this.$q.loading.show({
+        spinner: QSpinnerPuff,
+        spinnerSize: 240,
+      });
     },
-    async getHomeList () {
-      this.showLoader()
-      await this.$store.dispatch("cards/actionHomeList")
+    async getHomeList() {
+      this.showLoader();
+      await this.$store.dispatch('cards/actionHomeList');
     },
 
-
-    toggleMenu () {
-
-      this.$store.commit("categories/clickMenu")
-
+    toggleMenu() {
+      this.$store.commit('categories/clickMenu');
     },
-    async getSectionList () {
-      this.showLoader()
-      await this.$store.dispatch("categories/getSections");
-      this.list = this.sections
+    async getSectionList() {
+      this.showLoader();
+      await this.$store.dispatch('categories/getSections');
+      this.list = this.sections;
     },
-    link () {
+    link() {
       if (this.menu) {
-        this.toggleMenu()
+        this.toggleMenu();
       }
-
     },
 
-    onLogo () {
+    onLogo() {
       if (this.menu) {
-        this.toggleMenu()
+        this.toggleMenu();
       }
-      this.$router.push({ name: 'home' })
+      this.$router.push({ name: 'home' });
     },
 
-
-    updateWidth () {
+    updateWidth() {
       this.width = window.innerWidth;
     },
-    async getChildren (item) {
+    async getChildren(item) {
       if (this.title === null && item.UF_HASCHILD) {
-        await this.$store.dispatch("categories/getSubSectionList", item.id)
-        this.title = item.name
-        this.list = this.subSection
+        await this.$store.dispatch('categories/getSubSectionList', item.id);
+        this.title = item.name;
+        this.list = this.subSection;
+      } else {
+        this.$store.commit('categories/clickMenu');
+        this.$router.push({
+          name: 'cards',
+          params: { id: item.id, item: item },
+        });
       }
-      else {
-        this.$store.commit("categories/clickMenu")
-        this.$router.push({ name: 'cards', params: { id: item.id, item: item } })
-      }
-
-
     },
-    getParent () {
+    getParent() {
       this.list = this.sections;
       this.title = null;
-    }
+    },
   },
 
   computed: {
-    ...mapGetters("categories", ["sections", "subSection", "menu"]),
-    openCardProduct () {
-
-      if (this.$route.name === "cardproduct") return false
-      else return true
+    ...mapGetters('categories', ['sections', 'subSection', 'menu']),
+    openCardProduct() {
+      if (this.$route.name === 'cardproduct') return false;
+      else return true;
     },
-    basketCount () {
-      const count = this.$store.state.basket.products.length
-      if (count === 0) return false
-      else return count
-
-    }
-
+    basketCount() {
+      const count = this.$store.state.basket.products.length;
+      if (count === 0) return false;
+      else return count;
+    },
   },
 
-  created () {
+  created() {
     window.addEventListener('resize', this.updateWidth);
     this.updateWidth();
 
-    this.getSectionList().then(() => { this.$q.loading.hide() })
-    this.getHomeList().then(() => { this.$q.loading.hide() })
-
-
+    this.getSectionList().then(() => {
+      this.$q.loading.hide();
+    });
+    this.getHomeList().then(() => {
+      this.$q.loading.hide();
+    });
   },
-
-
 };
 </script>
 
