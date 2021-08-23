@@ -10,22 +10,21 @@
 
     </div>
     <!-- <BaseButton v-if="to" :text="textBtn" :to="to"/> -->
-    <button
+    
+      <router-link :to="to" tag="button"
       v-if="to"
       class="tw-bg-secondary tw-rounded-full tw-text-white "
-      type="buttom"
-      style="padding-top: 14px; padding-bottom: 14px; line-height: 24.5px; font-size: 20px"
-    >
-      <router-link :to="to">
+      type="button"
+      style="padding-top: 14px; padding-bottom: 14px; line-height: 24.5px; font-size: 20px">
         {{textBtn}}
       </router-link>
 
-    </button>
+    
     <button
       v-else
       @click="openMenu"
       class="tw-bg-secondary tw-rounded-full tw-text-white "
-      type="buttom"
+      type="button"
       style="padding-top: 14px; padding-bottom: 14px; line-height: 24.5px; font-size: 20px"
     >
       {{textBtn}}
