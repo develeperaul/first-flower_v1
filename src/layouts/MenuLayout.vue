@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf" style="min-height: 100vh">
+  <q-layout view="hHh Lpr fFf" style="min-height: 100vh">
     <div>
 
     <q-header reveal class="bg-white" >
@@ -240,11 +240,11 @@ export default {
       this.width = window.innerWidth;
     },
     updateMargin(){
-      this.mt = this.$refs.header.offsetHeight;
-      this.mb = this.$refs.footer.offsetHeight;
+      // this.mt = this.$refs.header.offsetHeight;
+      // this.mb = this.$refs.footer.offsetHeight;
 
-      this.$refs.drawer.$refs.content.style.marginTop = `${this.mt}px`
-      this.$refs.drawer.$refs.content.style.marginBottom = `${this.mb}px`
+      // this.$refs.drawer.$refs.content.style.marginTop = `${this.mt}px`
+      // this.$refs.drawer.$refs.content.style.marginBottom = `${this.mb}px`
     },
     async getChildren(item) {
       if (this.title === null && item.UF_HASCHILD) {
