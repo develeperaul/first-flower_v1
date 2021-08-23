@@ -42,7 +42,7 @@ export default {
     },
     async getFavorites () {
       let cardFavorite = []
-      this.getCard()
+      // this.getCard()
       if (this.favorite) {
         for (let key in this.favorite) {
           await this.getCard(key)
