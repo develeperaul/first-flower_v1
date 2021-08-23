@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     outProfile () {
-      this.$store.dispatch("auth/outProfile")
+      
       localStorage.removeItem("accessToken")
       this.$router.push({ name: 'signin' })
     }
