@@ -1,6 +1,10 @@
 <template>
   <q-layout view="lHh Lpr lFf" style="min-height: 100vh">
-    <q-header reveal class="bg-white">
+    <div>
+
+    <q-header reveal class="bg-white" >
+      <div ref="header">
+
       <q-toolbar class="tw-relative tw-mb-2">
         <q-btn
           color="primary"
@@ -10,47 +14,53 @@
           icon="menu"
           @click="toggleMenu"
           class="tw-absolute"
+          
         />
-        <div class="logo tw-m-auto tw-pt-2" @click="onLogo">
+        <div class="logo tw-m-auto tw-pt-2" @click="onLogo" >
           <img src="firstFlower.svg" alt="логитип" />
         </div>
       </q-toolbar>
       <BorderLine />
+    </div>
     </q-header>
+    </div>
 
-    <q-footer v-if="openCardProduct" class="bg-white">
-      <BorderLine />
+    <q-footer v-if="openCardProduct" class="bg-white" >
+      <div ref="footer">
 
-      <q-toolbar class="env-b" @click="link">
-        <div class="tw-py-3 flex justify-between tw-w-full">
-          <NavLink name="home" :exact="true" />
-          <NavLink name="favorite" />
+        <BorderLine />
 
-          <NavLink name="basket" class="tw-relative">
-            <span
-              v-if="basketCount"
-              class="
-                tw-text-xs
-                tw-text-center
-                tw-absolute
-                tw-rounded-full
-                tw-right-0
-                tw--top-2
-                tw-transform
-              "
-              style="
-                min-width: 20px;
-                padding: 3px 3.5px;
-                background-color: #ef1717;
-              "
-              >{{ basketCount }}</span
-            >
-          </NavLink>
+        <q-toolbar class="env-b" @click="link" >
+          <div class="tw-py-3 flex justify-between tw-w-full">
+            <NavLink name="home" :exact="true" />
+            <NavLink name="favorite" />
 
-          <NavLink name="sale" />
-          <NavLink name="profile" />
-        </div>
-      </q-toolbar>
+            <NavLink name="basket" class="tw-relative">
+              <span
+                v-if="basketCount"
+                class="
+                  tw-text-xs
+                  tw-text-center
+                  tw-absolute
+                  tw-rounded-full
+                  tw-right-0
+                  tw--top-2
+                  tw-transform
+                "
+                style="
+                  min-width: 20px;
+                  padding: 3px 3.5px;
+                  background-color: #ef1717;
+                "
+                >{{ basketCount }}</span
+              >
+            </NavLink>
+
+            <NavLink name="sale" />
+            <NavLink name="profile" />
+          </div>
+        </q-toolbar>
+      </div>
     </q-footer>
 
     <q-drawer
@@ -64,8 +74,9 @@
       content-class="gradient-green tw-pt-6
         tw-flex tw-flex-col tw-justify-between
         "
+      ref="drawer"
     >
-      <div>
+      <div >
         <div v-if="!title" class="tw-text-center tw-mb-3.5 tw-pl-4">
           <span class="tw-font-semibold">Категории</span>
         </div>
@@ -188,6 +199,8 @@ export default {
       listButton: true,
       cards: false,
       width: 0,
+      mt: 0,
+      mb: 0
     };
   },
   methods: {
@@ -226,6 +239,13 @@ export default {
     updateWidth() {
       this.width = window.innerWidth;
     },
+    updateMargin(){
+      this.mt = this.$refs.header.offsetHeight;
+      this.mb = this.$refs.footer.offsetHeight;
+
+      this.$refs.drawer.$refs.content.style.marginTop = `${this.mt}px`
+      this.$refs.drawer.$refs.content.style.marginBottom = `${this.mb}px`
+    },
     async getChildren(item) {
       if (this.title === null && item.UF_HASCHILD) {
         await this.$store.dispatch('categories/getSubSectionList', item.id);
@@ -259,6 +279,8 @@ export default {
   },
 
   created() {
+    
+
     window.addEventListener('resize', this.updateWidth);
     this.updateWidth();
 
@@ -268,7 +290,12 @@ export default {
     this.getHomeList().then(() => {
       this.$q.loading.hide();
     });
+    
+    
   },
+  mounted(){
+    this.updateMargin();
+  }
 };
 </script>
 
