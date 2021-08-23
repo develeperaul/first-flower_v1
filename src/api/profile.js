@@ -23,7 +23,6 @@ export function token ({ phone, kod }) {
 export function add (ids) {
   const formData = new FormData();
   ids.reduce((acc, id, index) => {
-    console.log(index);
     acc.append(`ids[${index}]`, id);
     return acc;
   }, formData);

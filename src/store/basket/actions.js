@@ -4,20 +4,17 @@ export async function order ({ getters }, list) {
   const ids = getters.ids;
   const token = localStorage.getItem("accessToken")
   const status = await BasketAPI.sendOrder(ids, list, token ? JSON.parse(token).token : null);
-  console.log('order', status)
   return status
 }
 
 export async function addToCart ({ commit }, list) {
   const res = await BasketAPI.add(list);
-  console.log(2);
-  console.log(1, res);
   return res;
 }
 
 export async function sendBasket ({ commit }, list) {
   const sum = await basket(list);
-  console.log(sum);
+
 }
 
 export async function addProductToCart ({ state, commit }, { ...product }) {

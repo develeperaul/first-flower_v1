@@ -218,7 +218,6 @@ export default {
   watch: {
     values: {
       handler (val) {
-        console.log(val.join(""))
         this.$emit("update:valueCod", val.join(""));
       }
     }

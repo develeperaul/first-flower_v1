@@ -60,10 +60,10 @@ export default {
         this.startTimer();
       }
     },
-    checkCode () {
+    // checkCode () {
 
-      console.log(this.innerValue === code.kod)
-    },
+    //   console.log(this.innerValue === code.kod)
+    // },
     startTimer () {
       this.timer = setInterval(() => {
         this.currentTime--
@@ -89,7 +89,7 @@ export default {
     },
     innerValue (val) {
       if (val == this.code.kod) {
-        console.log("OK")
+
         this.$store.dispatch('profile/getToken', this.code)
         this.$router.push({ name: 'user', params: { id: this.phone } })
       }

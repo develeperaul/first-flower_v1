@@ -11,11 +11,9 @@ export default {
     const favorite = localStorage.getItem('favorite');
     const basket = localStorage.getItem('basket');
     const accessToken = localStorage.getItem('accessToken')
-    console.log(accessToken)
 
     if (accessToken) {
       try {
-        console.log(accessToken)
         this.$store.commit("profile/getPhone", JSON.parse(localStorage.getItem("accessToken")).phone)
       }
       catch (e) {

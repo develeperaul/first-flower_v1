@@ -107,7 +107,6 @@ export default {
 
 
       if (!this.hasValue) {
-        // console.log()
 
         this.hasBlur = true
         // this.$refs.input.
@@ -119,7 +118,7 @@ export default {
       if (!this.hasValue) {
         this.valuePlaceholder = this.placeholder
         this.$refs.input.placeholder = this.valuePlaceholder
-        console.log(this.$refs.span.style.color)
+
       }
 
     }

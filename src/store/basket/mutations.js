@@ -37,10 +37,10 @@ export function setBasket (state, items) {
 export function incrementProducts (state, { id }) {
     const cartItem = state.products.find(item => item.id === id)
     cartItem.count++
-    // console.log(cartItem.id = )
+
 
     cartItem.id = cartItem.id.replace(/\d+$/g, String(cartItem.count))
-    console.log()
+
 }
 
 export function decrementProducts (state, { id }) {

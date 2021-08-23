@@ -54,7 +54,7 @@ export default {
     onSubmit () {
       this.$store.dispatch('profile/getSms', this.phone)
       this.$router.push({ name: 'confirm', params: { phone: this.phone } })
-      console.log('submit')
+
     }
   },
   computed: {

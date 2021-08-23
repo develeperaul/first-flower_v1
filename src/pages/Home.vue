@@ -117,22 +117,6 @@ export default {
     ...mapGetters("cards", ["weekItem", "saleItem", "newList"]),
     
   },
-  
-  created(){
-
-    //       this.$q.loading.show(
-    //         {
-    //           spinner: QSpinnerPuff,
-    //           spinnerSize: 240,
-    //         }
-    //       )
-    //       return this.getHomeList().then((list)=>{this.$q.loading.hide()  
-    //       console.log(list)
-    // });
-    
-    
-    
-  },
 };
 </script>
 <style lang="scss" scoped>

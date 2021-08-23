@@ -87,7 +87,6 @@ export default {
   },
   methods: {
     addProductToCart () {
-      console.log(this.products.find(item => item.id.match(/\d+/g)[0] == this.card.id))
       if (this.products.find(item => item.id.match(/\d+/g)[0] == this.card.id)) {
         this.$store.dispatch('basket/removeProductCart', this.card);
       } else {
@@ -97,7 +96,7 @@ export default {
       this.isActive = !this.isActive;
     },
     linkCard () {
-      console.log('linkCard', this.card.id);
+
       this.$router.push({ name: 'cardproduct', params: { id: this.card.id } });
     },
     toggleFavorite () {
