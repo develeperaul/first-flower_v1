@@ -10,13 +10,22 @@
 
     </div>
     <!-- <BaseButton v-if="to" :text="textBtn" :to="to"/> -->
-    
-      <router-link :to="to" tag="button"
+      
+
+      <router-link 
       v-if="to"
-      class="tw-bg-secondary tw-rounded-full tw-text-white "
-      type="button"
-      style="padding-top: 14px; padding-bottom: 14px; line-height: 24.5px; font-size: 20px">
+      custom 
+      :to="to" 
+      
+      style="padding-top: 14px; padding-bottom: 14px; line-height: 24.5px; font-size: 20px"
+      class="tw-bg-secondary tw-rounded-full tw-text-white tw-text-center "
+      >
+      <button
+      
+      
+      type="button">
         {{textBtn}}
+      </button>
       </router-link>
 
     

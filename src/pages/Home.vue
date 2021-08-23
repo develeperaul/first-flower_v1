@@ -5,6 +5,7 @@
       <div class="tw-flex  tw-mt-4">
           <q-img 
             @click="linkCard(weekItem.id)"
+            v-if="weekItem.img"
             width="123px"
             height="123px"
              :src="`http://flowers.2apps.ru${weekItem.img}`" alt="" style="border-radius: 5px; min-width:123px "
@@ -35,6 +36,7 @@
       <span class="tw-font-semibold tw-text-xl ">Акция недели</span>
         <BaseSale v-bind="{ ...saleItem }" class="tw-mb-5 tw-mt-3">
           <router-link
+          v-if="saleItem.id"
               :to="{name: 'salecard', params: { id: saleItem.id, saleItem }}">
           <q-btn size="10px" round color="white" unelevated >
             <q-icon color="dark" name="arrow_forward">

@@ -15,16 +15,11 @@
         </template>
   
     </q-card-section>
-     <!-- <q-card-section class="tw-p-0 tw-flex tw-items-end tw-flex-grow-0"> -->
-    <!-- <q-card-section 
-      :style="
-          `background-image: url(http://flowers.2apps.ru${img});`"
-      class="image-pos"
-    > -->
     <div class="tw-relative "
       style="padding-left:121px;"
     >
       <q-img
+        v-if="img"
         :src="`http://flowers.2apps.ru${img}`"
         width="114px"
         height="100%"
