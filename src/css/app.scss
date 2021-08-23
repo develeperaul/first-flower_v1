@@ -3,8 +3,11 @@
 // * {
 //   font-family: "AvenirNextCyr";
 // }
-*{
-  outline: none
+* {
+  outline: none;
+}
+a[type="button"] {
+  appearance: none;
 }
 @import "~hooper/dist/hooper.css";
 .env-t {
