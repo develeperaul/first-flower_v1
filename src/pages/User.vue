@@ -30,6 +30,7 @@ export default {
     outProfile () {
       
       localStorage.removeItem("accessToken")
+      this.$store.commit("profile/getPhone", null)
       this.$router.push({ name: 'signin' })
     }
   },
