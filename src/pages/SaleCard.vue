@@ -23,8 +23,9 @@
         spinner-size="50px"
       />
       <div class="tw-mx-4 tw-mt-7">
-        <span class="tw-text-lg tw-font-medium ">
-          {{sale.detail_text}}
+        <span class="tw-text-lg tw-font-medium "
+         v-html="sale.detail_text">
+          
         </span>
       </div>
     </template>
