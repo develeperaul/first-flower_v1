@@ -93,6 +93,7 @@ export default {
       }
     },
     innerValue (val) {
+
       if (val == this.code.kod) {
         this.$store.dispatch('profile/getToken', this.code)
         this.$router.push({ name: 'user', params: { id: this.phone } })
@@ -100,6 +101,8 @@ export default {
       } else if ( val.length == 4 && val !== this.code.kod) {
 
         this.failed = true
+      } else if ( val.length < 4 ){
+        this.failed = false
       }
     }
   },
