@@ -111,7 +111,7 @@
         <button
           class="tw-bg-secondary tw-rounded-full tw-text-white "
           type="buttom"
-          style="padding: 9.5px 32px; line-height: 24.5px; font-size: 20px"
+          style="padding: 9.5px 32px; line-height: 24.5px; font-size: 20px; margin-bottom: 24px"
         >Оформить заказ
         </button>
 
