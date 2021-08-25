@@ -10,7 +10,7 @@
       <input
         v-for="(v, index) in values"
         class="input"
-        :class="[{ 'input-error': !!errors[0] }, widthClass]"
+        :class="[{ 'tw-text-secondary': !!failed }]"
         :key="`${id}-${index}`"
         :ref="iRefs[index]"
         :data-id="index"
@@ -91,6 +91,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    failed: {
+      type: Boolean, 
+      required: true
+    }
   },
   data () {
     const { fields, values } = this;
