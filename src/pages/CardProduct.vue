@@ -261,10 +261,10 @@
             </Slide>
                         <Slide
               v-if="card.upak_foamiran"
-              :style="package == 4 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}"
+              :style="package == 5 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}"
             >
               <div
-                @click="choicePackage(4)"
+                @click="choicePackage(5)"
                 class="el-slide tw-flex tw-flex-col">
                 
                   <div>
@@ -401,7 +401,7 @@ export default {
 
           { label: `Добавлено в корзину ${this.count} штук${this.count === 1 ? 'a' : this.count > 1 && this.count <= 4 ? 'и' : ''}`, attrs: { 'style': 'color: white; font-size: 12px; margin: 0 auto; padding-bottom:10px' } },
           { label: 'оформить заказ', attrs: { 'style': "margin: 0 auto: border-radius: 50%; background-color: #CE406A; color: white; width: 100%" }, handler: () => { this.$router.push({ name: 'basket' }) } }],
-        timeout: 200000
+        timeout: 2000
       })
     },
     getBackPage () {
@@ -428,6 +428,8 @@ export default {
           return this.card.upak_kraft
         case 4:
           return this.card.upak_kor
+        case 5: 
+          return this.card.upak_foamiran
         default:
           return 0
       }
