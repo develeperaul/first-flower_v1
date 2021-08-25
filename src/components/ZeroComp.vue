@@ -53,7 +53,7 @@ export default {
       type: String
     },
     text: {
-      required: true,
+      required: false,
       type: String
     },
     textBtn: {
