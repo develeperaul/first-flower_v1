@@ -11,7 +11,7 @@
       v-if="card.add_imgs"
       class="tw-relative"
     >
-      <div class="tw-absolute tw-right-0 tw-top-4 tw-z-10 ">
+      <div class="tw-absolute tw-right-1 tw-top-1 tw-transform tw-translate-y-1/2 tw-z-10 ">
         <!-- <q-btn
           round
           unelevated
@@ -97,7 +97,12 @@
       v-else
       class="-m-content tw-relative"
     >
-      <div class="tw-absolute tw-right-0 tw--top-5 p-content">
+
+      <div
+        v-if="card.img"
+        class="image-pos tw-relative"
+      >
+              <div class="tw-absolute tw--right-3.5 tw--top-0 tw-transform tw-translate-x-full tw--translate-y-1/2">
         <!-- <q-btn
           round
           unelevated
@@ -120,10 +125,6 @@
 
         </q-btn>
       </div>
-      <div
-        v-if="card.img"
-        class="image-pos"
-      >
         <q-img
           @click="toggle"
           :icon="$q.fullscreen.isActive ? 'fullscreen_exit' : 'fullscreen'"
