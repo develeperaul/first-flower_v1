@@ -98,14 +98,14 @@
       class="-m-content tw-relative"
     >
       <div class="tw-absolute tw-right-0 tw--top-5 p-content">
-        <q-btn
+        <!-- <q-btn
           round
           unelevated
           class="  tw-bg-white tw-right-0 border-inset tw-mr-4"
           size="9px"
         >
           <Icon name="share" />
-        </q-btn>
+        </q-btn> -->
         <q-btn
           round
           unelevated
