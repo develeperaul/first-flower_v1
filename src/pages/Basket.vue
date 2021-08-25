@@ -19,6 +19,7 @@
               width="105px"
               height="105px"
               class="tw-rounded-md tw-flex-shrink-0"
+              @click="linkCard(product.id)"
             />
 
             <q-img
@@ -27,6 +28,7 @@
               width="105px"
               height="105px"
               class="tw-rounded-md tw-flex-shrink-0"
+              @click="linkCard(product.id)"
             />
 
             <div class="
@@ -107,6 +109,10 @@ export default {
     },
     removeProduct (id) {
       this.$store.dispatch('basket/remove', { id });
+    },
+    linkCard (id) {
+      
+      this.$router.push({ name: 'cardproduct', params: { id: id.match(/\d+/g)[0] } });
     },
   },
 
