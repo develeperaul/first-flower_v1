@@ -8,6 +8,7 @@
     :color="color"
     :to="to"
     no-caps
+    style="margin-bottom: 24px"
     >
       <span class="tw-text-white tw-text-lg ">
         {{ text }}
