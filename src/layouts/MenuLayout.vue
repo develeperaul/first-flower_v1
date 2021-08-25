@@ -1,11 +1,11 @@
 <template>
-  <q-layout view="hHh Lpr fFf" style="min-height: 100vh">
+  <q-layout view="hHh lpr fFf" style="min-height: 100vh">
     <div>
 
     <q-header reveal class="bg-white" >
       <div ref="header">
 
-      <q-toolbar class="tw-relative tw-mb-2">
+      <q-toolbar class="tw-relative tw-mb-2 env-t">
         <q-btn
           color="primary"
           flat
