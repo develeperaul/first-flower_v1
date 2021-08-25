@@ -6,9 +6,13 @@
       <ConfirmInput
         class="tw-mb-8"
         :fields="4"
+        :failed="failed"
         vid="verification_code"
         :valueCod.sync="innerValue"
       />
+      <span v-if="failed" class="tw-mb-9 tw-text-secondary tw-text-center">
+        Введён не правильный код!
+      </span>
       <span class="tw-mb-9 tw-text-accent-light tw-text-center">
         На номер {{`+7 ${phone.replace(/(\d{3})(\d{3})(\d{2})(\d{2})/, "($1) $2 $3 $4")}`}} отправлен код подтверждения. Введите его в поле выше
       </span>
@@ -46,7 +50,8 @@ export default {
       currentTime: 60,
       timer: null,
       innerValue: '',
-      phone: ''
+      phone: '',
+      failed: false
     }
   },
   mounted () {
@@ -89,9 +94,12 @@ export default {
     },
     innerValue (val) {
       if (val == this.code.kod) {
-
         this.$store.dispatch('profile/getToken', this.code)
         this.$router.push({ name: 'user', params: { id: this.phone } })
+        this.failed = false
+      } else if ( val.length == 4 && val !== this.code.kod) {
+
+        this.failed = true
       }
     }
   },
