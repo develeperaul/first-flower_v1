@@ -42,7 +42,6 @@ export default {
       required: false
     },
     text: {
-      default: "#fffff",
       type: String,
       required: false
     },
