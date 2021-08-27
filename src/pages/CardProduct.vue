@@ -197,11 +197,11 @@
                   />
                 </div>
                 <span class="tw-text-xs tw-mb-2.5">Лента</span>
-                <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_lenta ? card.upak_lenta : 0}}&nbsp;руб.</span>
+                <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_lenta}}&nbsp;руб.</span>
               </div>
             </Slide>
             <Slide
-              v-if="card.upak_fetr"
+              v-if="card.upak_plenka"
               :style="package == 2 ? {border:'1px solid #CE406A'} : {border:'1px solid #e0e0e0'}"
             >
               <div
@@ -210,13 +210,13 @@
               >
                 <div>
                   <q-img
-                    src="upak_fetr.png"
+                    src="upak_plenka.jpg"
                     height="68px"
                     class="tw-mb-4"
                   />
                 </div>
-                <span class="tw-text-xs tw-mb-2.5">Фетр</span>
-                <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_fetr ? card.upak_fetr : 0 }}&nbsp;руб.</span>
+                <span class="tw-text-xs tw-mb-2.5">Пленка</span>
+                <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_plenka}}&nbsp;руб.</span>
               </div>
             </Slide>
             <Slide
@@ -236,7 +236,7 @@
                   />
                 </div>
                 <span class="tw-text-xs tw-mb-2.5">Крафт</span>
-                <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_kraft ? card.upak_kraft : 0}}&nbsp;руб.</span>
+                <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_kraft}}&nbsp;руб.</span>
               </div>
             </Slide>
             <Slide
@@ -250,13 +250,13 @@
               >
                 <div>
                   <q-img
-                    src="upak_kor.png"
+                    src="upak_kor.jpg"
                     height="68px"
                     class="tw-mb-4"
                   />
                 </div>
                 <span class="tw-text-xs tw-mb-2.5">Корейка</span>
-                <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_kor ? card.upak_kor : 0}}&nbsp;руб.</span>
+                <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_kor}}&nbsp;руб.</span>
               </div>
             </Slide>
                         <Slide
@@ -275,7 +275,7 @@
                    />  
                   </div>
                   <span class="tw-text-xs tw-mb-2.5" >Фоамиран</span>
-                  <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_foamiran ? card.upak_foamiran : 0}}&nbsp;руб.</span>
+                  <span class="tw-text-xs tw-font-semibold tw-text-secondary">{{card.upak_foamiran}}&nbsp;руб.</span>
                 </div>
             </Slide>
           </Hooper>
@@ -374,7 +374,11 @@ export default {
       }
     },
     choicePackage (i) {
-      this.package = i;
+      if(this.package == i){
+        this.package = 0
+      }else{
+        this.package = i;
+      }
     },
 
 
@@ -423,7 +427,7 @@ export default {
         case 1:
           return this.card.upak_lenta;
         case 2:
-          return this.card.upak_fetr
+          return this.card.upak_plenka
         case 3:
           return this.card.upak_kraft
         case 4:
