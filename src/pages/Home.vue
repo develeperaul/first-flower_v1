@@ -53,7 +53,7 @@
             >
             <Slide
               
-              v-for="(item, index) in newList"
+              v-for="(item, index) in firstList"
               :key="index"
               >
                   <div class=" tw-flex tw-flex-col" @click="linkCard(item.id)">
@@ -72,6 +72,33 @@
             </Slide>
             
           </Hooper>
+
+          <Hooper
+            :settings="hooperSettings"
+            v-if="lastList"
+            >
+            <Slide
+              
+              v-for="(item, index) in lastList"
+              :key="index"
+              >
+                  <div class=" tw-flex tw-flex-col" @click="linkCard(item.id)">
+                    <div>
+                      <q-img
+                        :src="`http://flowers.2apps.ru${item.img}`"
+                        class="tw-rounded-md tw-mb-4"
+                        width="123px"
+                        height="123px"
+                        style="min-width: 123px; min-height: 123px"
+                      />
+                    </div>
+                    <span class="tw-text-lg tw-font-medium tw-text-left tw-mb-2.5" >{{item.name}}</span>
+                    
+                </div>
+            </Slide>
+            
+          </Hooper>
+          
       </div>
     </div>
   </q-page>
@@ -117,6 +144,17 @@ export default {
   },
   computed: {
     ...mapGetters("cards", ["weekItem", "saleItem", "newList"]),
+    firstList(){
+      if(this.newList.length>=6){
+        return this.newList.slice(0, this.newList.length/2)
+      } 
+      return this.newList
+    },
+    lastList(){
+      if(this.newList.length>=6){
+        return this.newList.slice(this.newList.length/2, this.newList.length)
+      } return false
+    }
     
   },
 };
