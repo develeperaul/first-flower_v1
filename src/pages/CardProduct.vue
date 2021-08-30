@@ -102,15 +102,7 @@
         v-if="card.img"
         class="image-pos tw-relative"
       >
-              <div class="tw-absolute tw--right-3.5 tw--top-0 tw-transform tw-translate-x-full tw--translate-y-1/2">
-        <!-- <q-btn
-          round
-          unelevated
-          class="  tw-bg-white tw-right-0 border-inset tw-mr-4"
-          size="9px"
-        >
-          <Icon name="share" />
-        </q-btn> -->
+      <div class="tw-absolute tw--right-3.5 tw--top-0 tw-transform tw-translate-x-full tw--translate-y-1/2">
         <q-btn
           round
           unelevated
@@ -134,10 +126,30 @@
       </div>
       <div
         v-else
-        :style="
-        `background-image: url(no_photo.png);`"
-        class="image-pos "
+        class="tw-relative"
       >
+        <div class="tw-absolute tw-right-7  tw-transform  tw--translate-y-1/2">
+          <q-btn
+            round
+            unelevated
+            class=" tw-top-0 tw-bg-white tw-right-0 border-inset "
+            @click="toggleFavorite"
+            size="9px"
+          >
+            <q-icon
+              :name="favorite && favorite[card.id] ? 'favorite' : 'favorite_border'"
+              :class="[favorite && favorite[card.id] ? 'tw-text-info' : 'tw-text-border-icon']"
+            />
+
+          </q-btn>
+        </div>
+        <div
+          :style="
+          `background-image: url(no_photo.png);`"
+          class="image-pos "
+        >
+
+        </div>
       </div>
     </div>
     <BorderLine class="-m-content tw-mt-4" />
