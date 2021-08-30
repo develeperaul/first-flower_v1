@@ -102,7 +102,7 @@
         v-if="card.img"
         class="image-pos tw-relative"
       >
-      <div class="tw-absolute tw--right-3.5 tw--top-0 tw-transform tw-translate-x-full tw--translate-y-1/2">
+      <div class="tw-absolute  tw--top-0 tw-transform tw-translate-x-full tw--translate-y-1/2" style="right: -0.875rem">
         <q-btn
           round
           unelevated
@@ -128,7 +128,7 @@
         v-else
         class="tw-relative"
       >
-        <div class="tw-absolute tw-right-7  tw-transform  tw--translate-y-1/2">
+        <div class="tw-absolute  tw-transform  tw--translate-y-1/2" style="right: 1.75rem"> 
           <q-btn
             round
             unelevated
