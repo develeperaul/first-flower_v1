@@ -15,7 +15,7 @@
           <div class="indent tw-mt-3.5 tw-p-0 tw-flex tw-justify-between">
             <q-img
               v-if="product.img"
-              :src="`http://flowers.2apps.ru${product.img}`"
+              :src="`https://flowers.2apps.ru${product.img}`"
               width="105px"
               height="105px"
               class="tw-rounded-md tw-flex-shrink-0"

@@ -60,15 +60,11 @@ export default {
   methods: {
     resend () {
       if (this.currentTime == 0) {
-        this.$store.dispatch('profile/getSms', this.phone);
+        this.$store.dispatch('profile/getSms', `+7${this.phone}`);
         this.currentTime = 60;
         this.startTimer();
       }
     },
-    // checkCode () {
-
-    //   console.log(this.innerValue === code.kod)
-    // },
     startTimer () {
       this.timer = setInterval(() => {
         this.currentTime--

@@ -6,6 +6,7 @@ export function someAction (context) {
 import { getSmsCode, token } from "src/api/profile";
 
 export async function getSms ({ commit }, phone) {
+  console.log(phone)
   const res = await getSmsCode(phone);
   commit('confirm', res)
 

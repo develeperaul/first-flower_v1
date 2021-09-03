@@ -20,7 +20,7 @@
     >
       <q-img
         v-if="img"
-        :src="`http://flowers.2apps.ru${img}`"
+        :src="`https://flowers.2apps.ru${img}`"
         width="114px"
         height="100%"
         class="tw-absolute tw-left-0 tw--bottom-0"

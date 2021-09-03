@@ -6,7 +6,6 @@ export function getSmsCode (phone) {
   return serverAPI
     .post("auth.php", { body: formData })
     .json()
-  //{"theme":"has_acc","phone":"9656656740","kod":"3377"}
 }
 
 export function token ({ phone, kod }) {

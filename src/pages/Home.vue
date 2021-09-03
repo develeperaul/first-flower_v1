@@ -8,7 +8,7 @@
             v-if="weekItem.img"
             width="123px"
             height="123px"
-             :src="`http://flowers.2apps.ru${weekItem.img}`" alt="" style="border-radius: 5px; min-width:123px "
+             :src="`https://flowers.2apps.ru${weekItem.img}`" alt="" style="border-radius: 5px; min-width:123px "
              /> 
           <div class=" tw-flex tw-flex-col   tw-ml-4">
             <div class="tw-flex tw-justify-between tw-items-center tw-flex-nowrap">
@@ -47,19 +47,43 @@
     </div>
     <div v-if="newList.length>0">
       <span class="tw-font-semibold tw-text-xl ">Новинки</span>
-      <div class="tw-mt-3.5">
-          <Hooper
-            :settings="hooperSettings"
-            >
-            <Slide
-              
+      <!-- <div class="tw-grid  new-products">
+        <div
+              class="new-product"
               v-for="(item, index) in firstList"
               :key="index"
               >
                   <div class=" tw-flex tw-flex-col" @click="linkCard(item.id)">
                     <div>
                       <q-img
-                        :src="`http://flowers.2apps.ru${item.img}`"
+                        :src="`https://flowers.2apps.ru${item.img}`"
+                        class="tw-rounded-md tw-mb-4"
+                        width="123px"
+                        height="123px"
+                        style="min-width: 123px; min-height: 123px"
+                      />
+                    </div>
+                    <span class="tw-text-lg tw-font-medium tw-text-left tw-mb-2.5" >{{item.name}}</span>
+                    
+                </div>
+            </div>
+      </div> -->
+
+      
+          <Hooper
+            :settings="hooperSettings"
+            v-for="(row,index) in hooperRows" :key="index"
+            class="tw-flex tw-justify-between"
+            >
+            <Slide
+              
+              v-for="(item, index) in row"
+              :key="index"
+              >
+                  <div class=" tw-flex tw-flex-col" @click="linkCard(item.id)">
+                    <div>
+                      <q-img
+                        :src="`https://flowers.2apps.ru${item.img}`"
                         class="tw-rounded-md tw-mb-4"
                         width="123px"
                         height="123px"
@@ -71,9 +95,9 @@
                 </div>
             </Slide>
             
-          </Hooper>
+          </Hooper> 
 
-          <Hooper
+          <!-- <Hooper
             :settings="hooperSettings"
             v-if="lastList"
             >
@@ -85,7 +109,7 @@
                   <div class=" tw-flex tw-flex-col" @click="linkCard(item.id)">
                     <div>
                       <q-img
-                        :src="`http://flowers.2apps.ru${item.img}`"
+                        :src="`https://flowers.2apps.ru${item.img}`"
                         class="tw-rounded-md tw-mb-4"
                         width="123px"
                         height="123px"
@@ -98,9 +122,9 @@
             </Slide>
             
           </Hooper>
-          
+           -->
       </div>
-    </div>
+    
   </q-page>
   
 </template>
@@ -125,11 +149,11 @@ export default {
       
 
       hooperSettings: {
-        // trimWhiteSpace: true,
         transition: 700,
         // autoPlay: true,
         // playSpeed: 3500,
-        itemsToShow: 4
+        itemsToShow: 4,
+        
       }
     }
   },
@@ -144,28 +168,29 @@ export default {
   },
   computed: {
     ...mapGetters("cards", ["weekItem", "saleItem", "newList"]),
-    firstList(){
-      if(this.newList.length>=6){
-        return this.newList.slice(0, this.newList.length/2)
-      } 
-      return this.newList
+    hooperRows(){
+      const arr = this.newList
+      const cols = Math.round(window.innerWidth/140) < 3 ? 3 : Math.round(window.innerWidth/140)
+      let arr2 = [];
+      for (let i = 0; i < arr.length; i += cols) {
+        arr2.push(arr.slice(i, cols+i))
+      }
+      console.log(Math.round(window.innerWidth/123));
+      return arr2
     },
-    lastList(){
-      if(this.newList.length>=6){
-        return this.newList.slice(this.newList.length/2, this.newList.length)
-      } return false
-    }
-    
   },
 };
 </script>
 <style lang="scss" scoped>
+
     .hooper-slide{
     min-width: 123px;
+    max-width: 123px;
     
-    
-    
-    margin-right: 17px;
+    &:not(:last-child){
+      margin-right: 17px;
+
+    }
     text-align: center;
     }
     .image-pos{
@@ -176,5 +201,22 @@ export default {
       width: 100%;
       min-height: 76px;
       
+    }
+    .new{
+      &-products {
+        
+        grid-template-columns: repeat(4, minmax(123px, 1fr));
+        column-gap: 17px;
+        overflow-x: scroll;
+        &::-webkit-scrollbar {
+          width: 0;
+        }
+      }
+      &-product {
+        width: 123px;
+        &:not(:last-child){
+          
+        }
+      }
     }
 </style>
