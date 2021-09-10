@@ -13,8 +13,8 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-navigation href="*" />
     <platform name="android">
-        <allow-navigation href="*" />
         <preference name="orientation" value="portrait" />
         <allow-intent href="market:*" />
         <icon density="ldpi" src="res/android/ldpi.png" />
