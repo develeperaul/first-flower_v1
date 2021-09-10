@@ -13,9 +13,10 @@ export async function getSms ({ commit }, phone) {
 }
 
 export async function getToken ({ commit }, obj) {
-
+  console.log(obj)
   const res = await token(obj)
   localStorage.setItem("accessToken", JSON.stringify({ token: res.token, phone: res.phone }))
 
   commit("getPhone", JSON.parse(localStorage.getItem("accessToken")).phone)
+  return res
 }

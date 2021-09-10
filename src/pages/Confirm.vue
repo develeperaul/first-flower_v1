@@ -88,15 +88,19 @@ export default {
       }
     },
     innerValue (val) {
-
-      if (val == this.code.kod) {
-        this.$store.dispatch('profile/getToken', this.code)
-        this.$router.push({ name: 'user', params: { id: this.phone } })
-        this.failed = false
-      } else if ( val.length == 4 && val !== this.code.kod) {
-
-        this.failed = true
-      } else if ( val.length < 4 ){
+      
+      if (val.length === 4) {
+        this.$store.dispatch('profile/getToken', {phone:`7${this.phone}`, kod: val}).then(response=>{
+          
+          if(response.token ){
+             this.failed = false
+             this.$router.push({ name: 'user', params: { id: this.phone } })
+             console.log(this.failed)  
+          } else if(response.length === 0){
+            this.failed = true
+          } 
+        })
+      } else if (val.length < 4 ){
         this.failed = false
       }
     }
