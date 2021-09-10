@@ -43,7 +43,8 @@ export default {
       if (this.phone === null) {
         return this.phone
       } else {
-        return `+7 ${this.phone.replace(/(\d{3})(\d{3})(\d{2})(\d{2})/, "($1) $2 $3 $4")}`
+
+        return `${this.phone.replace(/(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})/, "+$1($2) $3 $4 $5")}`
       }
 
     }

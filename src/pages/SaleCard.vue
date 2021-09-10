@@ -15,7 +15,7 @@
       </div>
       <q-img
         v-if="sale.img_det"
-        :src="`http://flowers.2apps.ru${sale.img_det}`"
+        :src="`https://flowers.2apps.ru${sale.img_det}`"
         width="100%"
         height="100%"
         style="border-radius: 5px"

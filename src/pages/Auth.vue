@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     onSubmit () {
-      this.$store.dispatch('profile/getSms', this.phone)
+      this.$store.dispatch('profile/getSms', `+7${this.phone}`)
       this.$router.push({ name: 'confirm', params: { phone: this.phone } })
 
     }
