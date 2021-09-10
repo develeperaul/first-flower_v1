@@ -16,8 +16,7 @@
       <span class="tw-mb-9 tw-text-accent-light tw-text-center">
         На номер {{`+7 ${phone.replace(/(\d{3})(\d{3})(\d{2})(\d{2})/, "($1) $2 $3 $4")}`}} отправлен код подтверждения. Введите его в поле выше
       </span>
-
-    </div>,
+    </div>
     <div
       class="tw-flex tw-justify-between tw-bg-primary tw-p-5"
       @click="resend"
