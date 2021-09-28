@@ -161,7 +161,7 @@
           style="margin-bottom: 16px"
         >
           <Icon name="location" class="tw-mr-3" />
-          Чишмы, ул. Шоссейная 29 (10:00 – 22:00).
+          Чишмы, ул. Шоссейная 29 (9:00 – 21:00).
         </a>
       </div>
     </q-drawer>
