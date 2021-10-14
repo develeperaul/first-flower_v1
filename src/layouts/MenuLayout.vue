@@ -131,16 +131,6 @@
             (WhatsApp) цветы
           </a>
         </span>
-
-        <a
-          href="https://goo.gl/maps/XjYFnUJRMnuUPQ9R7"
-          class="tw-font-medium tw-pt-3.5 tw-flex"
-          style="margin-bottom: 16px"
-        >
-          <Icon name="location" class="tw-mr-3" />
-          Чишмы, пр. Дружбы 1/1 (8:00 – 21:00);
-        </a>
-
         <span style="margin-bottom: 16px">
           <a
             href="tel:+79177818939"
@@ -154,11 +144,18 @@
             (WhatsApp) шары
           </a>
         </span>
-
+        <a
+          href="https://goo.gl/maps/XjYFnUJRMnuUPQ9R7"
+          class="tw-font-medium tw-pt-3.5 tw-flex"
+          style="margin-bottom: 0px"
+        >
+          <Icon name="location" class="tw-mr-3" />
+          Чишмы, пр. Дружбы 1/1 (8:00 – 21:00);
+        </a> 
         <a
           href="https://goo.gl/maps/CNV3YUJATWpASB446"
           class="tw-font-medium tw-pt-3.5 tw-flex"
-          style="margin-bottom: 16px"
+          style="margin-bottom: 0px"
         >
           <Icon name="location" class="tw-mr-3" />
           Чишмы, ул. Шоссейная 29 (9:00 – 21:00).
