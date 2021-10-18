@@ -147,14 +147,14 @@
         <a
           href="https://goo.gl/maps/XjYFnUJRMnuUPQ9R7"
           class="tw-font-medium tw-pt-3.5 tw-flex"
-          style="margin-bottom: 0px"
+          style="margin-bottom: 16px"
         >
           <Icon name="location" class="tw-mr-3" />
           Чишмы, пр. Дружбы 1/1 (8:00 – 21:00);
         </a> 
         <a
           href="https://goo.gl/maps/CNV3YUJATWpASB446"
-          class="tw-font-medium tw-pt-3.5 tw-flex"
+          class="tw-font-medium tw-flex"
           style="margin-bottom: 0px"
         >
           <Icon name="location" class="tw-mr-3" />

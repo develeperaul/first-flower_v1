@@ -18,7 +18,7 @@
       </div>
       <div >
         <span v-if="picked === 'pickup'">
-          Адрес магазина: Чишмы, ул. Ленина, 31
+          Адрес магазина: Чишмы, пр. Дружбы, 1/1 
         </span>
         <Input v-if="picked === 'delivery'" rules="required" label="Адрес" placeholder="Павел"/>
       </div>
