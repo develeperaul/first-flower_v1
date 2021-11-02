@@ -4,8 +4,8 @@
     v-model="innerValue"
     :maxlength="maxlength"
     type="text"
-    label="Комментарий"
-    placeholder="Комментарий" />
+    :label="placeholder"
+    :placeholder="placeholder" />
   <span class="symbol">{{valuecomment.length}}/{{maxlength}}</span>
 </div>
   
@@ -17,6 +17,10 @@ export default {
   props: {
     valuecomment:{
       default: '',
+      type: String
+    },
+    placeholder: {
+      default: 'Комментарий',
       type: String
     }
   },

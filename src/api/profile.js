@@ -33,7 +33,7 @@ export function add (ids) {
     .json();
 }
 
-export function sendOrder (ids, { delivery, name, phone, date, time, comment, payment }, token) {
+export function sendOrder (ids, { delivery, name, phone, comment_user, date, time, comment, payment }, token) {
   const formData = new FormData();
   ids.reduce((acc, id, index) => {
     acc.append(`ids[${index}]`, id);
@@ -43,6 +43,7 @@ export function sendOrder (ids, { delivery, name, phone, date, time, comment, pa
   formData.append('delivery', delivery);
   formData.append('name', name);
   formData.append('phone', phone);
+  formData.append('comment_user', comment_user)
   formData.append('date', date);
   formData.append('time', time);
   formData.append('comment', comment)

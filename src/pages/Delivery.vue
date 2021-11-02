@@ -62,6 +62,7 @@
             v-model="cellphoneMasked"
             :raw.sync="cellphone"
           />
+          <CommentInput :valuecomment.sync="commentDelivery" />
 
         </div>
         <div class="tw-flex tw-flex-col tw-justify-between">
@@ -74,7 +75,7 @@
           <DateInput :valuedate.sync="date" />
           <TimeInput :valuetime.sync="time" />
 
-          <CommentInput :valuecomment.sync="comment" />
+          <CommentInput :valuecomment.sync="comment" placeholder="Комментарий к заказу" />
 
         </div>
 
@@ -134,13 +135,14 @@ export default {
       innerValue: '',
       time: '',
       comment: '',
+      commentDelivery: '',
       money: 'card',
       picked: 'pickup'
     }
   },
   methods: {
     onSubmit (e) {
-      this.$store.dispatch("basket/order", { delivery: this.adress === "" ? 'Самовывоз' : this.adress, name: this.name, phone: this.cellphone, date: this.date, time: this.time, comment: this.comment, payment: this.money })
+      this.$store.dispatch("basket/order", { delivery: this.adress === "" ? 'Самовывоз' : this.adress, name: this.name, phone: this.cellphone, comment_user:this.commentDelivery, date: this.date, time: this.time, comment: this.comment, payment: this.money })
         .then(() => {
           this.$store.dispatch("basket/clearBasket");
           this.$router.push({ name: 'confirmdelivery' })

@@ -31,6 +31,7 @@
       <Input rules="required" label="Имя" placeholder="Павел"/>
       <PhoneInput v-model="cellphoneMasked" :raw.sync="cellphone"/>
       <Input rules="required" type="tel" label="Телефон" placeholder="8 (9__) ___-__-__" v-mask="'8 (###) ### ## ##'"/>
+      <Input rules="required" label="Комментарий" placeholder="Павел"/>
     </div>
     <div class="tw-flex tw-flex-col tw-justify-between">
       <span class="tw-text-2xl tw-font-semibold tw-my-3.5">
@@ -38,7 +39,7 @@
       </span>
       <Input rules="required" label="Дата" placeholder="Павел"/>
       <Input rules="required" label="Время" placeholder="Павел"/>
-      <Input rules="required" label="Комментарий" placeholder="Павел"/>
+      <Input rules="required" label="Комментарий к заказу" placeholder="Павел"/>
     </div>
     
       

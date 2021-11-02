@@ -6,7 +6,8 @@
         :name="nameIcon"
       />
       <!-- <q-img v-if="hasImg" class="tw-w-10 tw-h-10 rounded" src="/basketFlower.svg" /> -->
-      <span class="tw-text-2xl tw-font-semibold tw-text-center tw-mt-6">{{text}}</span>
+      <span v-if="text" class="tw-text-2xl tw-font-semibold tw-text-center tw-mt-6">{{text}}</span>
+      <slot/>
 
     </div>
     <!-- <BaseButton v-if="to" :text="textBtn" :to="to"/> -->
