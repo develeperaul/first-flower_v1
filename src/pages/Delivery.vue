@@ -33,19 +33,40 @@
           </div>
           <div>
             <span v-if="picked === 'pickup'">
-              Адрес магазина: Чишмы, пр. Дружбы, 1/1 
+              Адрес магазина: Чишмы, пр. Дружбы, 1/1
             </span>
-            <Input
+            <!-- <Input
               v-if="picked === 'delivery'"
               v-model="adress"
               rules="required"
               label="Адрес"
               placeholder="Доставка"
+            /> -->
+
+            <Input
+              v-if="picked === 'delivery'"
+              v-model="city"
+              label="Город или село"
+              placeholder="Город или село"
+            />
+
+            <Input
+              v-if="picked === 'delivery'"
+              v-model="street"
+              label="Улица"
+              placeholder="Улица"
+            />
+
+            <Input
+              v-if="picked === 'delivery'"
+              v-model="home"
+              label="Дом"
+              placeholder="Номер дома"
             />
           </div>
 
         </div>
-        <div class="tw-flex tw-flex-col tw-justify-between">
+        <!-- <div class="tw-flex tw-flex-col tw-justify-between">
           <span
             class="tw-text-2xl tw-font-semibold tw-mt-7"
             style="margin-bottom: 14px"
@@ -108,7 +129,7 @@
             <label for="cash">Наличными</label>
           </div>
 
-        </div>
+        </div> -->
         <button
           class="tw-bg-secondary tw-rounded-full tw-text-white "
           type="buttom"
@@ -123,10 +144,15 @@
 </template>
 
 <script>
+import ky from 'ky';
 export default {
   // name: 'PageName',
   data () {
     return {
+      city: '',
+      street: '',
+      home: '',
+
       adress: '',
       name: '',
       cellphoneMasked: '',
@@ -141,12 +167,16 @@ export default {
     }
   },
   methods: {
-    onSubmit (e) {
-      this.$store.dispatch("basket/order", { delivery: this.adress === "" ? 'Самовывоз' : this.adress, name: this.name, phone: this.cellphone, comment_user:this.commentDelivery, date: this.date, time: this.time, comment: this.comment, payment: this.money })
-        .then(() => {
-          this.$store.dispatch("basket/clearBasket");
-          this.$router.push({ name: 'confirmdelivery' })
-        })
+    async onSubmit (e) {
+      if (this.picked === 'delivery') {
+        const res = await ky(`https://geocode-maps.yandex.ru/1.x/?apikey=7482946a-9120-4a56-96d9-f279288031bc&format=json&geocode=${this.city},улица+${this.street},дом+${this.home}&rspn=1&ll=55.3824710,54.5893840&spn=0.79,0.79&results=1`);
+        console.log(res)
+      }
+      // this.$store.dispatch("basket/order", { delivery: this.adress === "" ? 'Самовывоз' : this.adress, name: this.name, phone: this.cellphone, comment_user: this.commentDelivery, date: this.date, time: this.time, comment: this.comment, payment: this.money })
+      //   .then(() => {
+      //     this.$store.dispatch("basket/clearBasket");
+      //     this.$router.push({ name: 'confirmdelivery' })
+      //   })
     }
   }
 }

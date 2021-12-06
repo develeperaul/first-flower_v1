@@ -1,4 +1,8 @@
-import { serverAPI } from "src/api/helpers/ky";
+import { serverAPI, serverGeocodeApi } from "src/api/helpers/ky";
+
+export function getAddress (city, street, home) {
+  return serverGeocodeApi(`&geocode=${city},улица+${street},дом+${home}&rspn=1&ll=54.5893840,55.3824710&spn=1.44,1.44`).json()
+}
 
 export function getSmsCode (phone) {
   const formData = new FormData();
