@@ -46,6 +46,7 @@
             <Input
               v-if="picked === 'delivery'"
               v-model="city"
+              
               label="Город или село"
               placeholder="Город или село"
             />
@@ -53,6 +54,7 @@
             <Input
               v-if="picked === 'delivery'"
               v-model="street"
+              
               label="Улица"
               placeholder="Улица"
             />
@@ -60,13 +62,14 @@
             <Input
               v-if="picked === 'delivery'"
               v-model="home"
+              
               label="Дом"
               placeholder="Номер дома"
             />
           </div>
 
         </div>
-        <!-- <div class="tw-flex tw-flex-col tw-justify-between">
+         <div class="tw-flex tw-flex-col tw-justify-between">
           <span
             class="tw-text-2xl tw-font-semibold tw-mt-7"
             style="margin-bottom: 14px"
@@ -98,7 +101,7 @@
 
           <CommentInput :valuecomment.sync="comment" placeholder="Комментарий к заказу" />
 
-        </div>
+        </div> 
 
         <div class="tw-flex tw-flex-col tw-justify-between">
           <span
@@ -129,7 +132,7 @@
             <label for="cash">Наличными</label>
           </div>
 
-        </div> -->
+        </div> 
         <button
           class="tw-bg-secondary tw-rounded-full tw-text-white "
           type="buttom"
@@ -140,6 +143,34 @@
       </form>
     </ValidationObserver>
 
+
+ <q-dialog v-model="popup">
+      <q-card>
+        <q-card-section class="row items-center q-pb-none">
+          <q-space></q-space>
+          <q-btn icon="close" size="8px" flat round dense v-close-popup></q-btn>
+        </q-card-section>
+
+        <q-card-section>
+          {{message}}
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
+
+    <q-dialog v-model="confirm" persistent>
+      <q-card>
+        <q-card-section class="row items-center">
+          
+          <span class="q-ml-sm tw-text-lg tw-font-semibold">{{message}}</span>
+        </q-card-section>
+
+        <q-card-actions align="right" class="tw-text-sm">
+          <q-btn flat label="Изменить Адрес"  size="12px" color="primary" v-close-popup @click="updateDelivery"></q-btn>
+          <q-btn flat label="Подтвердить доставку" size="12px" color="primary" v-close-popup @click="confirmDelivery"></q-btn>
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
@@ -149,6 +180,10 @@ export default {
   // name: 'PageName',
   data () {
     return {
+      popup: false,
+      confirm: false,
+
+      message: '',
       city: '',
       street: '',
       home: '',
@@ -167,18 +202,130 @@ export default {
     }
   },
   methods: {
+    updateDelivery(){
+      this.city = '';
+      this.street = '',
+      this.home = ''
+    },
+    confirmDelivery(){
+      this.$store.dispatch("basket/order", { delivery:  this.adress , name: this.name, phone: this.cellphone, comment_user: this.commentDelivery, date: this.date, time: this.time, comment: this.comment, payment: this.money })
+      .then(() => {
+        this.$store.dispatch("basket/clearBasket");
+        this.$router.push({ name: 'confirmdelivery' })
+      })
+    },
+    price(d){
+      if(d>0&&d<=1){
+        this.message = 'Стоимость доставки составит 150 рублей';
+        this.confirm = true
+        
+      }
+      else if(d>1&&d<=3){
+        this.message = 'Стоимость доставки составит 300 рублей';
+        this.confirm = true
+        
+      }
+      else if(d>=3&&d<=5){
+        this.message = 'Стоимость доставки составит 350 рублей';
+        this.confirm = true
+        
+      }
+      else if(d>=5&&d<=7){
+        this.message = 'Стоимость доставки составит 400 рублей';
+        this.confirm = true
+        
+      }
+      else if(d>=7&&d<=10){
+        this.message = 'Стоимость доставки составит 500 рублей';
+        this.confirm = true
+        
+      }
+      else if(d>=10&&d<=25){
+        this.message = 'Стоимость доставки составит 800 рублей';
+        this.confirm = true
+        
+      }
+      else if(d>=25&&d<=60){
+        this.message = 'Стоимость доставки составит 1200 рублей';
+        this.confirm = true
+        
+      }
+      
+      else if(d>=60&&d<=80){
+        this.message = 'Стоимость доставки составит 1400 рублей';
+        this.confirm = true
+        
+      }
+      else {
+
+        this.message = 'По указанному адресу доставка не осуществляется';
+        this.popup = true;
+        this.city = '';
+        this.street = '',
+        this.home = ''
+      }
+      
+    },
+    haversineDistance(coords1, coords2) {
+      function toRad(x) {
+        return x * Math.PI / 180;
+      }
+
+      var lon1 = coords1[0];
+      var lat1 = coords1[1];
+
+      var lon2 = coords2[0];
+      var lat2 = coords2[1];
+
+      var R = 6371; // km
+
+      var x1 = lat2 - lat1;
+      var dLat = toRad(x1);
+      var x2 = lon2 - lon1;
+      var dLon = toRad(x2)
+      var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      var d = R * c;
+      this.price(d*1.1)
+
+
+      // if(isMiles) d /= 1.60934;
+      
+      
+    },
     async onSubmit (e) {
       if (this.picked === 'delivery') {
-        const res = await ky(`https://geocode-maps.yandex.ru/1.x/?apikey=7482946a-9120-4a56-96d9-f279288031bc&format=json&geocode=${this.city},улица+${this.street},дом+${this.home}&rspn=1&ll=55.3824710,54.5893840&spn=0.79,0.79&results=1`);
-        console.log(res)
+        try{
+
+          const res = await ky(`https://geocode-maps.yandex.ru/1.x/?apikey=7482946a-9120-4a56-96d9-f279288031bc&format=json&geocode=${this.city},улица+${this.street},дом+${this.home}&rspn=1&ll=55.3824710,54.5893840&spn=1.5,1.5&results=1`).json();
+  
+          let x2 = res.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(/\s/)[0]
+          let y2 = res.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(/\s/)[1]
+          this.haversineDistance([55.3824710,54.5893840],[x2,y2])
+          this.adress = res.response.GeoObjectCollection.featureMember[0].GeoObject.metaDataProperty.GeocoderMetaData.text
+
+
+
+        }catch{
+          this.message = 'Адрес не найден';
+          this.popup = true;
+          this.city = '';
+          this.street = '',
+          this.home = ''
+          
+        }
+      } else {
+        this.$store.dispatch("basket/order", { delivery:  'Самовывоз' , name: this.name, phone: this.cellphone, comment_user: this.commentDelivery, date: this.date, time: this.time, comment: this.comment, payment: this.money })
+          .then(() => {
+            this.$store.dispatch("basket/clearBasket");
+            this.$router.push({ name: 'confirmdelivery' })
+          })
       }
-      // this.$store.dispatch("basket/order", { delivery: this.adress === "" ? 'Самовывоз' : this.adress, name: this.name, phone: this.cellphone, comment_user: this.commentDelivery, date: this.date, time: this.time, comment: this.comment, payment: this.money })
-      //   .then(() => {
-      //     this.$store.dispatch("basket/clearBasket");
-      //     this.$router.push({ name: 'confirmdelivery' })
-      //   })
     }
-  }
+  },
+  
 }
 </script>
 <style scoped>
