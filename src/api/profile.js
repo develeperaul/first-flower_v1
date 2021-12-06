@@ -37,7 +37,7 @@ export function add (ids) {
     .json();
 }
 
-export function sendOrder (ids, { delivery, name, phone, comment_user, date, time, comment, payment }, token) {
+export function sendOrder (ids, { delivery, name, phone, comment_user, date, time, comment, payment, cost }, token) {
   const formData = new FormData();
   ids.reduce((acc, id, index) => {
     acc.append(`ids[${index}]`, id);
@@ -52,6 +52,7 @@ export function sendOrder (ids, { delivery, name, phone, comment_user, date, tim
   formData.append('time', time);
   formData.append('comment', comment)
   formData.append('payment', payment);
+  formData.append('delivery_cost', cost)
   token ? formData.append('token', token) : null;
   return serverAPI
     .post("order.php", {
