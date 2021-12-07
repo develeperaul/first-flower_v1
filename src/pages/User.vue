@@ -70,7 +70,7 @@ export default {
   },
   methods: {
     goVk(){
-      window.open('https://vk.com/firstflowershop', '_blank', 'location=yes')
+      cordova.InAppBrowser.open('https://vk.com/firstflowershop', '_blank', 'location=yes')
     },
     outProfile () {
       
