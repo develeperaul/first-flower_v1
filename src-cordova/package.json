@@ -14,14 +14,18 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "cordova-android": "^10.1.0",
+    "cordova-custom-config": "^5.1.0",
     "cordova-ios": "^6.2.0",
     "cordova-plugin-inappbrowser": "^5.0.0",
+    "cordova-plugin-intent": "git+https://github.com/napolitano/cordova-plugin-intent.git",
     "cordova-plugin-splashscreen": "^6.0.0"
   },
   "cordova": {
     "plugins": {
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-inappbrowser": {}
+      "cordova-plugin-inappbrowser": {},
+      "cordova-custom-config": {},
+      "com.napolitano.cordova.plugin.intent": {}
     },
     "platforms": [
       "ios",

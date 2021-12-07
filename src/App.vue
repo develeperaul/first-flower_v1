@@ -7,6 +7,8 @@
 export default {
   name: 'App',
   created () {
+
+    
     // localStorage.setItem("favorite", JSON.stringify({22:true}));
     const favorite = localStorage.getItem('favorite');
     const basket = localStorage.getItem('basket');

@@ -38,7 +38,7 @@
 
       </a>
       
-    <a href="https://vk.com/firstflowershop" class="tw-flex tw-flex-col tw-items-center">
+    <div  @click="goVk" class="tw-flex tw-flex-col tw-items-center">
 
       <q-img
         src="vk.svg"
@@ -49,7 +49,7 @@
       <span>
         ВКонтакте
       </span>
-    </a>
+    </div>
     </div>
     </ZeroComp>
   </div>
@@ -69,6 +69,9 @@ export default {
     }
   },
   methods: {
+    goVk(){
+      window.open('https://vk.com/firstflowershop', '_blank', 'location=yes')
+    },
     outProfile () {
       
       localStorage.removeItem("accessToken")

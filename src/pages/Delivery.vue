@@ -144,7 +144,7 @@
     </ValidationObserver>
 
 
- <q-dialog v-model="popup">
+    <q-dialog v-model="popup">
       <q-card>
         <q-card-section class="row items-center q-pb-none">
           <q-space></q-space>
@@ -334,6 +334,12 @@ export default {
       }
     }
   },
+  watch: {
+    picked (val){
+      if(val==='delivery')this.money = 'cash'
+      else this.money = ''
+    }
+  }
   
 }
 </script>
