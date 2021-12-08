@@ -46,7 +46,7 @@
             <Input
               v-if="picked === 'delivery'"
               v-model="city"
-              
+              rules="required"
               label="Город или село"
               placeholder="Город или село"
             />
@@ -54,7 +54,7 @@
             <Input
               v-if="picked === 'delivery'"
               v-model="street"
-              
+              rules="required"
               label="Улица"
               placeholder="Улица"
             />
@@ -62,7 +62,7 @@
             <Input
               v-if="picked === 'delivery'"
               v-model="home"
-              
+              rules="required"
               label="Дом"
               placeholder="Номер дома"
             />
