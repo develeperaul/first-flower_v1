@@ -28,7 +28,9 @@ const routes = [
       { path: '/profile/confirm', name: 'confirm', component: () => import('pages/Confirm.vue') },
 
       { path: '/profile/:id', name: 'user', component: () => import('pages/User.vue') },
-      { path: '/cards/:id', name: 'cards', component: () => import('pages/Cards.vue'), }
+      { path: '/cards/:id', name: 'cards', component: () => import('pages/Cards.vue'), },
+
+      { path: '/infoPayment', name: 'infoPayment', component: () => import('pages/InfoPayment.vue') }
     ]
 
   },
