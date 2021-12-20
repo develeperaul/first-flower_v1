@@ -66,6 +66,12 @@
               label="Дом"
               placeholder="Номер дома"
             />
+            <Input
+              v-if="picked === 'delivery'"
+              v-model="flat"
+              label="Квартира"
+              placeholder="Номер квартиры"
+            />
           </div>
 
         </div>
@@ -188,7 +194,7 @@ export default {
       city: '',
       street: '',
       home: '',
-
+      flat: '',
       adress: '',
       name: '',
       cellphoneMasked: '',
@@ -313,7 +319,7 @@ export default {
           let x2 = res.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(/\s/)[0]
           let y2 = res.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(/\s/)[1]
           this.haversineDistance([55.3824710,54.5893840],[x2,y2])
-          this.adress = res.response.GeoObjectCollection.featureMember[0].GeoObject.metaDataProperty.GeocoderMetaData.text
+          this.adress = `${res.response.GeoObjectCollection.featureMember[0].GeoObject.metaDataProperty.GeocoderMetaData.text}${this.flat == '' || this.flat == null || this.flat == undefined ? '':  `, Квартира ${this.flat}`}`
 
 
 
