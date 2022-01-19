@@ -17,6 +17,7 @@ export default {
     if (accessToken) {
       try {
         this.$store.commit("profile/getPhone", JSON.parse(localStorage.getItem("accessToken")).phone)
+        this.$store.dispatch("profile/clientData", JSON.parse(localStorage.getItem("accessToken")).token)
       }
       catch (e) {
 
@@ -44,7 +45,7 @@ export default {
     }
   },
   mounted () {
-    
+    this.$store.dispatch('basket/cost')
   },
 };
 </script>

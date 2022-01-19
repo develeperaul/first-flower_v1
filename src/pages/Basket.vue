@@ -72,7 +72,7 @@
       </div>
       <div class="p-content">
         <BaseButton
-          v-if="phone"
+          v-if="auth"
           class="tw-w-full"
           text="Оформить заказ"
           :to="{ name: 'delivery' }"
@@ -121,7 +121,8 @@ export default {
     ...mapGetters({
       amountProducts: 'basket/amountProducts',
       products: 'basket/products',
-      phone: 'profile/phone'
+      phone: 'profile/phone',
+      auth: 'profile/auth'
     }),
 
 

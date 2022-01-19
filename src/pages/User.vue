@@ -2,13 +2,49 @@
   <div>
     <div class="p-content tw-flex tw-flex-col">
       <h2 class="title tw-self-center">Профиль</h2>
+      <ValidationObserver v-slot="{ passes }">
+      <form class="tw-flex tw-flex-col"
+        @submit.prevent="passes(onSubmit)"
+      >
 
-      <input type="text" v-model="name" placeholder="ФИО" class="input" />
+          <Input
+            rules="required"
+            label="Имя"
+            placeholder="Иван"
+            v-model="firstName"
+          />
+          <Input
+            rules="required"
+            label="Фамилия"
+            placeholder="Иванов"
+            v-model="lastName"
+          />
+          <div class="tw-mb-3" v-if="phone || phone == ''">
+
+            <span>Телефон</span>
+            <span>
+              {{ getPhone }}
+            </span> 
+          </div>
+      
+        <!-- <input type="text" v-model="firstName" placeholder="Имя" class="input" />
+        <input type="text" v-model="lastName" placeholder="Фамилия" class="input" /> -->
+        <!-- <input type="text" v-model="phoneNumber" placeholder="Телефон" class="input" /> -->
+
+        <button
+          class="tw-bg-secondary tw-rounded-full tw-text-white "
+          type="submit"
+          style="padding: 9.5px 32px; line-height: 24.5px; font-size: 20px; margin-bottom: 24px"
+        >Изменить 
+        </button>
+
+      </form>
+      </ValidationObserver>
       <!-- <q-input v-model="name" label="Standard" class="input"/> -->
-      <span>Телефон</span>
+      <!-- <span>Телефон</span>
       <span>
         {{ getPhone }}
-      </span>
+      </span> -->
       <!-- <span
         class="tw-font-semibold tw-text-secondary tw-mt-4"
         @click="outProfile"
@@ -53,16 +89,24 @@
 <script>
 import ZeroComp from 'components/ZeroComp';
 import { mapGetters } from 'vuex';
+import { token } from 'src/api/profile';
 export default {
   components: {
     ZeroComp,
   },
   data() {
     return {
-      name: '',
+      firstName: '',
+      lastName: '',
+      cellphoneMasked: '',
+      cellphone: ''
     };
   },
   methods: {
+    onSubmit(){
+      this.$store.dispatch('profile/updateClientData', {name: this.firstName, last_name: this.lastName, token: JSON.parse(localStorage.getItem("accessToken")).token})
+      
+    },
     goVk() {
       cordova.InAppBrowser.open(
         'https://vk.com/firstflowershop',
@@ -85,7 +129,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters('profile', ['phone']),
+    ...mapGetters('profile', ['phone' , 'last_name', 'name']),
     getPhone() {
       if (this.phone === null) {
         return this.phone;
@@ -98,16 +142,29 @@ export default {
     },
   },
   created() {
-    if (localStorage.getItem('name')) {
-      this.name = JSON.parse(localStorage.getItem('name'));
-    }
+    // if (localStorage.getItem('name')) {
+    //   this.name = JSON.parse(localStorage.getItem('name'));
+    // }
+  },
+  mounted(){
+      
+    this.lastName = this.last_name
+    if(this.last_name)this.lastName=this.last_name;
+    if(this.name)this.firstName=this.name;
+
+  },
+  beforeMount(){
+    this.$nextTick().then(()=>{
+
+      console.log(this.last_name)
+    })
   },
   watch: {
-    name(val) {
-      localStorage.setItem('name', JSON.stringify(val));
+    // name(val) {
+    //   localStorage.setItem('name', JSON.stringify(val));
 
-      console.log(val);
-    },
+    //   console.log(val);
+    // },
   },
   // name: 'PageName',
 };

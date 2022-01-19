@@ -7,6 +7,12 @@ export async function order ({ getters }, list) {
   return status
 }
 
+export async function cost({commit}){
+  const res = await BasketAPI.getCost()
+  commit('addCost', res)
+  
+}
+
 export async function addToCart ({ commit }, list) {
   const res = await BasketAPI.add(list);
   return res;

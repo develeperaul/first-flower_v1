@@ -182,6 +182,7 @@
 
 <script>
 import ky from 'ky';
+import {mapGetters} from 'vuex';
 export default {
   // name: 'PageName',
   data () {
@@ -208,6 +209,11 @@ export default {
       picked: 'pickup'
     }
   },
+  computed:{
+    ...mapGetters({
+      cost: 'basket/costgetter'
+    })
+  },
   methods: {
     updateDelivery(){
       this.city = '';
@@ -222,54 +228,12 @@ export default {
       })
     },
     price(d){
-      if(d>0&&d<=1){
-        this.message = 'Стоимость доставки составит 150 рублей';
-        this.countPrice = 150;
+      const confirmCost = this.cost.find(i=>{if(d>i.from&&d<i.to)return i})
+      // console.log(confirmCost)
+      if(confirmCost){
+        this.message = `Стоимость доставки составит ${confirmCost.cost} рублей`;
+        this.countPrice = confirmCost.cost;
         this.confirm = true
-        
-      }
-      else if(d>1&&d<=3){
-        this.message = 'Стоимость доставки составит 300 рублей';
-        this.countPrice = 300;
-        this.confirm = true
-        
-      }
-      else if(d>=3&&d<=5){
-        this.message = 'Стоимость доставки составит 350 рублей';
-        this.countPrice = 350;
-        this.confirm = true
-        
-      }
-      else if(d>=5&&d<=7){
-        this.message = 'Стоимость доставки составит 400 рублей';
-        this.countPrice = 400;
-        this.confirm = true
-        
-      }
-      else if(d>=7&&d<=10){
-        this.message = 'Стоимость доставки составит 500 рублей';
-        this.countPrice = 500;
-        this.confirm = true
-        
-      }
-      else if(d>=10&&d<=25){
-        this.message = 'Стоимость доставки составит 800 рублей';
-        this.countPrice = 800;
-        this.confirm = true
-        
-      }
-      else if(d>=25&&d<=60){
-        this.message = 'Стоимость доставки составит 1200 рублей';
-        this.countPrice = 1200;
-        this.confirm = true
-        
-      }
-      
-      else if(d>=60&&d<=80){
-        this.message = 'Стоимость доставки составит 1400 рублей';
-        this.countPrice = 1400;
-        this.confirm = true
-        
       }
       else {
 

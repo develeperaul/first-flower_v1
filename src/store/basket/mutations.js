@@ -32,6 +32,10 @@ export function setBasket (state, items) {
 
 }
 
+export function addCost(state, res){
+    state.cost = res
+}
+
 
 
 export function incrementProducts (state, { id }) {

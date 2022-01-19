@@ -95,7 +95,7 @@ export default {
           if(response.token ){
              this.failed = false
              this.$router.push({ name: 'user', params: { id: this.phone } })
-             console.log(this.failed)  
+            //  console.log(this.failed)  
           } else if(response.length === 0){
             this.failed = true
           } 

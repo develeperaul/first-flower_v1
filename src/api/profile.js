@@ -23,6 +23,26 @@ export function token ({ phone, kod }) {
     .json()
 }
 
+export function getProfile(token){
+  const formData = new FormData();
+  formData.append('token', token);
+  return serverAPI
+    .post('profile.php',  {
+      body: formData
+    }).json()
+}
+
+export function updateProfile({token, name, last_name}){
+  const formData = new FormData();
+  formData.append('token', token);
+  formData.append('name', name);
+  formData.append('last_name', last_name);
+  return serverAPI
+    .post('update_profile.php',  {
+      body: formData
+    }).json()
+}
+
 export function add (ids) {
   const formData = new FormData();
   ids.reduce((acc, id, index) => {
@@ -60,6 +80,10 @@ export function sendOrder (ids, { delivery, name, phone, comment_user, date, tim
     })
     .json()
   // return serverAPI.post("post.php", {json: {obj} }).json()
+}
+
+export function getCost(){
+  return serverAPI('delivery_cost.php').json();
 }
 
 

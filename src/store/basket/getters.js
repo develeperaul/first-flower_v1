@@ -15,3 +15,7 @@ export function products (state) {
 export function ids (state) {
     return state.products.map(item => item.id)
 }
+
+export function costgetter(state){
+    return state.cost
+}

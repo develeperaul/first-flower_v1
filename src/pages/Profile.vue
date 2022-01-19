@@ -20,7 +20,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('profile', ["phone"]),
+    ...mapGetters('profile', ["phone", "auth"]),
     filled () {
       if (this.phone.length === 10) return true
       return false
@@ -28,7 +28,7 @@ export default {
   },
 
   created () {
-    if (this.phone) this.$router.push({ name: 'user', params: { id: this.phone } })
+    if (this.auth) this.$router.push({ name: 'user', params: { id: JSON.parse(localStorage.getItem("accessToken")).token } })
     else this.$router.push({ name: 'signin' })
   },
 

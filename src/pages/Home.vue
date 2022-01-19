@@ -175,7 +175,7 @@ export default {
       for (let i = 0; i < arr.length; i += cols) {
         arr2.push(arr.slice(i, cols+i))
       }
-      console.log(Math.round(window.innerWidth/123));
+      // console.log(Math.round(windoыw.innerWidth/123));
       return arr2
     },
   },
