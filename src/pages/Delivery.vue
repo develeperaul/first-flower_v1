@@ -116,6 +116,7 @@
           >
             Способ оплаты
           </span>
+
           <div
             class="tw-flex tw-items-center tw-mb-4"
             v-if="picked === 'pickup'"
@@ -128,6 +129,20 @@
             >
             <label for="card">Картой в магазине</label>
           </div>
+
+          <div
+            class="tw-flex tw-items-center tw-mb-4"
+            
+          >
+            <input
+              type="radio"
+              id="transfer"
+              value="transfer"
+              v-model="money"
+            >
+            <label for="transfer">Перевод на карту</label>
+          </div>
+
           <div class="tw-flex tw-items-center tw-mb-10">
             <input
               type="radio"
