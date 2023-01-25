@@ -8,7 +8,7 @@ export function getSmsCode (phone) {
   const formData = new FormData();
   formData.append('phone', phone);
   return serverAPI
-    .post("auth.php", { body: formData })
+    .post("auth_call.php", { body: formData })
     .json()
 }
 
